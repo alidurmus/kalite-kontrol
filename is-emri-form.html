@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni İş Emri / İş Emri Düzenle - Intermeks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html" class="active">İş Emirleri</a></li>
+                    <li>
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu">
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Kalite Kontrol Formları</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                <div id="is-emri-form-page">
+                    <header class="card-header">
+                        <h1 id="is-emri-page-title">Yeni İş Emri Oluştur</h1>
+                    </header>
+
+                    <form class="card" id="workOrderForm">
+                        <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Genel Bilgiler</div>
+                        <div class="form-grid" style="padding-top:1rem;">
+                            <div class="form-group">
+                                <label for="is-emri-no">İş Emri No</label>
+                                <input type="text" id="is-emri-no" name="is-emri-no" class="form-control" placeholder="Örn: IEM-003 (Otomatik atanabilir)">
+                            </div>
+                            <div class="form-group">
+                                <label for="lot-no">Lot Numarası</label>
+                                <input type="text" id="lot-no" name="lot-no" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="musteri-secimi">Müşteri</label>
+                                <select id="musteri-secimi" name="musteri-secimi" class="form-control">
+                                    <option value="">Müşteri Seçiniz...</option>
+                                    <option value="MUS-001">ABC Teknoloji A.Ş.</option>
+                                    <option value="MUS-002">DEF Makina San. Tic. Ltd. Şti.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="musteri-siparis-no">Müşteri Sipariş No</label>
+                                <input type="text" id="musteri-siparis-no" name="musteri-siparis-no" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="planlanan-uretim-tarihi">Planlanan Üretim Tarihi</label>
+                                <input type="date" id="planlanan-uretim-tarihi" name="planlanan-uretim-tarihi" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="planlanan-sevk-tarihi">Planlanan Sevk Tarihi</label>
+                                <input type="date" id="planlanan-sevk-tarihi" name="planlanan-sevk-tarihi" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="olusturma-tarihi">Oluşturma Tarihi</label>
+                                <input type="date" id="olusturma-tarihi" name="olusturma-tarihi" class="form-control" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="isemri-durum">Durumu</label>
+                                <select id="isemri-durum" name="isemri-durum" class="form-control">
+                                    <option value="planlandi">Planlandı</option>
+                                    <option value="uretimde">Üretimde</option>
+                                    <option value="tamamlandi">Tamamlandı</option>
+                                    <option value="sevk_edildi">Sevk Edildi</option>
+                                    <option value="iptal">İptal</option>
+                                </select>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="isemri-aciklamalar">Açıklamalar</label>
+                                <textarea id="isemri-aciklamalar" name="isemri-aciklamalar" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 2rem;">
+                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Ürün Bilgileri</div>
+                            <table class="data-table product-lines-table" style="margin-top:1rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Ürün Seçimi</th>
+                                        <th style="width:100px;">Adet</th>
+                                        <th style="width:100px;">Birim</th>
+                                        <th style="width:50px;">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productLinesBody">
+                                    <tr>
+                                        <td>
+                                            <select name="product_0" class="form-control form-control-sm">
+                                                <option value="">Ürün Seçiniz...</option>
+                                                <option value="EM-XYZ-100" data-birim="Adet">Endüksiyon Motoru XYZ-100</option>
+                                                <option value="HDS-045" data-birim="Set">Helisel Dişli Seti</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="quantity_0" class="form-control form-control-sm" value="1" min="1"></td>
+                                        <td><input type="text" name="unit_0" class="form-control form-control-sm" readonly value="Adet"></td>
+                                        <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-sm btn-info mt-2" id="addProductLine">[+] Ürün Satırı Ekle</button>
+                        </div>
+
+                        <div class="form-actions" style="margin-top: 2rem;">
+                            <button type="submit" class="btn btn-success btn-lg">[S] İş Emrini Kaydet</button>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='is-emri-listesi.html'">[C] İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theme and logout (copied)
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) { /* ... */ }
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) { /* ... */ }
+            document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') event.preventDefault();
+                        const parentLi = this.parentElement;
+                         document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
+                        parentLi.classList.toggle('open');
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
+                    });
+                }
+            });
+
+            // Auto-fill creation date
+            const olusturmaTarihiInput = document.getElementById('olusturma-tarihi');
+            if (olusturmaTarihiInput && !olusturmaTarihiInput.value) {
+                const today = new Date().toISOString().split('T')[0];
+                olusturmaTarihiInput.value = today;
+            }
+
+            // Form title update for editing
+            const urlParams = new URLSearchParams(window.location.search);
+            const isEmriId = urlParams.get('id');
+            const formPageTitle = document.getElementById('is-emri-page-title');
+            if (isEmriId && formPageTitle) {
+                formPageTitle.textContent = `İş Emrini Düzenle (No: ${isEmriId})`;
+                // Populate form for editing here
+            }
+
+            // Add Product Line Functionality
+            const addProductLineBtn = document.getElementById('addProductLine');
+            const productLinesBody = document.getElementById('productLinesBody');
+            let productLineCounter = 1;
+
+            if (addProductLineBtn && productLinesBody) {
+                addProductLineBtn.addEventListener('click', function() {
+                    const newRow = productLinesBody.insertRow();
+                    newRow.innerHTML = `
+                        <td>
+                            <select name="product_${productLineCounter}" class="form-control form-control-sm">
+                                <option value="">Ürün Seçiniz...</option>
+                                <option value="EM-XYZ-100" data-birim="Adet">Endüksiyon Motoru XYZ-100</option>
+                                <option value="HDS-045" data-birim="Set">Helisel Dişli Seti</option>
+                                <option value="MLZ-STL-001" data-birim="Adet">Çelik Mil Ø20mm</option>
+                            </select>
+                        </td>
+                        <td><input type="number" name="quantity_${productLineCounter}" class="form-control form-control-sm" value="1" min="1"></td>
+                        <td><input type="text" name="unit_${productLineCounter}" class="form-control form-control-sm" readonly></td>
+                        <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                    `;
+                    productLineCounter++;
+                });
+            }
+
+            // Update unit when product is selected
+            productLinesBody.addEventListener('change', function(event){
+                if(event.target.tagName === 'SELECT' && event.target.name.startsWith('product_')){
+                    const selectedOption = event.target.options[event.target.selectedIndex];
+                    const unitInput = event.target.closest('tr').querySelector('input[name^="unit_"]');
+                    if(unitInput) {
+                        unitInput.value = selectedOption.dataset.birim || '';
+                    }
+                }
+            });
+
+            // Remove row functionality
+            document.addEventListener('click', function(event) {
+                if (event.target && event.target.classList.contains('remove-row')) {
+                    event.target.closest('tr').remove();
+                }
+            });
+             // Full theme and logout script for completeness
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
+
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
+                });
+
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
+            }
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                    // window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

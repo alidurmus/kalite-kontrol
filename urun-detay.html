@@ -3,62 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Detayları</title>
+    <title>Ürün Detayları - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .detail-section { margin-bottom: 1.5rem; }
+        .detail-section h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .detail-list { list-style-type: none; padding-left: 0; }
+        .detail-list li { padding: 0.3rem 0; border-bottom: 1px dotted var(--card-border); }
+        .detail-list li:last-child { border-bottom: none; }
+        .detail-list strong { margin-right: 0.5rem; }
+    </style>
 </head>
 <body>
-    <header class="app-header">
-        <h1>Logo/Title</h1>
-        <nav>User Menu</nav>
-    </header>
-    <div class="app-body">
-        <aside class="sidebar-nav">
-            <ul>
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
-                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
-                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
-                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
-                <li><a href="raporlama.html">Raporlama</a></li>
-                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
-                <li><a href="ayarlar.html">Ayarlar</a></li>
-            </ul>
-        </aside>
-        <main class="main-content">
-            <h2>Ürün Detayları: <span id="product-name-placeholder">Örnek Ürün Adı</span></h2>
-            <a href="urun-form.html" class="btn btn-primary">[E] Düzenle</a>
-            <a href="urun-listesi.html" class="btn btn-secondary" style="margin-left: 10px;">[<] Ürün Listesine Dön</a>
-
-            <div class="product-details-grid">
-                <section class="product-info">
-                    <h3>Genel Bilgiler</h3>
-                    <p><strong>Ürün Kodu:</strong> <span id="product-code">TR001</span></p>
-                    <p><strong>Ürün Adı:</strong> <span id="product-title">Model A Motor</span></p>
-                    <p><strong>Açıklama:</strong> <span id="product-description">Yüksek performanslı elektrik motoru. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
-                </section>
-
-                <section class="product-qr-barcode">
-                    <h3>QR/Barkod</h3>
-                    <div class="qr-barcode-display">
-                        <!-- Placeholder for actual QR code or barcode image -->
-                        <img src="https://via.placeholder.com/150" alt="QR/Barkod Placeholder">
-                        <p>[QR_CODE_TR001]</p>
-                    </div>
-                </section>
-
-                <section class="product-documents">
-                    <h3>Teknik Dokümanlar</h3>
-                    <ul class="document-list">
-                        <li><a href="#" target="_blank">[P] Teknik Çizim - Model A.pdf</a></li>
-                        <li><a href="#" target="_blank">[W] Kullanım Kılavuzu - Model A.docx</a></li>
-                        <li><a href="#" target="_blank">[P] Bakım Talimatları.pdf</a></li>
-                    </ul>
-                </section>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
             </div>
-        </main>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                 <ul class="sidebar-menu">
+                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
+                    <li class="open">
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu" style="max-height: 500px;">
+                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Kalite Kontrol Formları</a> <ul class="submenu"></ul></li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                <div id="urun-detay-page">
+                    <header class="card-header d-flex justify-content-between align-items-center">
+                        <h1 id="urun-detay-title">Ürün Detayları: Endüksiyon Motoru XYZ-100</h1>
+                        <div>
+                            <button class="btn btn-primary" onclick="location.href='urun-form.html?id=1'">[E] Düzenle</button>
+                            <button class="btn btn-secondary" onclick="location.href='urun-listesi.html'">[<] Listeye Dön</button>
+                        </div>
+                    </header>
+
+                    <div class="card">
+                        <section class="detail-section">
+                            <h3>Genel Bilgiler</h3>
+                            <ul class="detail-list">
+                                <li><strong>Ürün Adı:</strong> <span id="detay-urun-adi">Endüksiyon Motoru XYZ-100</span></li>
+                                <li><strong>Ürün Kodu:</strong> <span id="detay-urun-kodu">EM-XYZ-100</span></li>
+                                <li><strong>Kategori:</strong> <span id="detay-urun-kategori">Motor Parçaları</span></li>
+                                <li><strong>Açıklama:</strong> <span id="detay-urun-aciklama">Yüksek verimli, endüstriyel kullanım için tasarlanmış AC motor.</span></li>
+                                <li><strong>Teknik Resim:</strong> <a href="#" id="detay-teknik-resim-link" target="_blank">[P] TR-EMXYZ100.pdf</a></li>
+                            </ul>
+                        </section>
+
+                        <section class="detail-section">
+                            <h3>Metrik Kontrol Kriterleri</h3>
+                            <table class="data-table">
+                                <thead>
+                                    <tr><th>Ölçüm Adı</th><th>Ölçü (mm)</th><th>Tolerans (+/- mm)</th><th>Alt Limit (mm)</th><th>Üst Limit (mm)</th></tr>
+                                </thead>
+                                <tbody id="detayMetricCriteriaBody">
+                                    <tr>
+                                        <td>Stator Çapı</td>
+                                        <td>150.00</td>
+                                        <td>0.05</td>
+                                        <td>149.95</td>
+                                        <td>150.05</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mil Uzunluğu</td>
+                                        <td>300.00</td>
+                                        <td>0.10</td>
+                                        <td>299.90</td>
+                                        <td>300.10</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section class="detail-section">
+                            <h3>Görsel Kontrol Kriterleri</h3>
+                            <table class="data-table">
+                                <thead>
+                                    <tr><th>Kontrol Noktası / Soru</th><th>Beklenen Değer / Açıklama</th></tr>
+                                </thead>
+                                <tbody id="detayVisualCriteriaBody">
+                                    <tr>
+                                        <td>Yüzeyde çizik/darbe kontrolü</td>
+                                        <td>Çizik veya darbe olmamalıdır.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Boya kalitesi ve renk uyumu</td>
+                                        <td>RAL 7035 renginde, homojen boya kaplaması. Akma, kabarma olmamalı.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Montaj vidaları sıkılığı</td>
+                                        <td>Tüm vidalar uygun torkta sıkılmış olmalı, gevşeklik olmamalı.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
     </div>
-    <footer class="app-footer">
-        <p>&copy; 2024 Application</p>
-    </footer>
+    <script>
+        // Basic theme toggle and logout functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                    // window.location.href = 'login.html';
+                });
+            }
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') {
+                            event.preventDefault();
+                        }
+                        const parentLi = this.parentElement;
+                        parentLi.classList.toggle('open');
+                        if (parentLi.classList.contains('open')) {
+                            submenu.style.maxHeight = submenu.scrollHeight + "px";
+                        } else {
+                            submenu.style.maxHeight = "0";
+                        }
+                    });
+                     if (menuLink.parentElement.querySelector('.submenu .active')) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                }
+            });
+
+            // Simulate data loading based on URL parameter (e.g., urun-detay.html?id=1)
+            const urlParams = new URLSearchParams(window.location.search);
+            const urunId = urlParams.get('id');
+            const urunDetayTitle = document.getElementById('urun-detay-title');
+
+            if (urunId && urunDetayTitle) {
+                // In a real app, you'd fetch product data using urunId
+                // For this example, we'll just update the title
+                // You can expand this to populate all fields like #detay-urun-adi, etc.
+                // For example:
+                // const productData = fetchProductById(urunId);
+                // if(productData) {
+                //    urunDetayTitle.textContent = `Ürün Detayları: ${productData.name}`;
+                //    document.getElementById('detay-urun-adi').textContent = productData.name;
+                //    // ... and so on for other fields and tables
+                // } else {
+                //    urunDetayTitle.textContent = "Ürün Bulunamadı";
+                // }
+                 if (urunId === "1") { // Sample data for ID 1
+                    urunDetayTitle.textContent = "Ürün Detayları: Endüksiyon Motoru XYZ-100";
+                    document.getElementById('detay-urun-adi').textContent = "Endüksiyon Motoru XYZ-100";
+                    document.getElementById('detay-urun-kodu').textContent = "EM-XYZ-100";
+                    document.getElementById('detay-urun-kategori').textContent = "Motor Parçaları";
+                    document.getElementById('detay-urun-aciklama').textContent = "Yüksek verimli, endüstriyel kullanım için tasarlanmış AC motor.";
+                    document.getElementById('detay-teknik-resim-link').href = "path/to/TR-EMXYZ100.pdf"; // Replace with actual path or variable
+                } else if (urunId === "2") {
+                     urunDetayTitle.textContent = "Ürün Detayları: Helisel Dişli Seti";
+                    // Populate other fields for product ID 2
+                } else {
+                    urunDetayTitle.textContent = "Ürün Detayları: Bilinmeyen Ürün";
+                }
+            }
+        });
+    </script>
 </body>
 </html>

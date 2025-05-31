@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Listesi - Intermeks</title>
+    <title>Ürün Kategorileri - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,10 +21,10 @@
                 <ul class="sidebar-menu">
                     <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
                     <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open">
+                    <li class="open"> {/* Assuming "Tanımlamalar" should be open */}
                         <a href="#">Tanımlamalar</a>
-                        <ul class="submenu" style="max-height: 500px;">
-                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
+                        <ul class="submenu" style="max-height: 500px;"> {/* Style to ensure it's visible */}
+                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li> {/* Mark Ürün Tanımları active */}
                             <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
                             <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
                             <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
@@ -69,64 +69,49 @@
             <main class="page-content">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Ürün Listesi</h1>
+                        <h1>Ürün Kategorileri Yönetimi</h1>
                     </div>
-
-                    <div class="filters-section card" style="background-color: var(--light-color); margin-bottom: 1rem; padding: 1rem;">
-                        <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
-                        <div class="form-grid" style="gap: 0.5rem;">
-                            <div class="form-group">
-                                <input type="text" id="search-urun-adi" class="form-control" placeholder="Ürün adı veya kodu ile ara...">
-                            </div>
-                            <div class="form-group">
-                                <select id="filter-urun-kategori" class="form-control">
-                                    <option value="">Tüm Kategoriler</option>
-                                    <option value="motor">Motor Parçaları</option>
-                                    <option value="sanziman">Şanzıman Elemanları</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-secondary">[F] Filtrele</button>
-                        </div>
+                    <div class="form-actions" style="justify-content: flex-start; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="location.href='urun-kategori-form.html'">[+] Yeni Kategori Ekle</button>
                     </div>
-
-                    <div class="form-actions" style="justify-content: space-between; margin-bottom: 1rem;">
-                        <a href="urun-kategorileri.html" class="btn btn-info">[K] Kategori Yönetimi</a>
-                        <button class="btn btn-primary" onclick="location.href='urun-form.html'">[+] Yeni Ürün Ekle</button>
-                    </div>
-
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>#ID</th>
-                                <th>Ürün Adı</th>
-                                <th>Ürün Kodu</th>
-                                <th>Kategorisi</th>
-                                <th>Teknik Resim</th>
+                                <th>Kategori Adı</th>
+                                <th>Açıklama</th>
+                                <th>Durumu</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Endüksiyon Motoru XYZ-100</td>
-                                <td>EM-XYZ-100</td>
                                 <td>Motor Parçaları</td>
-                                <td><a href="#" target="_blank">[P] TR-EMXYZ100.pdf</a></td>
+                                <td>Çeşitli motor aksamları için kategori</td>
+                                <td class="status-active">Aktif</td>
                                 <td>
-                                    <a href="urun-detay.html?id=1" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="urun-kategori-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Helisel Dişli Seti</td>
-                                <td>HDS-045</td>
                                 <td>Şanzıman Elemanları</td>
-                                <td><a href="#" target="_blank">[P] TR-HDS045.pdf</a></td>
+                                <td>Dişliler, miller ve diğer aktarma organları</td>
+                                <td class="status-active">Aktif</td>
                                 <td>
-                                    <a href="urun-detay.html?id=2" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="urun-kategori-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-danger">[X] Sil</button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td>Elektronik Kartlar</td>
+                                <td>Anakartlar, kontrol üniteleri</td>
+                                <td class="status-inactive">Pasif</td>
+                                <td>
+                                    <a href="urun-kategori-form.html?id=3" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
@@ -140,8 +125,8 @@
             <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
         </footer>
     </div>
-   <script>
-        // Basic theme toggle and logout functionality
+    <script>
+        // Basic theme toggle and logout functionality (can be moved to a global JS file later)
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
             if(themeToggle) {
@@ -152,33 +137,42 @@
                 }
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 applyTheme(savedTheme);
+
                 themeToggle.addEventListener('click', () => {
                     const currentTheme = document.documentElement.getAttribute('data-theme');
                     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
                 });
             }
+            // Logout (placeholder)
             const logoutButton = document.getElementById('logout-button');
             if(logoutButton) {
                 logoutButton.addEventListener('click', function() {
                     alert('Çıkış yapıldı!');
-                    // window.location.href = 'login.html';
+                    // window.location.href = 'login.html'; // Or appropriate login page
                 });
             }
-             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+             // Sidebar submenu toggle (simple version)
+            document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
                     menuLink.addEventListener('click', function(event) {
+                        // Allow navigation if href is not just "#"
                         if (this.getAttribute('href') === '#') {
                             event.preventDefault();
                         }
+
+                        // Toggle 'open' class on parent li
                         const parentLi = this.parentElement;
                         parentLi.classList.toggle('open');
+
+                        // Toggle max-height for animation
                         if (parentLi.classList.contains('open')) {
                             submenu.style.maxHeight = submenu.scrollHeight + "px";
                         } else {
                             submenu.style.maxHeight = "0";
                         }
                     });
+                     // Keep submenu open if an item within it is active
                     if (menuLink.parentElement.querySelector('.submenu .active')) {
                         menuLink.parentElement.classList.add('open');
                         submenu.style.maxHeight = submenu.scrollHeight + "px";

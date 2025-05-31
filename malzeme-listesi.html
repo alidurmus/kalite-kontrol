@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Listesi - Intermeks</title>
+    <title>Malzeme Listesi - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,11 +21,11 @@
                 <ul class="sidebar-menu">
                     <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
                     <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open">
+                    <li class="open"> {/* Tanımlamalar open */}
                         <a href="#">Tanımlamalar</a>
                         <ul class="submenu" style="max-height: 500px;">
-                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
-                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html" class="active">Malzeme Tanımları</a></li> {/* Active link */}
                             <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
                             <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
                             <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
@@ -69,64 +69,86 @@
             <main class="page-content">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Ürün Listesi</h1>
+                        <h1>Malzeme Listesi</h1>
                     </div>
 
                     <div class="filters-section card" style="background-color: var(--light-color); margin-bottom: 1rem; padding: 1rem;">
                         <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
                         <div class="form-grid" style="gap: 0.5rem;">
                             <div class="form-group">
-                                <input type="text" id="search-urun-adi" class="form-control" placeholder="Ürün adı veya kodu ile ara...">
+                                <input type="text" id="search-malzeme-adi" class="form-control" placeholder="Malzeme adı veya kodu ile ara...">
                             </div>
                             <div class="form-group">
-                                <select id="filter-urun-kategori" class="form-control">
+                                <select id="filter-malzeme-kategori" class="form-control">
                                     <option value="">Tüm Kategoriler</option>
-                                    <option value="motor">Motor Parçaları</option>
-                                    <option value="sanziman">Şanzıman Elemanları</option>
+                                    <option value="metal">Metal</option>
+                                    <option value="plastik">Plastik</option>
+                                    <option value="elektronik">Elektronik Komponent</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="search-tedarikci" class="form-control" placeholder="Tedarikçi adı ile ara...">
                             </div>
                             <button class="btn btn-secondary">[F] Filtrele</button>
                         </div>
                     </div>
 
-                    <div class="form-actions" style="justify-content: space-between; margin-bottom: 1rem;">
-                        <a href="urun-kategorileri.html" class="btn btn-info">[K] Kategori Yönetimi</a>
-                        <button class="btn btn-primary" onclick="location.href='urun-form.html'">[+] Yeni Ürün Ekle</button>
+                    <div class="form-actions" style="justify-content: flex-end; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="location.href='malzeme-form.html'">[+] Yeni Malzeme Ekle</button>
                     </div>
 
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>#ID</th>
-                                <th>Ürün Adı</th>
-                                <th>Ürün Kodu</th>
-                                <th>Kategorisi</th>
-                                <th>Teknik Resim</th>
+                                <th>Malzeme Adı</th>
+                                <th>Malzeme Kodu</th>
+                                <th>Kategori</th>
+                                <th>Birim</th>
+                                <th>Stok Miktarı</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Endüksiyon Motoru XYZ-100</td>
-                                <td>EM-XYZ-100</td>
-                                <td>Motor Parçaları</td>
-                                <td><a href="#" target="_blank">[P] TR-EMXYZ100.pdf</a></td>
+                                <td>Çelik Mil Ø20mm</td>
+                                <td>MLZ-STL-001</td>
+                                <td>Metal</td>
+                                <td>Adet</td>
+                                <td>150</td>
                                 <td>
-                                    <a href="urun-detay.html?id=1" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="malzeme-detay.html?id=1" class="btn btn-sm btn-info">[i] Detay</a>
+                                    <a href="malzeme-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-success">[Q] GKK Başlat</button>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Helisel Dişli Seti</td>
-                                <td>HDS-045</td>
-                                <td>Şanzıman Elemanları</td>
-                                <td><a href="#" target="_blank">[P] TR-HDS045.pdf</a></td>
+                                <td>ABS Granül Siyah</td>
+                                <td>MLZ-PLS-005</td>
+                                <td>Plastik</td>
+                                <td>kg</td>
+                                <td>2500</td>
                                 <td>
-                                    <a href="urun-detay.html?id=2" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="malzeme-detay.html?id=2" class="btn btn-sm btn-info">[i] Detay</a>
+                                    <a href="malzeme-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-success">[Q] GKK Başlat</button>
+                                    <button class="btn btn-sm btn-danger">[X] Sil</button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td>Mikrodenetleyici ATMEGA328P</td>
+                                <td>MLZ-ELK-012</td>
+                                <td>Elektronik Komponent</td>
+                                <td>Adet</td>
+                                <td>750</td>
+                                <td>
+                                    <a href="malzeme-detay.html?id=3" class="btn btn-sm btn-info">[i] Detay</a>
+                                    <a href="malzeme-form.html?id=3" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-success">[Q] GKK Başlat</button>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
@@ -167,11 +189,23 @@
              document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
                     menuLink.addEventListener('click', function(event) {
                         if (this.getAttribute('href') === '#') {
                             event.preventDefault();
                         }
                         const parentLi = this.parentElement;
+                        // Close other open submenus if not this one's parent
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
                         parentLi.classList.toggle('open');
                         if (parentLi.classList.contains('open')) {
                             submenu.style.maxHeight = submenu.scrollHeight + "px";
@@ -179,10 +213,6 @@
                             submenu.style.maxHeight = "0";
                         }
                     });
-                    if (menuLink.parentElement.querySelector('.submenu .active')) {
-                        menuLink.parentElement.classList.add('open');
-                        submenu.style.maxHeight = submenu.scrollHeight + "px";
-                    }
                 }
             });
         });

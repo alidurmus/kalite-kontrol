@@ -1,957 +1,325 @@
+:root {
+    --primary-color: #007bff; /* Mavi */
+    --secondary-color: #6c757d; /* Gri */
+    --success-color: #28a745; /* Yeşil */
+    --danger-color: #dc3545; /* Kırmızı */
+    --warning-color: #ffc107; /* Sarı */
+    --info-color: #17a2b8; /* Turkuaz */
+    --light-color: #f8f9fa; /* Açık Gri */
+    --dark-color: #343a40; /* Koyu Gri */
+    --background-color: #f4f6f8; /* Arkaplan Rengi */
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --card-border: #dee2e6;
+    --sidebar-bg: #343a40; /* Koyu Sidebar */
+    --sidebar-text: #f8f9fa;
+    --sidebar-active-bg: var(--primary-color);
+    --header-bg: #ffffff;
+    --header-text: var(--dark-color);
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --border-radius: 0.375rem;
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #212529;
+    --dark-color: #f8f9fa;
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --card-border: #343a40;
+    --sidebar-bg: #1e1e1e;
+    --sidebar-text: #f8f9fa;
+    --sidebar-active-bg: var(--primary-color);
+    --header-bg: #1e1e1e;
+    --header-text: var(--light-color);
+}
+
 body {
-    font-family: sans-serif;
+    font-family: var(--font-family);
     margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    /* Ensure body takes full height for gradient if not using app-container for it */
+    /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    /* display: flex; flex-direction: column; min-height: 100vh; */ /* Moved to .app-container */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradient on the main container */
 }
 
 .app-header {
-    background-color: #f0f0f0;
-    padding: 1em;
-    border-bottom: 1px solid #ccc;
-}
-
-.app-body {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 0.8rem 1.5rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* border-bottom: 1px solid var(--card-border); */ /* Removed to blend with gradient if header is transparent */
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent header */
+    backdrop-filter: blur(10px);
+    color: white; /* Assuming text on gradient needs to be light */
+}
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.user-menu button, #theme-toggle {
+    background: none;
+    border: none;
+    color: white; /* Adjusted for potentially transparent header */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+#theme-toggle {
+    font-size: 1.2rem;
 }
 
-.sidebar-nav {
-    width: 200px;
-    background-color: #e0e0e0;
-    padding: 1em;
-    border-right: 1px solid #ccc;
+.app-main {
+    display: flex;
+    flex-grow: 1;
+    /* overflow: hidden; */ /* To ensure sidebar and content don't cause body scroll */
 }
 
-.sidebar-nav ul {
+.app-sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg); /* Use CSS var */
+    color: var(--sidebar-text); /* Use CSS var */
+    padding: 1rem;
+    height: calc(100vh - 60px); /* Adjust 60px based on actual header height */
+    overflow-y: auto;
+    position: sticky; /* Sticky sidebar */
+    top: 60px; /* Adjust based on header height */
+    transition: width 0.3s ease;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.app-sidebar.collapsed { /* For potential collapsed state */
+    width: 60px;
+}
+.app-sidebar.collapsed .nav-text {
+    display: none;
+}
+/* ... other .collapsed styles ... */
+
+
+.page-content {
+    flex-grow: 1;
+    padding: 1.5rem 2rem;
+    overflow-y: auto;
+    background-color: var(--background-color); /* Content area has its own background */
+    color: var(--text-color); /* Content area text color */
+}
+
+.app-footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--header-bg); /* Similar to header */
+    color: var(--header-text);
+    border-top: 1px solid var(--card-border);
+    /* background-color: rgba(255, 255, 255, 0.1); */ /* Optional: Transparent footer */
+    /* color: white; */
+}
+
+
+/* Styles from the SPA to be integrated/reused */
+.sidebar-nav { /* This was the SPA sidebar, now it's .app-sidebar */
+    /* Styles from .sidebar-nav can be merged into .app-sidebar */
+}
+.sidebar-menu { /* New class for the ul in app-sidebar */
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
-.sidebar-nav li {
-    padding: 0.5em 0;
-    cursor: pointer;
-}
-
-.sidebar-nav li:hover {
-    background-color: #d0d0d0;
-}
-
-.main-content {
-    flex-grow: 1;
-    padding: 1em;
-}
-
-.app-footer {
-    background-color: #f0f0f0;
-    padding: 1em;
-    border-top: 1px solid #ccc;
-    text-align: center;
-}
-
-/* Login Page Styles */
-.login-container {
+.sidebar-menu li a {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f9f9f9;
+    padding: 0.75rem 1rem;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.3rem;
+    transition: background-color 0.2s, color 0.2s;
 }
-
-.login-form {
-    background-color: #fff;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+.sidebar-menu li a:hover {
+    background-color: rgba(255,255,255,0.1);
 }
-
-.login-form h2 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    text-align: center;
-}
-
-.login-form div {
-    margin-bottom: 1em;
-}
-
-.login-form label {
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    width: 100%;
-    padding: 0.5em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-form button {
-    width: 100%;
-    padding: 0.7em;
-    background-color: #007bff;
+.sidebar-menu li a.active {
+    background-color: var(--sidebar-active-bg);
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    font-weight: bold;
+}
+.sidebar-menu li a svg { /* If using SVGs for icons */
+    margin-right: 0.8rem;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+.sidebar-menu .submenu {
+    list-style-type: none;
+    padding-left: 1.5rem; /* Indent submenu */
+    max-height: 0; /* Initially hidden */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.sidebar-menu li:hover > .submenu,
+.sidebar-menu li.open > .submenu { /* For click-to-open */
+    max-height: 500px; /* Adjust as needed */
+}
+.sidebar-menu .submenu li a {
+    font-size: 0.9em;
+    padding: 0.5rem 1rem;
 }
 
-.login-form button:hover {
-    background-color: #0056b3;
+
+.main-content { /* This was the SPA main content area, now it's .page-content */
+    /* Styles can be merged */
+}
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* General Button Styles */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+.card-header { /* Used by SPA pages */
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+
 .btn {
     display: inline-block;
-    padding: 0.5em 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color);
+    text-align: center;
     text-decoration: none;
-    border-radius: 4px;
+    vertical-align: middle;
     cursor: pointer;
-    margin-right: 0.5em; /* For spacing between buttons */
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-    border: 1px solid #6c757d;
-}
-
-.btn-secondary:hover {
-    background-color: #545b62;
-    border-color: #545b62;
-}
-
-
-/* Data Table Styles */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
-}
-
-.data-table th,
-.data-table td {
-    border: 1px solid #ddd;
-    padding: 0.75em;
-    text-align: left;
-}
-
-.data-table thead th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.data-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.data-table tbody tr:hover {
-    background-color: #e9e9e9;
-}
-
-.data-table a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.data-table a:hover {
-    text-decoration: underline;
-}
-
-/* User Form Styles */
-.user-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    margin-top: 1em;
-}
-
-.user-form .form-group {
-    margin-bottom: 1em;
-}
-
-.user-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.user-form input[type="text"],
-.user-form input[type="email"],
-.user-form input[type="password"],
-.user-form select {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.user-form .form-actions {
-    margin-top: 1.5em;
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* Card Style (Generic) */
-.card {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    margin-bottom: 1.5em; /* For spacing between cards */
-}
-
-.card h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5em;
-}
-
-/* Reporting Page Styles */
-.report-config-layout {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column for smaller screens */
-    gap: 1.5em;
-    margin-bottom: 1.5em;
-}
-
-@media (min-width: 992px) { /* Two columns for larger screens */
-    .report-config-layout {
-        grid-template-columns: 1fr 2fr; /* Selection smaller, filters larger */
-    }
-}
-
-.report-selection-area .form-group,
-.report-filters-area .form-group {
-    margin-bottom: 1em;
-}
-
-.report-selection-area label,
-.report-filters-area label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.report-selection-area select,
-.report-filters-area select,
-.report-filters-area input[type="date"],
-.report-filters-area input[type="text"] {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.filters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
-}
-
-.report-filters-area .form-actions button {
-    margin-right: 0.5em; /* Space out buttons */
-}
-.report-filters-area .form-actions button:last-child {
-    margin-right: 0;
-}
-
-
-.report-display-area #report-output p {
-    font-style: italic;
-    color: #555;
-}
-
-.report-display-area #report-output table {
-    margin-top: 1em;
-}
-
-/* Output Generation Page Styles */
-.output-config-layout {
-    display: grid;
-    grid-template-columns: 1fr; /* Single column for smaller screens */
-    gap: 1.5em;
-    margin-bottom: 1.5em;
-}
-
-@media (min-width: 992px) { /* Two columns for larger screens */
-    .output-config-layout {
-        grid-template-columns: 1fr 2fr; /* Selection smaller, parameters larger */
-    }
-}
-
-.output-selection-area .form-group, /* Sharing styles with reporting form groups */
-.output-parameters-area .form-group {
-    margin-bottom: 1em;
-}
-
-.output-selection-area label,
-.output-parameters-area label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.output-selection-area select,
-.output-parameters-area input[type="text"],
-.output-parameters-area input[type="number"] {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.parameters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
-}
-
-.output-preview-area #output-display p {
-    font-style: italic;
-    color: #555;
-}
-
-.preview-placeholder { /* Already has inline styles, but can be enhanced */
-    background-color: #f9f9f9;
-}
-
-/* Settings Page Styles */
-.settings-section .form-group { /* Ensures form groups in settings sections have consistent spacing */
-    margin-bottom: 1.25em;
-}
-
-.settings-section label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.settings-section select,
-.settings-section input[type="email"],
-.settings-section input[type="password"] {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.settings-section .form-actions { /* For profile update button, etc. */
-    margin-top: 1.5em;
-    text-align: left; /* Default for section-specific actions */
-}
-
-.main-settings-actions { /* For the main save button at the bottom */
-    margin-top: 1.5em;
-    padding-top: 1.5em;
-    border-top: 1px solid #eee; /* Optional: separator */
-}
-
-.btn-lg { /* Larger button style */
-    padding: 0.75em 1.5em;
-    font-size: 1.1em;
-}
-
-
-/* Dashboard Styles */
-.main-content .welcome-message {
-    font-size: 1.1em;
-    margin-bottom: 1.5em;
-    padding: 1em;
-    background-color: #e9f5ff;
-    border-left: 5px solid #007bff;
-    border-radius: 4px;
-}
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5em;
-}
-
-.dashboard-card {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    border: 1px solid #e0e0e0;
-}
-
-.dashboard-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.75em;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.dashboard-card .count {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 0.5em;
-    text-align: center;
-}
-
-.dashboard-card a {
-    display: block;
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    margin-top: 1em;
-    text-align: right;
-}
-
-.dashboard-card a:hover {
-    text-decoration: underline;
-}
-
-.dashboard-card ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 0.5em;
-}
-
-.dashboard-card ul li {
-    margin-bottom: 0.5em;
-}
-
-.dashboard-card ul li a {
-    display: inline; /* Keep these links inline */
-    margin-top: 0;
-    text-align: left;
-    font-weight: normal;
-}
-
-
-/* Perform Test Form Styles */
-.perform-test-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    margin-top: 1em;
-}
-
-.perform-test-form .form-section {
-    margin-bottom: 2em;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #eee;
-}
-
-.perform-test-form .form-section:last-of-type {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.perform-test-form h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    color: #333;
-}
-
-.perform-test-form .form-group {
-    margin-bottom: 1em;
-}
-
-.perform-test-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.perform-test-form input[type="text"],
-.perform-test-form input[type="file"],
-.perform-test-form select,
-.perform-test-form textarea {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.perform-test-form textarea {
-    resize: vertical;
-}
-
-.perform-test-form .checkbox-group div {
-    margin-bottom: 0.5em;
-}
-
-.perform-test-form .checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin-right: 0.5em;
-}
-
-.perform-test-form .checkbox-group label {
-    font-weight: normal;
-    display: inline; /* Keep label next to checkbox */
-}
-
-.perform-test-form .form-actions {
-    margin-top: 1.5em;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#measurement-inputs .form-group { /* Style for dynamically added measurement inputs */
-    border-left: 3px solid #007bff;
-    padding-left: 1em;
-    margin-top: 0.5em;
-}
-
-/* Filters Bar Styles */
-.filters-bar {
-    background-color: #f9f9f9;
-    padding: 1em;
-    margin-bottom: 1.5em;
-    border-radius: 4px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    align-items: flex-end;
-}
-
-.filters-bar .form-group {
-    margin-bottom: 0; /* Override default form-group margin */
-}
-
-.filters-bar label {
-    font-weight: normal; /* Lighter labels for filters */
-    margin-bottom: 0.25em;
-}
-
-.filters-bar select,
-.filters-bar input[type="date"] {
-    padding: 0.5em; /* Smaller padding for filter inputs */
-    /* width: auto; */ /* Allow them to size based on content or specific needs */
-}
-
-.filters-bar button {
-    padding: 0.5em 1em; /* Adjust button padding */
-}
-
-/* Status Indicator Styles */
-.status-pass {
-    color: green;
-    font-weight: bold;
-}
-
-.status-fail {
-    color: red;
-    font-weight: bold;
-}
-
-/* Test Result Detail Page Styles */
-.test-detail-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5em;
-    margin-top: 1em;
-}
-
-.test-detail-section {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.test-detail-section h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5em;
-    color: #333;
-}
-
-.test-detail-section p,
-.test-detail-section ul {
-    margin-bottom: 0.5em;
-}
-
-.test-detail-section ul {
-    list-style-position: inside;
-    padding-left: 0;
-}
-.test-detail-section ul li{
-    padding-left: 0;
-    list-style-type: none; /* Removing default bullets for custom indicators */
-}
-
-
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.image-gallery img {
-    max-width: 100px;
-    max-height: 100px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 3px;
-}
-
-/* Production Station Overview Styles */
-.stations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5em;
-    margin-top: 1em;
-}
-
-.station-card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 1.5em;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-left: 5px solid #ccc; /* Default border */
-}
-
-.station-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.75em;
-}
-
-.station-card .station-status {
-    font-weight: bold;
-    margin-bottom: 0.5em;
-}
-
-.station-card .station-job {
-    font-size: 0.9em;
-    color: #555;
-    margin-bottom: 1em;
-}
-
-.station-card .station-kpis {
-    font-size: 0.85em;
-    color: #333;
-    margin-bottom: 1.5em;
-    padding-top: 0.5em;
-    border-top: 1px solid #f0f0f0;
-}
-
-.station-card .station-kpis p {
-    margin: 0.3em 0;
-}
-
-/* Status-specific styles for station cards */
-.station-card.status-running {
-    border-left-color: #28a745; /* Green */
-}
-.station-card.status-running .station-status {
-    color: #28a745;
-}
-
-.station-card.status-idle {
-    border-left-color: #ffc107; /* Yellow */
-}
-.station-card.status-idle .station-status {
-    color: #b88b00;
-}
-
-.station-card.status-down {
-    border-left-color: #dc3545; /* Red */
-}
-.station-card.status-down .station-status {
-    color: #dc3545;
-}
-
-.btn-sm {
-    padding: 0.25em 0.5em;
-    font-size: 0.875em;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: 1px solid #dc3545;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-/* Station Detail Page Styles */
-.station-details-layout {
-    display: grid;
-    grid-template-columns: 1fr; /* Default to single column for smaller screens */
-    gap: 1.5em;
-    margin-top: 1em;
-    margin-bottom: 2em;
-}
-
-@media (min-width: 768px) { /* Two columns for wider screens */
-    .station-details-layout {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.station-info,
-.station-performance,
-.report-issue-section {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.station-info h3,
-.station-performance h3,
-.report-issue-section h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5em;
-}
-
-.station-info h4 {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-.activity-log {
-    list-style-type: none;
-    padding-left: 0;
-    font-size: 0.9em;
-    max-height: 200px; /* Example height, make it scrollable if needed */
-    overflow-y: auto;
-    border: 1px solid #f0f0f0;
-    padding: 0.5em;
-    border-radius: 4px;
-}
-
-.activity-log li {
-    padding: 0.3em 0;
-    border-bottom: 1px dashed #f0f0f0;
-}
-
-.activity-log li:last-child {
-    border-bottom: none;
-}
-
-.chart-placeholder {
-    background-color: #f9f9f9;
-    border: 1px dashed #ddd;
-    padding: 1em;
-    text-align: center;
-    color: #777;
-    border-radius: 4px;
-    margin-bottom: 1em;
-}
-
-.chart-placeholder img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 0.5em;
-}
-
-.report-issue-form {
-    /* Uses general form styles, specific additions below if needed */
-}
-
-.report-issue-form label {
-    font-weight: bold;
-}
-
-.report-issue-form input[type="text"],
-.report-issue-form input[type="number"],
-.report-issue-form textarea,
-.report-issue-form select {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 1em; /* Add some space between form elements */
-}
-
-.report-issue-form textarea {
-    resize: vertical;
-}
-
-.report-issue-form .form-actions {
-    margin-top: 1em;
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* Test Definition Form Styles */
-.test-definition-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    margin-top: 1em;
-}
-
-.test-definition-form .form-group {
-    margin-bottom: 1em;
-}
-
-.test-definition-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.test-definition-form input[type="text"],
-.test-definition-form input[type="number"],
-.test-definition-form textarea {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.test-definition-form textarea {
-    resize: vertical;
-}
-
-.test-definition-form .form-actions {
-    margin-top: 1.5em;
-    display: flex;
-    justify-content: flex-end;
-}
-
-/* Product Detail Page Styles */
-.product-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5em;
-    margin-top: 1em;
-}
-
-.product-info,
-.product-qr-barcode,
-.product-documents {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-}
-
-.product-info h3,
-.product-qr-barcode h3,
-.product-documents h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5em;
-}
-
-.qr-barcode-display {
-    text-align: center;
-}
-
-.qr-barcode-display img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    padding: 5px;
-    margin-bottom: 0.5em;
-}
-
-.document-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.document-list li {
-    padding: 0.5em 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.document-list li:last-child {
-    border-bottom: none;
-}
-
-.document-list a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.document-list a:hover {
-    text-decoration: underline;
-}
-
-/* Placeholder for document type icons */
-.document-list a::before {
-    content: '[' attr(href*='.pdf') 'PDF] '; /* Basic example for PDF */
-    /* In a real scenario, you might use font icons or SVG */
-    font-weight: bold;
-    margin-right: 0.3em;
-}
-/* This is a very basic way to show type, more specific selectors would be needed for other types */
-.document-list a[href*='.docx']::before {
-    content: '[DOCX] ';
-}
-
-/* Product Form Styles */
-.product-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    margin-top: 1em;
-}
-
-.product-form .form-group {
-    margin-bottom: 1em;
-}
-
-.product-form label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.product-form input[type="text"],
-.product-form input[type="file"],
-.product-form textarea {
-    width: 100%;
-    padding: 0.75em;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.product-form textarea {
-    resize: vertical; /* Allow vertical resizing */
-}
-
-.product-form small {
-    display: block;
-    margin-top: 0.25em;
-    color: #6c757d;
-}
-
-.product-form .form-actions {
-    margin-top: 1.5em;
-    display: flex;
-    justify-content: flex-end;
-}
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-primary { color: #fff; background-color: var(--primary-color); border-color: var(--primary-color); }
+.btn-primary:hover { background-color: color-mix(in srgb, var(--primary-color) 85%, black); border-color: color-mix(in srgb, var(--primary-color) 80%, black); }
+.btn-secondary { color: #fff; background-color: var(--secondary-color); border-color: var(--secondary-color); }
+.btn-secondary:hover { background-color: color-mix(in srgb, var(--secondary-color) 85%, black); border-color: color-mix(in srgb, var(--secondary-color) 80%, black); }
+.btn-danger { color: #fff; background-color: var(--danger-color); border-color: var(--danger-color); }
+.btn-danger:hover { background-color: color-mix(in srgb, var(--danger-color) 85%, black); border-color: color-mix(in srgb, var(--danger-color) 80%, black); }
+.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+.btn-lg { padding: 0.75rem 1.5rem; font-size: 1.1rem; }
+.form-actions { margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end; }
+
+.data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background-color: var(--card-bg); }
+.data-table th, .data-table td { border: 1px solid var(--card-border); padding: 0.75rem 1rem; text-align: left; }
+.data-table thead th { background-color: color-mix(in srgb, var(--card-bg) 90%, var(--secondary-color)); font-weight: 600; }
+.data-table tbody tr:nth-child(even) { background-color: color-mix(in srgb, var(--card-bg) 95%, var(--background-color)); }
+.data-table tbody tr:hover { background-color: color-mix(in srgb, var(--card-bg) 85%, var(--background-color)); }
+.data-table .action-link { color: var(--primary-color); text-decoration: none; margin-right: 0.5rem; }
+.data-table .action-link:hover { text-decoration: underline; }
+.data-table .status-active, .data-table .status-pass { color: var(--success-color); font-weight: bold; }
+.data-table .status-inactive, .data-table .status-fail { color: var(--danger-color); font-weight: bold; }
+
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.dashboard-card { padding: 1rem; }
+.dashboard-card .count { font-size: 2rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; text-align: center; }
+.dashboard-card .card-link { display: block; text-decoration: none; color: var(--primary-color); font-weight: 500; margin-top: 0.75rem; text-align: right; }
+.dashboard-card .card-link:hover { text-decoration: underline; }
+.dashboard-card ul { list-style-type: none; padding-left: 0; margin-bottom: 0.5em; }
+.dashboard-card ul li { margin-bottom: 0.3em; }
+.dashboard-card ul li a { display: inline; margin-top: 0; text-align: left; font-weight: normal; color: var(--text-color); }
+.dashboard-card ul li a:hover { color: var(--primary-color); }
+
+/* Styles for elements that were part of the SPA's login page, if they are reused or need resetting */
+#login-page { /* This is now a div inside .page-content */
+    /* Styles might need adjustment if it's not full-screen anymore */
+}
+.login-container { /* This was part of the SPA login page */
+     /* width: 100%; max-width: 400px; padding: 2rem; margin: auto; */ /* Centering for a full page */
+}
+/* Other specific SPA styles like .stations-grid, .config-layout-grid, etc. can be kept as they apply to content */
+/* that will be moved into .page-content */
+
+.stations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.station-card { border-left-width: 5px; }
+.station-card.status-running { border-left-color: var(--success-color); }
+.station-card.status-idle { border-left-color: var(--warning-color); }
+.station-card.status-down { border-left-color: var(--danger-color); }
+.station-card .station-status { font-weight: bold; margin-bottom: 0.5em; }
+.station-card.status-running .station-status { color: var(--success-color); }
+.station-card.status-idle .station-status { color: var(--warning-color); }
+.station-card.status-down .station-status { color: var(--danger-color); }
+.station-card .station-job { font-size: 0.9em; color: var(--secondary-color); margin-bottom: 1em; }
+.station-card .station-kpis { font-size: 0.85em; margin-bottom: 1rem; padding-top: 0.5em; border-top: 1px solid var(--card-border); }
+.station-card .station-kpis p { margin: 0.3em 0; }
+
+.config-layout-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 992px) { .config-layout-grid { grid-template-columns: 1fr 2fr; } }
+.filters-grid, .parameters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.preview-placeholder { width:100%; min-height:200px; border:1px dashed var(--card-border); display:flex; align-items:center; justify-content:center; text-align:center; margin-top:1em; background-color: color-mix(in srgb, var(--card-bg) 95%, var(--background-color)); border-radius: var(--border-radius); }
+
+.settings-section .form-group { margin-bottom: 1.25em; }
+.settings-section .form-actions { margin-top: 1.5em; }
+
+/* Utility */
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.icon { width: 1em; height: 1em; vertical-align: -0.125em; fill: currentColor; }

@@ -1,62 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Sayfa / Dashboard</title>
+    <title>Intermeks - Kalite Kontrol Sistemi</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="app-header">
-        <h1>Logo/Title</h1>
-        <nav>User Menu</nav>
-    </header>
-    <div class="app-body">
-        <aside class="sidebar-nav">
-            <ul>
-                <li class="active"><a href="index.html">Dashboard</a></li>
-                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
-                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
-                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
-                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
-                <li><a href="raporlama.html">Raporlama</a></li>
-                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
-                <li><a href="ayarlar.html">Ayarlar</a></li>
-            </ul>
-        </aside>
-        <main class="main-content">
-            <h2>Ana Sayfa / Dashboard</h2>
-            <p class="welcome-message">Kalite Kontrol ve Üretim Takip Sistemine Hoş Geldiniz!</p>
-
-            <div class="dashboard-grid">
-                <div class="dashboard-card">
-                    <h3>Aktif Üretim İstasyonları</h3>
-                    <p class="count">5</p>
-                    <a href="istasyon-izleme.html">Detayları Gör</a>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Bugünkü Test Sayısı</h3>
-                    <p class="count">128</p>
-                    <a href="test-sonuclari.html">Test Sonuçları</a>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Bekleyen Kalite Onayları</h3>
-                    <p class="count">3</p>
-                    <a href="test-sonuclari.html?filter=pending_approval">Onay Bekleyenler</a>
-                </div>
-                <div class="dashboard-card">
-                    <h3>Son Raporlar</h3>
-                    <ul>
-                        <li><a href="raporlama.html?report=daily-prod">Günlük Üretim Raporu (Dün)</a></li>
-                        <li><a href="raporlama.html?report=weekly-qa">Haftalık Kalite Raporu (Geçen Hafta)</a></li>
-                    </ul>
-                    <a href="raporlama.html">Tüm Raporlar</a>
-                </div>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
             </div>
-        </main>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="index.html" class="active">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
+                    <li>
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu">
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu">
+                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li>
+                        <a href="#">Raporlama ve Analiz</a>
+                        <ul class="submenu">
+                            <li><a href="#">Genel Raporlar</a></li>
+                            <li><a href="#">İzlenebilirlik Raporları</a></li>
+                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Araçlar</a>
+                        <ul class="submenu">
+                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Yönetim Paneli</a>
+                        <ul class="submenu">
+                            <li><a href="#">Kullanıcı Yönetimi</a></li>
+                            <li><a href="#">Sistem Ayarları</a></li>
+                            <li><a href="#">Website İçerik Yönetimi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                {/* Placeholder for where the SPA content (dashboard, etc.) will be re-integrated or loaded for index.html */}
+                {/* For now, keeping the simple placeholder to verify layout. Actual content re-integration is complex. */}
+                 <div id="dashboard" class="page active"> {/* Simulating SPA's default page */}
+                    <header class="card-header">Ana Sayfa / Dashboard</header>
+                    <div class="card">
+                        <p class="mb-3" style="font-size: 1.1em;">Kalite Kontrol ve Üretim Takip Sistemine Hoş Geldiniz! (Yeni Layout)</p>
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card card">
+                                <h3>Aktif Üretim İstasyonları</h3>
+                                <p class="count">5</p>
+                                <a href="#" class="card-link nav-link-internal">Detayları Gör</a>
+                            </div>
+                            <div class="dashboard-card card">
+                                <h3>Bugünkü Test Sayısı</h3>
+                                <p class="count">128</p>
+                                <a href="#" class="card-link nav-link-internal">Test Sonuçları</a>
+                            </div>
+                            <div class="dashboard-card card">
+                                <h3>Bekleyen Kalite Onayları</h3>
+                                <p class="count">3</p>
+                                <a href="#" data-filter="pending" class="card-link nav-link-internal">Onay Bekleyenler</a>
+                            </div>
+                            <div class="dashboard-card card">
+                                <h3>Son Raporlar</h3>
+                                <ul>
+                                    <li><a href="#" data-report="daily-prod" class="nav-link-internal">Günlük Üretim Raporu (Dün)</a></li>
+                                    <li><a href="#" data-report="weekly-qa" class="nav-link-internal">Haftalık Kalite Raporu (Geçen Hafta)</a></li>
+                                </ul>
+                                <a href="#" class="card-link nav-link-internal">Tüm Raporlar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Other SPA "page" divs would go here, initially hidden */}
+                {/* e.g., <div id="kullanici-yonetimi" class="page">...</div> */}
+                 <div id="login-page" class="page" style="display: none; flex-direction:column; align-items:center; justify-content:center; min-height: calc(100vh - 120px);">
+                    <header class="app-header" style="background:transparent; box-shadow:none; border-bottom:none; justify-content:center;">
+                        <h1>Kalite Kontrol & Üretim Takip</h1>
+                    </header>
+                    <div class="login-container" style="width:100%; max-width:400px;">
+                        <form id="login-form" class="card">
+                            <h2>Giriş Yap</h2>
+                            <div class="form-group">
+                                <label for="username">Kullanıcı Adı</label>
+                                <input type="text" id="username" name="username" required value="admin">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Şifre</label>
+                                <input type="password" id="password" name="password" required value="password">
+                            </div>
+                            <div class="form-actions" style="justify-content: center;">
+                                <button type="submit" class="btn btn-primary btn-lg">Giriş Yap</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
     </div>
-    <footer class="app-footer">
-        <p>&copy; 2024 Application</p>
-    </footer>
+    {/* Placeholder for the main script from the original SPA - to be re-added carefully */}
+    <script>
+        // Simplified script for now, will be expanded
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
+            console.log("New layout structure in place.");
+        });
+    </script>
 </body>
 </html>

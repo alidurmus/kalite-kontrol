@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Listesi - Intermeks</title>
+    <title>Tedarikçi Listesi - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,13 +21,13 @@
                 <ul class="sidebar-menu">
                     <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
                     <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open">
+                    <li class="open"> {/* Tanımlamalar open */}
                         <a href="#">Tanımlamalar</a>
                         <ul class="submenu" style="max-height: 500px;">
-                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
                             <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
                             <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
-                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html" class="active">Tedarikçi Tanımları</a></li> {/* Active link */}
                             <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
                             <li><a href="#">Proses Kategori Tanımları</a></li>
                         </ul>
@@ -41,92 +41,60 @@
                         </ul>
                     </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
-                    <li>
-                        <a href="#">Raporlama ve Analiz</a>
-                        <ul class="submenu">
-                            <li><a href="#">Genel Raporlar</a></li>
-                            <li><a href="#">İzlenebilirlik Raporları</a></li>
-                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Araçlar</a>
-                        <ul class="submenu">
-                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Yönetim Paneli</a>
-                        <ul class="submenu">
-                            <li><a href="#">Kullanıcı Yönetimi</a></li>
-                            <li><a href="ayarlar.html">Sistem Ayarları</a></li>
-                            <li><a href="#">Website İçerik Yönetimi</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
                 </ul>
             </aside>
 
             <main class="page-content">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Ürün Listesi</h1>
+                        <h1>Tedarikçi Listesi</h1>
                     </div>
 
                     <div class="filters-section card" style="background-color: var(--light-color); margin-bottom: 1rem; padding: 1rem;">
                         <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
                         <div class="form-grid" style="gap: 0.5rem;">
                             <div class="form-group">
-                                <input type="text" id="search-urun-adi" class="form-control" placeholder="Ürün adı veya kodu ile ara...">
-                            </div>
-                            <div class="form-group">
-                                <select id="filter-urun-kategori" class="form-control">
-                                    <option value="">Tüm Kategoriler</option>
-                                    <option value="motor">Motor Parçaları</option>
-                                    <option value="sanziman">Şanzıman Elemanları</option>
-                                </select>
+                                <input type="text" id="search-tedarikci-adi" class="form-control" placeholder="Tedarikçi adı veya kodu ile ara...">
                             </div>
                             <button class="btn btn-secondary">[F] Filtrele</button>
                         </div>
                     </div>
 
-                    <div class="form-actions" style="justify-content: space-between; margin-bottom: 1rem;">
-                        <a href="urun-kategorileri.html" class="btn btn-info">[K] Kategori Yönetimi</a>
-                        <button class="btn btn-primary" onclick="location.href='urun-form.html'">[+] Yeni Ürün Ekle</button>
+                    <div class="form-actions" style="justify-content: flex-end; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="location.href='tedarikci-form.html'">[+] Yeni Tedarikçi Ekle</button>
                     </div>
 
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>#ID</th>
-                                <th>Ürün Adı</th>
-                                <th>Ürün Kodu</th>
-                                <th>Kategorisi</th>
-                                <th>Teknik Resim</th>
+                                <th>Tedarikçi Adı</th>
+                                <th>Tedarikçi Kodu</th>
+                                <th>Açıklama</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Endüksiyon Motoru XYZ-100</td>
-                                <td>EM-XYZ-100</td>
-                                <td>Motor Parçaları</td>
-                                <td><a href="#" target="_blank">[P] TR-EMXYZ100.pdf</a></td>
+                                <td>Metal Fabrikası A.Ş.</td>
+                                <td>TED-MET-001</td>
+                                <td>Çelik ve alüminyum hammadde tedariki.</td>
                                 <td>
-                                    <a href="urun-detay.html?id=1" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="tedarikci-form.html?id=1" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Helisel Dişli Seti</td>
-                                <td>HDS-045</td>
-                                <td>Şanzıman Elemanları</td>
-                                <td><a href="#" target="_blank">[P] TR-HDS045.pdf</a></td>
+                                <td>Plastik Enjeksiyon Ltd.</td>
+                                <td>TED-PLS-002</td>
+                                <td>ABS, PP, PE granül ve özel enjeksiyon parçaları.</td>
                                 <td>
-                                    <a href="urun-detay.html?id=2" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="urun-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="tedarikci-form.html?id=2" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
@@ -144,7 +112,7 @@
         // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
-            if(themeToggle) {
+            if(themeToggle) { /* ... full theme logic from previous files ... */
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
                     localStorage.setItem('theme', theme);
@@ -158,8 +126,8 @@
                 });
             }
             const logoutButton = document.getElementById('logout-button');
-            if(logoutButton) {
-                logoutButton.addEventListener('click', function() {
+            if(logoutButton) { /* ... full logout logic ... */
+                 logoutButton.addEventListener('click', function() {
                     alert('Çıkış yapıldı!');
                     // window.location.href = 'login.html';
                 });
@@ -167,11 +135,22 @@
              document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
                     menuLink.addEventListener('click', function(event) {
                         if (this.getAttribute('href') === '#') {
                             event.preventDefault();
                         }
                         const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
                         parentLi.classList.toggle('open');
                         if (parentLi.classList.contains('open')) {
                             submenu.style.maxHeight = submenu.scrollHeight + "px";
@@ -179,10 +158,6 @@
                             submenu.style.maxHeight = "0";
                         }
                     });
-                    if (menuLink.parentElement.querySelector('.submenu .active')) {
-                        menuLink.parentElement.classList.add('open');
-                        submenu.style.maxHeight = submenu.scrollHeight + "px";
-                    }
                 }
             });
         });

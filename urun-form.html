@@ -3,64 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ürün Formu</title>
+    <title>Yeni Ürün / Ürün Düzenle - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="app-header">
-        <h1>Logo/Title</h1>
-        <nav>User Menu</nav>
-    </header>
-    <div class="app-body">
-        <aside class="sidebar-nav">
-            <ul>
-                <li><a href="index.html">Dashboard</a></li>
-                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
-                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
-                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
-                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
-                <li><a href="raporlama.html">Raporlama</a></li>
-                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
-                <li><a href="ayarlar.html">Ayarlar</a></li>
-            </ul>
-        </aside>
-        <main class="main-content">
-            <h2>Yeni Ürün Ekle / Ürün Düzenle</h2>
-            <form class="product-form">
-                <div class="form-group">
-                    <label for="product-code">Ürün Kodu</label>
-                    <input type="text" id="product-code" name="product-code" required>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
+                    <li class="open">
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu" style="max-height: 500px;">
+                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu">
+                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li>
+                        <a href="#">Raporlama ve Analiz</a>
+                        <ul class="submenu">
+                            <li><a href="#">Genel Raporlar</a></li>
+                            <li><a href="#">İzlenebilirlik Raporları</a></li>
+                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Araçlar</a>
+                        <ul class="submenu">
+                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Yönetim Paneli</a>
+                        <ul class="submenu">
+                            <li><a href="#">Kullanıcı Yönetimi</a></li>
+                            <li><a href="ayarlar.html">Sistem Ayarları</a></li>
+                            <li><a href="#">Website İçerik Yönetimi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                <div id="urun-form-page">
+                    <header class="card-header">
+                        <h1 id="urun-page-title">Yeni Ürün Ekle</h1>
+                    </header>
+
+                    <form class="card" id="productMainForm" enctype="multipart/form-data">
+                        <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Ürün Genel Bilgileri</div>
+                        <div class="form-grid" style="padding-top:1rem;">
+                            <div class="form-group">
+                                <label for="urun-adi">Ürün Adı</label>
+                                <input type="text" id="urun-adi" name="urun-adi" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="urun-kodu">Ürün Kodu No</label>
+                                <input type="text" id="urun-kodu" name="urun-kodu" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="urun-kategori">Kategori</label>
+                                <select id="urun-kategori" name="urun-kategori" class="form-control">
+                                    <option value="">Kategori Seçiniz...</option>
+                                    <option value="motor">Motor Parçaları</option>
+                                    <option value="sanziman">Şanzıman Elemanları</option>
+                                    <option value="elektronik">Elektronik Kartlar</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="teknik-resim">Teknik Resim</label>
+                                <input type="file" id="teknik-resim" name="teknik-resim" class="form-control">
+                            </div>
+                            <div class="form-group form-group-full"> {/* Spans full width if form-grid has 2 columns */}
+                                <label for="urun-aciklama">Açıklama</label>
+                                <textarea id="urun-aciklama" name="urun-aciklama" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 2rem;">
+                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Metrik Kontrol Kriterleri</div>
+                            <table class="data-table metric-criteria-table" style="margin-top:1rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Ölçüm Adı</th>
+                                        <th>Ölçü (mm)</th>
+                                        <th>Tolerans (+/- mm)</th>
+                                        <th>Alt Limit (mm)</th>
+                                        <th>Üst Limit (mm)</th>
+                                        <th style="width:50px;">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="metricCriteriaBody">
+                                    {/* Rows will be added by JS */}
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-sm btn-info mt-2" id="addMetricRow">[+] Metrik Kriter Ekle</button>
+                        </div>
+
+                        <div class="card" style="margin-top: 2rem;">
+                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Görsel Kontrol Kriterleri</div>
+                             <table class="data-table visual-criteria-table" style="margin-top:1rem;">
+                                <thead>
+                                    <tr>
+                                        <th>Kontrol Noktası / Soru</th>
+                                        <th>Beklenen Değer / Açıklama</th>
+                                        <th style="width:50px;">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="visualCriteriaBody">
+                                   {/* Rows will be added by JS */}
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-sm btn-info mt-2" id="addVisualRow">[+] Görsel Kriter Ekle</button>
+                        </div>
+
+                        <div class="form-actions" style="margin-top: 2rem;">
+                            <button type="submit" class="btn btn-success btn-lg">[S] Ürünü Kaydet</button>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='urun-listesi.html'">[C] İptal</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="product-name">Ürün Adı</label>
-                    <input type="text" id="product-name" name="product-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="product-description">Açıklama</label>
-                    <textarea id="product-description" name="product-description" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="technical-specifications">Teknik Özellikler</label>
-                    <textarea id="technical-specifications" name="technical-specifications" rows="5"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="qr-barcode-data">QR/Barkod Verisi</label>
-                    <input type="text" id="qr-barcode-data" name="qr-barcode-data" placeholder="Manuel veri girişi veya tarama ile...">
-                </div>
-                <div class="form-group">
-                    <label for="technical-documents">Teknik Dokümanlar</label>
-                    <input type="file" id="technical-documents" name="technical-documents[]" multiple>
-                    <small>Birden fazla dosya seçebilirsiniz.</small>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">[S] Kaydet</button>
-                    <a href="urun-listesi.html" class="btn btn-secondary">[C] İptal</a>
-                </div>
-            </form>
-        </main>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
     </div>
-    <footer class="app-footer">
-        <p>&copy; 2024 Application</p>
-    </footer>
+
+    <script>
+        // Basic theme toggle and logout functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                });
+            }
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                    // window.location.href = 'login.html';
+                });
+            }
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') {
+                            event.preventDefault();
+                        }
+                        const parentLi = this.parentElement;
+                        parentLi.classList.toggle('open');
+                        if (parentLi.classList.contains('open')) {
+                            submenu.style.maxHeight = submenu.scrollHeight + "px";
+                        } else {
+                            submenu.style.maxHeight = "0";
+                        }
+                    });
+                    if (menuLink.parentElement.querySelector('.submenu .active')) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                }
+            });
+
+            // Check for URL parameter to simulate editing
+            const urlParams = new URLSearchParams(window.location.search);
+            const urunId = urlParams.get('id');
+            const formPageTitle = document.getElementById('urun-page-title');
+            if (urunId && formPageTitle) {
+                formPageTitle.textContent = `Ürünü Düzenle (ID: ${urunId})`;
+                // Here you would typically fetch data for this ID and populate the form
+                // Example:
+                // document.getElementById('urun-adi').value = "Fetched Ürün Adı";
+            }
+
+            // Add Row Functionality
+            const addMetricRowBtn = document.getElementById('addMetricRow');
+            const metricCriteriaBody = document.getElementById('metricCriteriaBody');
+            let metricCounter = 0;
+
+            if (addMetricRowBtn && metricCriteriaBody) {
+                addMetricRowBtn.addEventListener('click', function() {
+                    metricCounter++;
+                    const newRow = metricCriteriaBody.insertRow();
+                    newRow.innerHTML = `
+                        <td><input type="text" name="metric_name_${metricCounter}" class="form-control form-control-sm" placeholder="Örn: Uzunluk A"></td>
+                        <td><input type="number" step="any" name="metric_value_${metricCounter}" class="form-control form-control-sm" placeholder="Örn: 100"></td>
+                        <td><input type="number" step="any" name="metric_tolerance_${metricCounter}" class="form-control form-control-sm" placeholder="Örn: 0.5"></td>
+                        <td><input type="number" step="any" name="metric_lower_limit_${metricCounter}" class="form-control form-control-sm" readonly placeholder="Oto"></td>
+                        <td><input type="number" step="any" name="metric_upper_limit_${metricCounter}" class="form-control form-control-sm" readonly placeholder="Oto"></td>
+                        <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                    `;
+                });
+            }
+
+            const addVisualRowBtn = document.getElementById('addVisualRow');
+            const visualCriteriaBody = document.getElementById('visualCriteriaBody');
+            let visualCounter = 0;
+
+            if (addVisualRowBtn && visualCriteriaBody) {
+                addVisualRowBtn.addEventListener('click', function() {
+                    visualCounter++;
+                    const newRow = visualCriteriaBody.insertRow();
+                    newRow.innerHTML = `
+                        <td><input type="text" name="visual_point_${visualCounter}" class="form-control form-control-sm" placeholder="Örn: Yüzeyde çizik var mı?"></td>
+                        <td><input type="text" name="visual_expected_${visualCounter}" class="form-control form-control-sm" placeholder="Örn: Çizik olmamalı"></td>
+                        <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                    `;
+                });
+            }
+
+            // Remove row functionality (generic for any table with such buttons)
+            document.addEventListener('click', function(event) {
+                if (event.target && event.target.classList.contains('remove-row')) {
+                    event.target.closest('tr').remove();
+                }
+            });
+
+            // Auto-calculate limits for metric controls (example)
+            metricCriteriaBody.addEventListener('input', function(event) {
+                const row = event.target.closest('tr');
+                if (!row) return;
+
+                const valueInput = row.querySelector('input[name^="metric_value_"]');
+                const toleranceInput = row.querySelector('input[name^="metric_tolerance_"]');
+                const lowerLimitInput = row.querySelector('input[name^="metric_lower_limit_"]');
+                const upperLimitInput = row.querySelector('input[name^="metric_upper_limit_"]');
+
+                if (valueInput && toleranceInput && lowerLimitInput && upperLimitInput) {
+                    const value = parseFloat(valueInput.value);
+                    const tolerance = parseFloat(toleranceInput.value);
+                    if (!isNaN(value) && !isNaN(tolerance)) {
+                        lowerLimitInput.value = (value - tolerance).toFixed(2);
+                        upperLimitInput.value = (value + tolerance).toFixed(2);
+                    } else {
+                        lowerLimitInput.value = '';
+                        upperLimitInput.value = '';
+                    }
+                }
+            });
+
+
+        });
+    </script>
 </body>
 </html>

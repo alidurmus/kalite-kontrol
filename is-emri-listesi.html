@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Emri Listesi - Intermeks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html" class="active">İş Emirleri</a></li> {/* Active link */}
+                    <li>
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu">
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu">
+                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>İş Emri Listesi</h1>
+                    </div>
+
+                    <div class="filters-section card" style="background-color: var(--light-color); margin-bottom: 1rem; padding: 1rem;">
+                        <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
+                        <div class="form-grid" style="gap: 0.5rem;">
+                            <div class="form-group">
+                                <input type="text" id="search-isemri-no" class="form-control" placeholder="İş Emri No / Lot No ile ara...">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="search-musteri-adi" class="form-control" placeholder="Müşteri adı ile ara...">
+                            </div>
+                            <div class="form-group">
+                                <select id="filter-isemri-durum" class="form-control">
+                                    <option value="">Tüm Durumlar</option>
+                                    <option value="planlandi">Planlandı</option>
+                                    <option value="uretimde">Üretimde</option>
+                                    <option value="tamamlandi">Tamamlandı</option>
+                                    <option value="sevk_edildi">Sevk Edildi</option>
+                                    <option value="iptal">İptal</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-secondary">[F] Filtrele</button>
+                        </div>
+                    </div>
+
+                    <div class="form-actions" style="justify-content: flex-end; margin-bottom: 1rem;">
+                        <button class="btn btn-primary" onclick="location.href='is-emri-form.html'">[+] Yeni İş Emri Oluştur</button>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>İş Emri No</th>
+                                <th>Lot No</th>
+                                <th>Müşteri Adı</th>
+                                <th>Sipariş No</th>
+                                <th>Üretim Tarihi</th>
+                                <th>Sevk Tarihi</th>
+                                <th>Durumu</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>IEM-001</td>
+                                <td>LOT-2023-10-001</td>
+                                <td>ABC Teknoloji A.Ş.</td>
+                                <td>SIP-M001-058</td>
+                                <td>2023-10-15</td>
+                                <td>2023-10-20</td>
+                                <td class="status-active">Üretimde</td>
+                                <td>
+                                    <a href="is-emri-detay.html?id=IEM-001" class="btn btn-sm btn-info">[i] Detay</a>
+                                    <a href="is-emri-form.html?id=IEM-001" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-danger">[X] İptal Et</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>IEM-002</td>
+                                <td>LOT-2023-11-005</td>
+                                <td>DEF Makina San.</td>
+                                <td>SIP-M002-012</td>
+                                <td>2023-11-01</td>
+                                <td>2023-11-10</td>
+                                <td class="status-pass">Tamamlandı</td>
+                                <td>
+                                    <a href="is-emri-detay.html?id=IEM-002" class="btn btn-sm btn-info">[i] Detay</a>
+                                    <a href="is-emri-form.html?id=IEM-002" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
+    </div>
+   <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) { /* ... */ } // Full theme logic
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) { /* ... */ } // Full logout logic
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') event.preventDefault();
+                        const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
+                        parentLi.classList.toggle('open');
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
+                    });
+                }
+            });
+            // Full theme and logout script for completeness
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
+
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
+                });
+
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
+            }
+             if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                    // window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
