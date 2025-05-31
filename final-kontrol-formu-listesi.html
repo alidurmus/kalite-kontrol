@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proses Kontrol Formları - Intermeks</title>
+    <title>Final Kontrol Formları - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -36,8 +36,8 @@
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu" style="max-height: 500px;">
                             <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="proses-kontrol-formu-listesi.html" class="active">Proses Kontrol Formu (Ürün)</a></li> {/* Active link */}
-                            <li><a href="final-kontrol-formu-listesi.html">Final Kontrol Formu (Ürün)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="final-kontrol-formu-listesi.html" class="active">Final Kontrol Formu (Ürün)</a></li> {/* Active link */}
                             <li><a href="urun-kalite-gecmisi.html">Ürün Kalite Geçmişi</a></li>
                         </ul>
                     </li>
@@ -51,45 +51,45 @@
             <main class="page-content">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h1>Proses Kontrol Formları Listesi</h1>
-                        <button class="btn btn-primary" onclick="location.href='proses-kontrol-formu-ekle.html'">[+] Yeni Proses Kontrol Formu</button>
+                        <h1>Final Kontrol Formları Listesi</h1>
+                        <button class="btn btn-primary" onclick="location.href='final-kontrol-formu-ekle.html'">[+] Yeni Final Kontrol Formu</button>
                     </div>
 
                     <div class="filters-section card" style="background-color: var(--light-color); margin-top: 1rem; margin-bottom: 1rem; padding: 1rem;">
                         <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
                         <form class="form-grid" style="gap: 0.5rem;">
                             <div class="form-group">
-                                <label for="filter-pkf-urun">Ürün</label>
-                                <select id="filter-pkf-urun" class="form-control">
+                                <label for="filter-fkf-urun">Ürün</label>
+                                <select id="filter-fkf-urun" class="form-control">
                                     <option value="">Tüm Ürünler</option>
                                     <option value="EM-XYZ-100">Endüksiyon Motoru XYZ-100</option>
                                     <option value="HDS-045">Helisel Dişli Seti</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="filter-pkf-isemri">İş Emri No</label>
-                                <input type="text" id="filter-pkf-isemri" class="form-control" placeholder="IEM-00X">
+                                <label for="filter-fkf-isemri">İş Emri No</label>
+                                <input type="text" id="filter-fkf-isemri" class="form-control" placeholder="IEM-00X">
                             </div>
                             <div class="form-group">
-                                <label for="filter-pkf-tarih-bas">Kontrol Tarihi Başlangıç</label>
-                                <input type="date" id="filter-pkf-tarih-bas" class="form-control">
+                                <label for="filter-fkf-tarih-bas">Kontrol Tarihi Başlangıç</label>
+                                <input type="date" id="filter-fkf-tarih-bas" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="filter-pkf-tarih-bit">Kontrol Tarihi Bitiş</label>
-                                <input type="date" id="filter-pkf-tarih-bit" class="form-control">
+                                <label for="filter-fkf-tarih-bit">Kontrol Tarihi Bitiş</label>
+                                <input type="date" id="filter-fkf-tarih-bit" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="filter-pkf-genel-durum">Genel Durum</label>
-                                <select id="filter-pkf-genel-durum" class="form-control">
+                                <label for="filter-fkf-kabul-durumu">Genel Kabul Durumu</label>
+                                <select id="filter-fkf-kabul-durumu" class="form-control">
                                     <option value="">Tümü</option>
-                                    <option value="devam">Devam Edebilir</option>
-                                    <option value="duzeltici">Düzeltici Faaliyet Gerekli</option>
-                                    <option value="hurda">Hurda/Ayıklama Gerekli</option>
+                                    <option value="sevk_edilebilir">Sevk Edilebilir</option>
+                                    <option value="sartli_sevk">Şartlı Sevk</option>
+                                    <option value="red_hurda">Reddedildi/Hurda</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="search-pkf">Arama (Kontrol No, Lot No)</label>
-                                <input type="text" id="search-pkf" class="form-control" placeholder="No, lot no...">
+                                <label for="search-fkf">Arama (Kontrol No, Lot No, Kutu No)</label>
+                                <input type="text" id="search-fkf" class="form-control" placeholder="No, lot, kutu...">
                             </div>
                             <div class="form-actions" style="grid-column: 1 / -1; justify-content: flex-start;">
                                 <button type="submit" class="btn btn-secondary">[F] Filtrele</button>
@@ -103,36 +103,36 @@
                                 <th>Kontrol No</th>
                                 <th>Ürün Adı</th>
                                 <th>Lot No</th>
-                                <th>Üretim İstasyon Adı</th>
+                                <th>Kutu No</th>
                                 <th>Kontrol Tarihi</th>
-                                <th>Genel Durum</th>
+                                <th>Genel Kabul Durumu</th>
                                 <th>İşlemler</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>PKF-001</td>
+                                <td>FKF-001</td>
                                 <td>Endüksiyon Motoru XYZ-100</td>
                                 <td>LOT-2023-10-001</td>
-                                <td>Montaj Hattı - Stasyon 3</td>
-                                <td>2023-10-16</td>
-                                <td class="status-pass">Devam Edebilir</td>
+                                <td>KUTU-A015</td>
+                                <td>2023-10-19</td>
+                                <td class="status-pass">Sevk Edilebilir</td>
                                 <td>
-                                    <a href="proses-kontrol-formu-ekle.html?id=PKF-001&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
-                                    <a href="proses-kontrol-formu-ekle.html?id=PKF-001" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="final-kontrol-formu-ekle.html?id=FKF-001&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
+                                    <a href="final-kontrol-formu-ekle.html?id=FKF-001" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>PKF-002</td>
+                                <td>FKF-002</td>
                                 <td>Helisel Dişli Seti</td>
                                 <td>LOT-2023-11-005</td>
-                                <td>CNC İşleme - Operasyon 2</td>
-                                <td>2023-11-05</td>
-                                <td class="status-warning" style="color:orange; font-weight:bold;">Düzeltici Faaliyet Gerekli</td>
+                                <td>KUTU-B003</td>
+                                <td>2023-11-09</td>
+                                <td class="status-warning" style="color:orange; font-weight:bold;">Şartlı Sevk</td>
                                 <td>
-                                    <a href="proses-kontrol-formu-ekle.html?id=PKF-002&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
-                                    <a href="proses-kontrol-formu-ekle.html?id=PKF-002" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <a href="final-kontrol-formu-ekle.html?id=FKF-002&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
+                                    <a href="final-kontrol-formu-ekle.html?id=FKF-002" class="btn btn-sm btn-secondary">[E] Düzenle</a>
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>

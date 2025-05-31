@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeni Proses Kontrol Formu - Intermeks</title>
+    <title>Yeni Final Kontrol Formu - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -36,9 +36,9 @@
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu" style="max-height: 500px;">
                             <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="proses-kontrol-formu-listesi.html" class="active">Proses Kontrol Formu (Ürün)</a></li>
-                            <li><a href="final-kontrol-formu-listesi.html">Final Kontrol Formu (Ürün)</a></li>
-                            <li><a href="urun-kalite-gecmisi.html">Ürün Kalite Geçmişi</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="final-kontrol-formu-listesi.html" class="active">Final Kontrol Formu (Ürün)</a></li>
+                             <li><a href="urun-kalite-gecmisi.html">Ürün Kalite Geçmişi</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
@@ -49,75 +49,57 @@
             </aside>
 
             <main class="page-content">
-                <div id="proses-kontrol-form-page">
+                <div id="final-kontrol-form-page">
                     <header class="card-header">
-                        <h1 id="pkf-page-title">Yeni Proses Kontrol Kaydı</h1>
+                        <h1 id="fkf-page-title">Yeni Final Kontrol Kaydı</h1>
                     </header>
 
-                    <form class="card" id="prosesKontrolForm">
+                    <form class="card" id="finalKontrolForm">
                         <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Form Üst Bilgileri</div>
                         <div class="form-grid" style="padding-top:1rem;">
                             <div class="form-group">
-                                <label for="pkf-kontrol-no">Kontrol Numarası</label>
-                                <input type="text" id="pkf-kontrol-no" name="pkf-kontrol-no" class="form-control" readonly placeholder="PKF-003 (Otomatik)">
+                                <label for="fkf-kontrol-no">Kontrol Numarası</label>
+                                <input type="text" id="fkf-kontrol-no" name="fkf-kontrol-no" class="form-control" readonly placeholder="FKF-003 (Otomatik)">
                             </div>
                             <div class="form-group">
-                                <label for="pkf-urun">Ürün Adı</label>
-                                <select id="pkf-urun" name="pkf-urun" class="form-control" required>
+                                <label for="fkf-urun">Ürün Adı</label>
+                                <select id="fkf-urun" name="fkf-urun" class="form-control" required>
                                     <option value="">Ürün Seçiniz...</option>
-                                    <option value="EM-XYZ-100" data-kod="EM-XYZ-100" data-kriterler="motor_proses_kriterleri">Endüksiyon Motoru XYZ-100</option>
-                                    <option value="HDS-045" data-kod="HDS-045" data-kriterler="disli_proses_kriterleri">Helisel Dişli Seti</option>
+                                    <option value="EM-XYZ-100" data-kriterler="motor_final_kriterleri">Endüksiyon Motoru XYZ-100</option>
+                                    <option value="HDS-045" data-kriterler="disli_final_kriterleri">Helisel Dişli Seti</option>
                                 </select>
                             </div>
-                             <div class="form-group">
-                                <label for="pkf-urun-kodu">Ürün Kodu</label>
-                                <input type="text" id="pkf-urun-kodu" name="pkf-urun-kodu" class="form-control" readonly>
-                            </div>
                             <div class="form-group">
-                                <label for="pkf-lot-no">Lot Numarası (İş Emri)</label>
-                                <select id="pkf-lot-no" name="pkf-lot-no" class="form-control" required>
+                                <label for="fkf-lot-no">Lot Numarası (İş Emri)</label>
+                                <select id="fkf-lot-no" name="fkf-lot-no" class="form-control" required>
                                      <option value="">İş Emri Lot No Seçiniz...</option>
                                      <option value="LOT-2023-10-001">LOT-2023-10-001 (IEM-001)</option>
                                      <option value="LOT-2023-11-005">LOT-2023-11-005 (IEM-002)</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="pkf-parti-no">Parti Numarası (İç)</label>
-                                <input type="text" id="pkf-parti-no" name="pkf-parti-no" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="pkf-klips-parti">Klips Hammadde Parti Kodu</label>
-                                <input type="text" id="pkf-klips-parti" name="pkf-klips-parti" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="pkf-hammadde-parti">Hammadde Parti Kodu (Genel)</label>
-                                <input type="text" id="pkf-hammadde-parti" name="pkf-hammadde-parti" class="form-control">
+                                <label for="fkf-kutu-no">Kutu Numarası (Palet/Koli)</label>
+                                <input type="text" id="fkf-kutu-no" name="fkf-kutu-no" class="form-control">
                             </div>
                              <div class="form-group">
-                                <label for="pkf-buji-braket-lot">Buji Braket Lot Numarası</label>
-                                <input type="text" id="pkf-buji-braket-lot" name="pkf-buji-braket-lot" class="form-control">
+                                <label for="fkf-klips-montaj-lot">Klips Montaj Lot Numarası</label>
+                                <input type="text" id="fkf-klips-montaj-lot" name="fkf-klips-montaj-lot" class="form-control">
                             </div>
                              <div class="form-group">
-                                <label for="pkf-uretim-istasyonu">Üretim İstasyonu/Aşaması</label>
-                                <select id="pkf-uretim-istasyonu" name="pkf-uretim-istasyonu" class="form-control" required>
-                                    <option value="">İstasyon Seçiniz...</option>
-                                    <option value="montaj-1">Montaj Hattı - Stasyon 1</option>
-                                    <option value="montaj-3">Montaj Hattı - Stasyon 3</option>
-                                    <option value="cnc-op2">CNC İşleme - Operasyon 2</option>
-                                    <option value="boyama">Boyama Kabini</option>
-                                </select>
+                                <label for="fkf-brulor-lot">Brülör Lot Numarası</label>
+                                <input type="text" id="fkf-brulor-lot" name="fkf-brulor-lot" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="pkf-kontrol-tarihi">Kontrol Tarihi</label>
-                                <input type="date" id="pkf-kontrol-tarihi" name="pkf-kontrol-tarihi" class="form-control">
+                                <label for="fkf-kontrol-tarihi">Kontrol Tarihi</label>
+                                <input type="date" id="fkf-kontrol-tarihi" name="fkf-kontrol-tarihi" class="form-control">
                             </div>
                              <div class="form-group">
-                                <label for="pkf-kontrolu-yapan">Kontrolü Yapan Kişi</label>
-                                <input type="text" id="pkf-kontrolu-yapan" name="pkf-kontrolu-yapan" class="form-control" value="Kullanıcı Adı (Oto)" readonly>
+                                <label for="fkf-kontrolu-yapan">Kontrolü Yapan Kişi</label>
+                                <input type="text" id="fkf-kontrolu-yapan" name="fkf-kontrolu-yapan" class="form-control" value="Kullanıcı Adı (Oto)" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="pkf-kontrol-edilen-miktar">Kontrol Edilen Miktar</label>
-                                <input type="number" id="pkf-kontrol-edilen-miktar" name="pkf-kontrol-edilen-miktar" class="form-control" min="1">
+                                <label for="fkf-kontrol-edilen-miktar">Kontrol Edilen Miktar</label>
+                                <input type="number" id="fkf-kontrol-edilen-miktar" name="fkf-kontrol-edilen-miktar" class="form-control" min="1">
                             </div>
                         </div>
 
@@ -149,17 +131,17 @@
                             <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Genel Değerlendirme</div>
                              <div class="form-grid" style="padding-top:1rem;">
                                 <div class="form-group">
-                                    <label for="pkf-genel-durum">Partinin/Ürünün Mevcut Durumu</label>
-                                    <select id="pkf-genel-durum" name="pkf-genel-durum" class="form-control" required>
+                                    <label for="fkf-genel-kabul-durumu">Partinin/Ürünün Genel Kabul Durumu</label>
+                                    <select id="fkf-genel-kabul-durumu" name="fkf-genel-kabul-durumu" class="form-control" required>
                                         <option value="">Seçiniz...</option>
-                                        <option value="devam">Devam Edebilir</option>
-                                        <option value="duzeltici">Düzeltici Faaliyet Gerekli</option>
-                                        <option value="hurda">Hurda/Ayıklama Gerekli</option>
+                                        <option value="sevk_edilebilir">Sevk Edilebilir</option>
+                                        <option value="sartli_sevk">Şartlı Sevk</option>
+                                        <option value="red_hurda">Reddedildi/Hurda</option>
                                     </select>
                                 </div>
                                 <div class="form-group form-group-full">
-                                    <label for="pkf-genel-aciklamalar">Genel Açıklamalar</label>
-                                    <textarea id="pkf-genel-aciklamalar" name="pkf-genel-aciklamalar" class="form-control" rows="3"></textarea>
+                                    <label for="fkf-genel-aciklamalar">Genel Açıklamalar</label>
+                                    <textarea id="fkf-genel-aciklamalar" name="fkf-genel-aciklamalar" class="form-control" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +149,7 @@
                         <div class="form-actions" style="margin-top: 2rem;">
                             <button type="submit" name="action" value="save" class="btn btn-success btn-lg">[S] Kaydet</button>
                             <button type="submit" name="action" value="complete" class="btn btn-primary btn-lg">[T] Tamamla</button>
-                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='proses-kontrol-formu-listesi.html'">[C] İptal</button>
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='final-kontrol-formu-listesi.html'">[C] İptal</button>
                         </div>
                     </form>
                 </div>
@@ -209,39 +191,35 @@
                 }
             });
 
-            const kontrolTarihiInput = document.getElementById('pkf-kontrol-tarihi');
+            const kontrolTarihiInput = document.getElementById('fkf-kontrol-tarihi');
             if (kontrolTarihiInput && !kontrolTarihiInput.value) {
                 kontrolTarihiInput.value = new Date().toISOString().split('T')[0];
             }
 
-            const urunSelect = document.getElementById('pkf-urun');
-            const urunKoduInput = document.getElementById('pkf-urun-kodu');
+            const urunSelect = document.getElementById('fkf-urun');
             const kriterlerBody = document.getElementById('kontrolKriterleriBody');
 
-            const prosesKriterSetleri = {
-                motor_proses_kriterleri: [
-                    { tip: 'Metrik', ad: 'Stator Sargı Direnci Faz 1', hedef: '5.2', tolerans: '0.2', birim:'Ohm' },
-                    { tip: 'Metrik', ad: 'Rotor Balans Değeri', hedef: '0.5', tolerans: '0.1', birim:'g-mm' },
-                    { tip: 'Görsel', ad: 'Lehim Kalitesi (Bağlantı Noktaları)', beklenen: 'Parlak, düzgün yüzey, çatlak/soğuk lehim yok' },
-                    { tip: 'Fonksiyonel', ad: 'Motor Devir Yönü Kontrolü', beklenen: 'Saat yönünde doğru dönüş' }
+            const finalKriterSetleri = {
+                motor_final_kriterleri: [
+                    { tip: 'Fonksiyonel', ad: 'Çalışma Testi (Yüksüz)', beklenen: 'Normal ses, titreşim yok, belirtilen devirde stabil çalışma.' },
+                    { tip: 'Görsel', ad: 'Etiketleme ve Markalama', beklenen: 'Tüm etiketler doğru ve okunaklı, seri no mevcut.' },
+                    { tip: 'Paketleme', ad: 'Ambalaj Kontrolü', beklenen: 'Hasarsız, temiz ambalaj, tüm aksesuarlar dahil.' }
                 ],
-                disli_proses_kriterleri: [
-                    { tip: 'Metrik', ad: 'Diş Profil Uygunluğu', hedef: 'Referans Profile', tolerans: '0.01', birim:'mm (profilometre)' },
-                    { tip: 'Metrik', ad: 'Sertlik Değeri (Rockwell)', hedef: '58', tolerans: '2', birim:'HRC' },
-                    { tip: 'Görsel', ad: 'Diş Yüzeyinde Çapak/Ezilme', beklenen: 'Çapak, ezilme, çatlak olmamalı' }
+                disli_final_kriterleri: [
+                    { tip: 'Metrik', ad: 'Toplam Boyut Kontrolü', hedef: '150', tolerans: '0.5', birim:'mm' },
+                    { tip: 'Görsel', ad: 'Son Temizlik', beklenen: 'Yağ, talaş, kir kalıntısı olmamalı.' },
+                    { tip: 'Paketleme', ad: 'Yağlı Kağıt ile Sarım', beklenen: 'Korozyona karşı korumalı.' }
                 ]
             };
 
-            if (urunSelect && urunKoduInput && kriterlerBody) {
+            if (urunSelect && kriterlerBody) {
                 urunSelect.addEventListener('change', function() {
                     const selectedOption = this.options[this.selectedIndex];
-                    urunKoduInput.value = selectedOption.dataset.kod || '';
-
                     const kriterKey = selectedOption.dataset.kriterler;
                     kriterlerBody.innerHTML = '';
 
-                    if (kriterKey && prosesKriterSetleri[kriterKey]) {
-                        prosesKriterSetleri[kriterKey].forEach((kriter, index) => {
+                    if (kriterKey && finalKriterSetleri[kriterKey]) {
+                        finalKriterSetleri[kriterKey].forEach((kriter, index) => {
                             const row = kriterlerBody.insertRow();
                             row.insertCell().textContent = index + 1;
                             row.insertCell().textContent = kriter.tip;
@@ -268,11 +246,11 @@
                             row.insertCell().innerHTML = `<input type="file" class="form-control form-control-sm" name="kanit_${index}">`;
                         });
                     } else {
-                         kriterlerBody.innerHTML = `<tr><td colspan="11" style="text-align:center; padding:1rem;">Bu ürün için tanımlı proses kontrol kriteri bulunamadı veya seçilmedi.</td></tr>`;
+                         kriterlerBody.innerHTML = `<tr><td colspan="11" style="text-align:center; padding:1rem;">Bu ürün için tanımlı final kontrol kriteri bulunamadı veya seçilmedi.</td></tr>`;
                     }
                 });
             }
-             // Full theme and logout script for completeness
+            // Full theme and logout script for completeness
             if(themeToggle) {
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
