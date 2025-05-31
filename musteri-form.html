@@ -50,44 +50,45 @@
 
             <main class="page-content">
                 <div id="musteri-form-page">
-                    <header class="card-header">
-                        <h1 id="musteri-page-title">Yeni Müşteri Ekle</h1>
+                    <header class="card-header mb-3">
+                        <h1 id="musteri-page-title" class="h2">Yeni Müşteri Ekle</h1>
                     </header>
                     <form class="card" id="customerForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="musteri-adi">Müşteri Adı</label>
-                                <input type="text" id="musteri-adi" name="musteri-adi" class="form-control" required>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="musteri-adi" class="form-label">Müşteri Adı</label>
+                                    <input type="text" id="musteri-adi" name="musteri-adi" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="musteri-kodu" class="form-label">Müşteri Kodu</label>
+                                    <input type="text" id="musteri-kodu" name="musteri-kodu" class="form-control" required>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="musteri-aciklama" class="form-label">Açıklama</label>
+                                    <textarea id="musteri-aciklama" name="musteri-aciklama" class="form-control" rows="3"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="musteri-kodu">Müşteri Kodu</label>
-                                <input type="text" id="musteri-kodu" name="musteri-kodu" class="form-control" required>
-                            </div>
-                            <div class="form-group form-group-full">
-                                <label for="musteri-aciklama">Açıklama</label>
-                                <textarea id="musteri-aciklama" name="musteri-aciklama" class="form-control" rows="3"></textarea>
+
+                            <h5 class="mt-4 mb-3 text-muted">İletişim Bilgileri (Placeholder)</h5>
+                            <div class="row g-3">
+                                <div class="col-md-12 mb-3">
+                                    <label for="musteri-adres" class="form-label">Adres</label>
+                                    <input type="text" id="musteri-adres" name="musteri-adres" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
+                                 <div class="col-md-6 mb-3">
+                                    <label for="musteri-telefon" class="form-label">Telefon</label>
+                                    <input type="text" id="musteri-telefon" name="musteri-telefon" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="musteri-email" class="form-label">E-posta</label>
+                                    <input type="email" id="musteri-email" name="musteri-email" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
                             </div>
                         </div>
-
-                        <h3 style="margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.1rem; color:var(--secondary-color);">İletişim Bilgileri (Placeholder)</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="musteri-adres">Adres</label>
-                                <input type="text" id="musteri-adres" name="musteri-adres" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                             <div class="form-group">
-                                <label for="musteri-telefon">Telefon</label>
-                                <input type="text" id="musteri-telefon" name="musteri-telefon" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                            <div class="form-group">
-                                <label for="musteri-email">E-posta</label>
-                                <input type="email" id="musteri-email" name="musteri-email" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                        </div>
-
-                        <div class="form-actions" style="margin-top: 2rem;">
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" onclick="location.href='musteri-listesi.html'">[C] İptal</button>
                             <button type="submit" class="btn btn-success">[S] Kaydet</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='musteri-listesi.html'">[C] İptal</button>
                         </div>
                     </form>
                 </div>

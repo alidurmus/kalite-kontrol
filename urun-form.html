@@ -5,143 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yeni Ürün / Ürün Düzenle - Intermeks</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="app-container">
         <header class="app-header">
-            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
-            <div>
-                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
-                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
-            </div>
+             <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100 shadow-sm">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">Intermeks KYS</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                        <div class="navbar-nav ms-auto align-items-center">
+                            <button id="theme-toggle" title="Temayı Değiştir" class="nav-link btn btn-link text-white me-2">☀️</button>
+                            <span class="navbar-text text-white me-3">Kullanıcı: Admin</span>
+                            <button id="logout-button" class="btn btn-danger btn-sm">Çıkış Yap</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </header>
 
-        <div class="app-main">
-            <aside class="app-sidebar">
-                <ul class="sidebar-menu">
-                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
-                    <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open">
-                        <a href="#">Tanımlamalar</a>
-                        <ul class="submenu" style="max-height: 500px;">
-                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
-                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
-                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
-                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
-                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
-                            <li><a href="#">Proses Kategori Tanımları</a></li>
+        <div class="app-main row g-0 flex-grow-1">
+            <aside class="col-lg-2 col-md-3 app-sidebar bg-dark text-white p-3 d-flex flex-column">
+                <h5 class="text-white mt-2 mb-3">Menü</h5>
+                <ul class="sidebar-menu nav nav-pills flex-column mb-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link text-white">Ana Sayfa / Dashboard</a></li>
+                    <li class="nav-item"><a href="is-emri-listesi.html" class="nav-link text-white">İş Emirleri</a></li>
+                    <li class="nav-item">
+                        <a href="#tanimlamalarSubmenu" data-bs-toggle="collapse" class="nav-link text-white active">Tanımlamalar</a>
+                        <ul class="collapse list-unstyled ps-3 show" id="tanimlamalarSubmenu">
+                            <li><a href="urun-listesi.html" class="nav-link text-white small active" aria-current="page">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html" class="nav-link text-white small">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html" class="nav-link text-white small">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html" class="nav-link text-white small">Tedarikçi Tanımları</a></li>
+                            <li><a href="#" class="nav-link text-white small">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#" class="nav-link text-white small">Proses Kategori Tanımları</a></li>
                         </ul>
                     </li>
                      <li>
-                        <a href="#">Kalite Kontrol Formları</a>
-                        <ul class="submenu">
-                             <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
-                            <li><a href="final-kontrol-formu-listesi.html">Final Kontrol Formu (Ürün)</a></li>
-                            <li><a href="urun-kalite-gecmisi.html">Ürün Kalite Geçmişi</a></li>
+                        <a href="#kaliteKontrolSubmenu" data-bs-toggle="collapse" class="nav-link text-white">Kalite Kontrol Formları</a>
+                        <ul class="collapse list-unstyled ps-3" id="kaliteKontrolSubmenu">
+                            <li><a href="girdi-kontrol-formu-listesi.html" class="nav-link text-white small">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html" class="nav-link text-white small">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="final-kontrol-formu-listesi.html" class="nav-link text-white small">Final Kontrol Formu (Ürün)</a></li>
+                            <li><a href="urun-kalite-gecmisi.html" class="nav-link text-white small">Ürün Kalite Geçmişi</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Üretim Süreci İzleme</a></li>
-                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
-                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
-                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Üretim Süreci İzleme</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Raporlama ve Analiz</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Araçlar</a></li>
+                    <li class="nav-item">
+                        <a href="#yonetimPaneliSubmenu" data-bs-toggle="collapse" class="nav-link text-white">Yönetim Paneli</a>
+                        <ul class="collapse list-unstyled ps-3" id="yonetimPaneliSubmenu">
+                            <li><a href="kullanici-rolleri.html" class="nav-link text-white small">Kullanıcı Yönetimi</a></li>
+                            <li><a href="ayarlar.html" class="nav-link text-white small">Sistem Ayarları</a></li>
+                            <li><a href="#" class="nav-link text-white small">Website İçerik Yönetimi</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </aside>
 
-            <main class="page-content">
+            <main class="col-lg-10 col-md-9 page-content p-4 overflow-auto">
                 <div id="urun-form-page">
-                    <header class="card-header">
-                        <h1 id="urun-page-title">Yeni Ürün Ekle</h1>
+                    <header class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 id="urun-page-title" class="h2">Yeni Ürün Ekle</h1>
                     </header>
 
                     <form class="card" id="productMainForm" enctype="multipart/form-data">
-                        <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Ürün Genel Bilgileri</div>
-                        <div class="form-grid" style="padding-top:1rem;">
-                            <div class="form-group">
-                                <label for="urun-adi">Ürün Adı</label>
-                                <input type="text" id="urun-adi" name="urun-adi" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="urun-kodu">Ürün Kodu No</label>
-                                <input type="text" id="urun-kodu" name="urun-kodu" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="urun-kategori">Kategori</label>
-                                <select id="urun-kategori" name="urun-kategori" class="form-control">
-                                    <option value="">Kategori Seçiniz...</option>
-                                    <option value="motor">Motor Parçaları</option>
-                                    <option value="sanziman">Şanzıman Elemanları</option>
-                                    <option value="elektronik">Elektronik Kartlar</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="teknik-resim">Teknik Resim</label>
-                                <input type="file" id="teknik-resim" name="teknik-resim" class="form-control">
-                            </div>
-                            <div class="form-group form-group-full">
-                                <label for="urun-aciklama">Açıklama</label>
-                                <textarea id="urun-aciklama" name="urun-aciklama" class="form-control" rows="3"></textarea>
+                        <div class="card-header">Ürün Genel Bilgileri</div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="urun-adi" class="form-label">Ürün Adı</label>
+                                    <input type="text" id="urun-adi" name="urun-adi" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="urun-kodu" class="form-label">Ürün Kodu No</label>
+                                    <input type="text" id="urun-kodu" name="urun-kodu" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="urun-kategori" class="form-label">Kategori</label>
+                                    <select id="urun-kategori" name="urun-kategori" class="form-select">
+                                        <option value="" selected>Kategori Seçiniz...</option>
+                                        <option value="motor">Motor Parçaları</option>
+                                        <option value="sanziman">Şanzıman Elemanları</option>
+                                        <option value="elektronik">Elektronik Kartlar</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="teknik-resim" class="form-label">Teknik Resim</label>
+                                    <input type="file" id="teknik-resim" name="teknik-resim" class="form-control">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="urun-aciklama" class="form-label">Açıklama</label>
+                                    <textarea id="urun-aciklama" name="urun-aciklama" class="form-control" rows="3"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card" style="margin-top: 2rem;">
-                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Metrik Kontrol Kriterleri</div>
-                            <table class="data-table metric-criteria-table" style="margin-top:1rem;">
-                                <thead>
-                                    <tr>
-                                        <th>Ölçüm Adı</th>
-                                        <th>Ölçü (mm)</th>
-                                        <th>Tolerans (+/- mm)</th>
-                                        <th>Alt Limit (mm)</th>
-                                        <th>Üst Limit (mm)</th>
-                                        <th style="width:50px;">İşlem</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="metricCriteriaBody">
-                                    {/* Rows will be added by JS */}
-                                </tbody>
-                            </table>
-                            <button type="button" class="btn btn-sm btn-info mt-2" id="addMetricRow">[+] Metrik Kriter Ekle</button>
+                        <div class="card mt-4">
+                            <div class="card-header">Metrik Kontrol Kriterleri</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered metric-criteria-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Ölçüm Adı</th>
+                                                <th>Ölçü (mm)</th>
+                                                <th>Tolerans (+/- mm)</th>
+                                                <th>Alt Limit (mm)</th>
+                                                <th>Üst Limit (mm)</th>
+                                                <th style="width:50px;">İşlem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="metricCriteriaBody">
+                                            {/* Sample Row for JS to clone or initial display */}
+                                             <tr>
+                                                <td><input type="text" name="metric_name_0" class="form-control form-control-sm" placeholder="Örn: Uzunluk A"></td>
+                                                <td><input type="number" step="any" name="metric_value_0" class="form-control form-control-sm" placeholder="Örn: 100"></td>
+                                                <td><input type="number" step="any" name="metric_tolerance_0" class="form-control form-control-sm" placeholder="Örn: 0.5"></td>
+                                                <td><input type="number" step="any" name="metric_lower_limit_0" class="form-control form-control-sm" readonly placeholder="Oto"></td>
+                                                <td><input type="number" step="any" name="metric_upper_limit_0" class="form-control form-control-sm" readonly placeholder="Oto"></td>
+                                                <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-info mt-2" id="addMetricRow">[+] Metrik Kriter Ekle</button>
+                            </div>
                         </div>
 
-                        <div class="card" style="margin-top: 2rem;">
-                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Görsel Kontrol Kriterleri</div>
-                             <table class="data-table visual-criteria-table" style="margin-top:1rem;">
-                                <thead>
-                                    <tr>
-                                        <th>Kontrol Noktası / Soru</th>
-                                        <th>Beklenen Değer / Açıklama</th>
-                                        <th style="width:50px;">İşlem</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="visualCriteriaBody">
-                                   {/* Rows will be added by JS */}
-                                </tbody>
-                            </table>
-                            <button type="button" class="btn btn-sm btn-info mt-2" id="addVisualRow">[+] Görsel Kriter Ekle</button>
+                        <div class="card mt-4">
+                            <div class="card-header">Görsel Kontrol Kriterleri</div>
+                             <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered visual-criteria-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Kontrol Noktası / Soru</th>
+                                                <th>Beklenen Değer / Açıklama</th>
+                                                <th style="width:50px;">İşlem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="visualCriteriaBody">
+                                           <tr>
+                                                <td><input type="text" name="visual_point_0" class="form-control form-control-sm" placeholder="Örn: Yüzeyde çizik var mı?"></td>
+                                                <td><input type="text" name="visual_expected_0" class="form-control form-control-sm" placeholder="Örn: Çizik olmamalı"></td>
+                                                <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-info mt-2" id="addVisualRow">[+] Görsel Kriter Ekle</button>
+                            </div>
                         </div>
 
-                        <div class="form-actions" style="margin-top: 2rem;">
+                        <div class="mt-4 d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" onclick="location.href='urun-listesi.html'">[C] İptal</button>
                             <button type="submit" class="btn btn-success btn-lg">[S] Ürünü Kaydet</button>
-                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='urun-listesi.html'">[C] İptal</button>
                         </div>
                     </form>
                 </div>
             </main>
         </div>
 
-        <footer class="app-footer">
-            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        <footer class="app-footer bg-light p-3 text-center border-top mt-auto">
+            <p class="mb-0">&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
         </footer>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Theme and logout
             const themeToggle = document.getElementById('theme-toggle');
             if(themeToggle) { /* ... */ }
             const logoutButton = document.getElementById('logout-button');
             if(logoutButton) { /* ... */ }
-             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+            document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
                     const isActiveSubmenu = submenu.querySelector('a.active') !== null;
@@ -173,11 +216,10 @@
 
             const addMetricRowBtn = document.getElementById('addMetricRow');
             const metricCriteriaBody = document.getElementById('metricCriteriaBody');
-            let metricCounter = 0;
+            let metricCounter = 1; // Start counter at 1 since row 0 is in HTML
 
             if (addMetricRowBtn && metricCriteriaBody) {
                 addMetricRowBtn.addEventListener('click', function() {
-                    metricCounter++;
                     const newRow = metricCriteriaBody.insertRow();
                     newRow.innerHTML = `
                         <td><input type="text" name="metric_name_${metricCounter}" class="form-control form-control-sm" placeholder="Örn: Uzunluk A"></td>
@@ -187,22 +229,23 @@
                         <td><input type="number" step="any" name="metric_upper_limit_${metricCounter}" class="form-control form-control-sm" readonly placeholder="Oto"></td>
                         <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
                     `;
+                    metricCounter++;
                 });
             }
 
             const addVisualRowBtn = document.getElementById('addVisualRow');
             const visualCriteriaBody = document.getElementById('visualCriteriaBody');
-            let visualCounter = 0;
+            let visualCounter = 1; // Start counter at 1
 
             if (addVisualRowBtn && visualCriteriaBody) {
                 addVisualRowBtn.addEventListener('click', function() {
-                    visualCounter++;
                     const newRow = visualCriteriaBody.insertRow();
                     newRow.innerHTML = `
                         <td><input type="text" name="visual_point_${visualCounter}" class="form-control form-control-sm" placeholder="Örn: Yüzeyde çizik var mı?"></td>
                         <td><input type="text" name="visual_expected_${visualCounter}" class="form-control form-control-sm" placeholder="Örn: Çizik olmamalı"></td>
                         <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
                     `;
+                    visualCounter++;
                 });
             }
 
@@ -234,7 +277,7 @@
                     }
                 });
             }
-            // Full theme and logout script for completeness
+            // Full theme and logout script
             if(themeToggle) {
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
@@ -245,14 +288,12 @@
                 applyTheme(savedTheme);
                 const themeSelector = document.getElementById('setting-theme-main');
                 if (themeSelector) themeSelector.value = savedTheme;
-
                 themeToggle.addEventListener('click', () => {
                     const currentTheme = document.documentElement.getAttribute('data-theme');
                     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                     applyTheme(newTheme);
                     if (themeSelector) themeSelector.value = newTheme;
                 });
-
                 if(themeSelector){
                     themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
                 }

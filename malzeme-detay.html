@@ -64,56 +64,78 @@
 
             <main class="page-content">
                 <div id="malzeme-detay-page">
-                    <header class="card-header d-flex justify-content-between align-items-center">
-                        <h1 id="malzeme-detay-title">Malzeme Detayları: Çelik Mil Ø20mm</h1>
-                        <div>
-                            <button class="btn btn-primary" onclick="location.href='malzeme-form.html?id=1'">[E] Düzenle</button>
-                            <button class="btn btn-secondary" onclick="location.href='malzeme-listesi.html'">[<] Listeye Dön</button>
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 id="malzeme-detay-title" class="h2">Malzeme Detayları: Çelik Mil Ø20mm</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <button class="btn btn-primary btn-sm me-2" onclick="location.href='malzeme-form.html?id=1'">[E] Düzenle</button>
+                            <button class="btn btn-secondary btn-sm" onclick="location.href='malzeme-listesi.html'">[<] Listeye Dön</button>
                         </div>
-                    </header>
+                    </div>
 
-                    <div class="card">
-                        <section class="detail-section">
-                            <h3>Genel Bilgiler</h3>
-                            <ul class="detail-list">
-                                <li><strong>Malzeme Adı:</strong> <span id="detay-malzeme-adi">Çelik Mil Ø20mm</span></li>
-                                <li><strong>Malzeme Kodu:</strong> <span id="detay-malzeme-kodu">MLZ-STL-001</span></li>
-                                <li><strong>Kategori:</strong> <span id="detay-malzeme-kategori">Metal</span></li>
-                                <li><strong>Birim:</strong> <span id="detay-malzeme-birim">Adet</span></li>
-                                <li><strong>Min Stok Seviyesi:</strong> <span id="detay-malzeme-min-stok">100</span></li>
-                                <li><strong>Varsayılan Depo:</strong> <span id="detay-malzeme-depo">Ana Depo - Raf C3</span></li>
-                                <li><strong>Tedarikçiler:</strong> <span id="detay-malzeme-tedarikci">Çelik A.Ş., MetalMax Ltd.</span></li>
-                                <li><strong>Açıklama:</strong> <span id="detay-malzeme-aciklama">Paslanmaz çelik, ısıl işlemli, yüksek mukavemetli mil.</span></li>
-                                <li><strong>Teknik Resim/Spesifikasyon:</strong> <a href="#" id="detay-teknik-resim-link" target="_blank">[P] MLZ-STL-001_spec.pdf</a></li>
-                            </ul>
-                        </section>
+                    <div class="card mb-4">
+                        <div class="card-header">Genel Bilgiler</div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Malzeme Adı</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-adi">Çelik Mil Ø20mm</span></dd>
 
-                        <section class="detail-section">
-                            <h3>Girdi Kalite Kontrol Kriterleri</h3>
-                            <h4 style="font-size: 1rem; color: var(--text-color); margin-top:0.5rem;">Metrik Kontroller</h4>
-                            <table class="data-table">
-                                <thead>
-                                    <tr><th>Ölçüm Adı</th><th>Ölçü (Birim)</th><th>Tolerans (+/-)</th><th>Alt Limit</th><th>Üst Limit</th></tr>
-                                </thead>
-                                <tbody id="detayMetricCriteriaBody">
-                                    <tr>
-                                        <td>Çap</td>
-                                        <td>20.00 (mm)</td>
-                                        <td>0.02</td>
-                                        <td>19.98</td>
-                                        <td>20.02</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Uzunluk</td>
-                                        <td>500.00 (mm)</td>
-                                        <td>0.10</td>
-                                        <td>499.90</td>
-                                        <td>500.10</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <h4 style="font-size: 1rem; color: var(--text-color); margin-top:1rem;">Görsel Kontroller</h4>
-                            <table class="data-table">
+                                <dt class="col-sm-3">Malzeme Kodu</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-kodu">MLZ-STL-001</span></dd>
+
+                                <dt class="col-sm-3">Kategori</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-kategori">Metal</span></dd>
+
+                                <dt class="col-sm-3">Birim</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-birim">Adet</span></dd>
+
+                                <dt class="col-sm-3">Min Stok Seviyesi</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-min-stok">100</span></dd>
+
+                                <dt class="col-sm-3">Varsayılan Depo</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-depo">Ana Depo - Raf C3</span></dd>
+
+                                <dt class="col-sm-3">Tedarikçiler</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-tedarikci">Çelik A.Ş., MetalMax Ltd.</span></dd>
+
+                                <dt class="col-sm-3">Açıklama</dt>
+                                <dd class="col-sm-9"><span id="detay-malzeme-aciklama">Paslanmaz çelik, ısıl işlemli, yüksek mukavemetli mil.</span></dd>
+
+                                <dt class="col-sm-3">Teknik Resim/Spesifikasyon</dt>
+                                <dd class="col-sm-9"><a href="#" id="detay-teknik-resim-link" target="_blank">[P] MLZ-STL-001_spec.pdf</a></dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">Girdi Kalite Kontrol Kriterleri</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Metrik Kontroller</h5>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered table-striped">
+                                    <thead class="table-light">
+                                        <tr><th>Ölçüm Adı</th><th>Ölçü (Birim)</th><th>Tolerans (+/-)</th><th>Alt Limit</th><th>Üst Limit</th></tr>
+                                    </thead>
+                                    <tbody id="detayMetricCriteriaBody">
+                                        <tr>
+                                            <td>Çap</td>
+                                            <td>20.00 (mm)</td>
+                                            <td>0.02</td>
+                                            <td>19.98</td>
+                                            <td>20.02</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Uzunluk</td>
+                                            <td>500.00 (mm)</td>
+                                            <td>0.10</td>
+                                            <td>499.90</td>
+                                            <td>500.10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h5 class="card-title mt-3">Görsel Kontroller</h5>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-bordered table-striped">
                                 <thead>
                                     <tr><th>Kontrol Noktası / Soru</th><th>Beklenen Değer / Açıklama</th></tr>
                                 </thead>

@@ -50,38 +50,42 @@
 
             <main class="page-content">
                 <div class="card">
-                    <div class="card-header">
-                        <h1>İş Emri Listesi</h1>
-                    </div>
-
-                    <div class="filters-section card" style="background-color: var(--light-color); margin-bottom: 1rem; padding: 1rem;">
-                        <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
-                        <div class="form-grid" style="gap: 0.5rem;">
-                            <div class="form-group">
-                                <input type="text" id="search-isemri-no" class="form-control" placeholder="İş Emri No / Lot No ile ara...">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="search-musteri-adi" class="form-control" placeholder="Müşteri adı ile ara...">
-                            </div>
-                            <div class="form-group">
-                                <select id="filter-isemri-durum" class="form-control">
-                                    <option value="">Tüm Durumlar</option>
-                                    <option value="planlandi">Planlandı</option>
-                                    <option value="uretimde">Üretimde</option>
-                                    <option value="tamamlandi">Tamamlandı</option>
-                                    <option value="sevk_edildi">Sevk Edildi</option>
-                                    <option value="iptal">İptal</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-secondary">[F] Filtrele</button>
-                        </div>
-                    </div>
-
-                    <div class="form-actions" style="justify-content: flex-end; margin-bottom: 1rem;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h1 class="h2">İş Emri Listesi</h1>
                         <button class="btn btn-primary" onclick="location.href='is-emri-form.html'">[+] Yeni İş Emri Oluştur</button>
                     </div>
+                    <div class="card-body">
+                        <form class="filters-section mb-3 p-3 border rounded bg-light">
+                            <h5 class="mb-3">Filtrele</h5>
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-4">
+                                    <label for="search-isemri-no" class="form-label visually-hidden">İş Emri No/Lot No</label>
+                                    <input type="text" id="search-isemri-no" class="form-control form-control-sm" placeholder="İş Emri No / Lot No ile ara...">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="search-musteri-adi" class="form-label visually-hidden">Müşteri Adı</label>
+                                    <input type="text" id="search-musteri-adi" class="form-control form-control-sm" placeholder="Müşteri adı ile ara...">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="filter-isemri-durum" class="form-label visually-hidden">Durum</label>
+                                    <select id="filter-isemri-durum" class="form-select form-select-sm">
+                                        <option value="" selected>Tüm Durumlar</option>
+                                        <option value="planlandi">Planlandı</option>
+                                        <option value="uretimde">Üretimde</option>
+                                        <option value="tamamlandi">Tamamlandı</option>
+                                        <option value="sevk_edildi">Sevk Edildi</option>
+                                        <option value="iptal">İptal</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-secondary btn-sm w-100">[F] Filtrele</button>
+                                </div>
+                            </div>
+                        </form>
 
-                    <table class="data-table">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="table-dark">
                         <thead>
                             <tr>
                                 <th>İş Emri No</th>

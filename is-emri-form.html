@@ -50,93 +50,99 @@
 
             <main class="page-content">
                 <div id="is-emri-form-page">
-                    <header class="card-header">
-                        <h1 id="is-emri-page-title">Yeni İş Emri Oluştur</h1>
+                    <header class="card-header mb-3">
+                        <h1 id="is-emri-page-title" class="h2">Yeni İş Emri Oluştur</h1>
                     </header>
 
                     <form class="card" id="workOrderForm">
-                        <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Genel Bilgiler</div>
-                        <div class="form-grid" style="padding-top:1rem;">
-                            <div class="form-group">
-                                <label for="is-emri-no">İş Emri No</label>
-                                <input type="text" id="is-emri-no" name="is-emri-no" class="form-control" placeholder="Örn: IEM-003 (Otomatik atanabilir)">
-                            </div>
-                            <div class="form-group">
-                                <label for="lot-no">Lot Numarası</label>
-                                <input type="text" id="lot-no" name="lot-no" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="musteri-secimi">Müşteri</label>
-                                <select id="musteri-secimi" name="musteri-secimi" class="form-control">
-                                    <option value="">Müşteri Seçiniz...</option>
-                                    <option value="MUS-001">ABC Teknoloji A.Ş.</option>
-                                    <option value="MUS-002">DEF Makina San. Tic. Ltd. Şti.</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="musteri-siparis-no">Müşteri Sipariş No</label>
-                                <input type="text" id="musteri-siparis-no" name="musteri-siparis-no" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="planlanan-uretim-tarihi">Planlanan Üretim Tarihi</label>
-                                <input type="date" id="planlanan-uretim-tarihi" name="planlanan-uretim-tarihi" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="planlanan-sevk-tarihi">Planlanan Sevk Tarihi</label>
-                                <input type="date" id="planlanan-sevk-tarihi" name="planlanan-sevk-tarihi" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="olusturma-tarihi">Oluşturma Tarihi</label>
-                                <input type="date" id="olusturma-tarihi" name="olusturma-tarihi" class="form-control" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="isemri-durum">Durumu</label>
-                                <select id="isemri-durum" name="isemri-durum" class="form-control">
-                                    <option value="planlandi">Planlandı</option>
-                                    <option value="uretimde">Üretimde</option>
-                                    <option value="tamamlandi">Tamamlandı</option>
-                                    <option value="sevk_edildi">Sevk Edildi</option>
-                                    <option value="iptal">İptal</option>
-                                </select>
-                            </div>
-                            <div class="form-group form-group-full">
-                                <label for="isemri-aciklamalar">Açıklamalar</label>
-                                <textarea id="isemri-aciklamalar" name="isemri-aciklamalar" class="form-control" rows="3"></textarea>
+                        <div class="card-header">Genel Bilgiler</div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="is-emri-no" class="form-label">İş Emri No</label>
+                                    <input type="text" id="is-emri-no" name="is-emri-no" class="form-control form-control-sm" placeholder="Örn: IEM-003 (Otomatik atanabilir)">
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="lot-no" class="form-label">Lot Numarası</label>
+                                    <input type="text" id="lot-no" name="lot-no" class="form-control form-control-sm" required>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="musteri-secimi" class="form-label">Müşteri</label>
+                                    <select id="musteri-secimi" name="musteri-secimi" class="form-select form-select-sm">
+                                        <option value="" selected>Müşteri Seçiniz...</option>
+                                        <option value="MUS-001">ABC Teknoloji A.Ş.</option>
+                                        <option value="MUS-002">DEF Makina San. Tic. Ltd. Şti.</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="musteri-siparis-no" class="form-label">Müşteri Sipariş No</label>
+                                    <input type="text" id="musteri-siparis-no" name="musteri-siparis-no" class="form-control form-control-sm">
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="planlanan-uretim-tarihi" class="form-label">Planlanan Üretim Tarihi</label>
+                                    <input type="date" id="planlanan-uretim-tarihi" name="planlanan-uretim-tarihi" class="form-control form-control-sm">
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="planlanan-sevk-tarihi" class="form-label">Planlanan Sevk Tarihi</label>
+                                    <input type="date" id="planlanan-sevk-tarihi" name="planlanan-sevk-tarihi" class="form-control form-control-sm">
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="olusturma-tarihi" class="form-label">Oluşturma Tarihi</label>
+                                    <input type="date" id="olusturma-tarihi" name="olusturma-tarihi" class="form-control form-control-sm" readonly>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <label for="isemri-durum" class="form-label">Durumu</label>
+                                    <select id="isemri-durum" name="isemri-durum" class="form-select form-select-sm">
+                                        <option value="planlandi">Planlandı</option>
+                                        <option value="uretimde">Üretimde</option>
+                                        <option value="tamamlandi">Tamamlandı</option>
+                                        <option value="sevk_edildi">Sevk Edildi</option>
+                                        <option value="iptal">İptal</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="isemri-aciklamalar" class="form-label">Açıklamalar</label>
+                                    <textarea id="isemri-aciklamalar" name="isemri-aciklamalar" class="form-control form-control-sm" rows="3"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="card" style="margin-top: 2rem;">
-                            <div class="card-header" style="font-size: 1.1rem; background-color: #f0f0f0;">Ürün Bilgileri</div>
-                            <table class="data-table product-lines-table" style="margin-top:1rem;">
-                                <thead>
-                                    <tr>
-                                        <th>Ürün Seçimi</th>
-                                        <th style="width:100px;">Adet</th>
-                                        <th style="width:100px;">Birim</th>
-                                        <th style="width:50px;">İşlem</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="productLinesBody">
-                                    <tr>
-                                        <td>
-                                            <select name="product_0" class="form-control form-control-sm">
-                                                <option value="">Ürün Seçiniz...</option>
-                                                <option value="EM-XYZ-100" data-birim="Adet">Endüksiyon Motoru XYZ-100</option>
-                                                <option value="HDS-045" data-birim="Set">Helisel Dişli Seti</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" name="quantity_0" class="form-control form-control-sm" value="1" min="1"></td>
-                                        <td><input type="text" name="unit_0" class="form-control form-control-sm" readonly value="Adet"></td>
-                                        <td><button type="button" class="btn btn-sm btn-danger remove-row">[X]</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button type="button" class="btn btn-sm btn-info mt-2" id="addProductLine">[+] Ürün Satırı Ekle</button>
+                        <div class="card mt-3">
+                            <div class="card-header">Ürün Bilgileri</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered product-lines-table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Ürün Seçimi</th>
+                                                <th style="width:120px;">Adet</th>
+                                                <th style="width:100px;">Birim</th>
+                                                <th style="width:80px;">İşlem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="productLinesBody">
+                                            <tr>
+                                                <td>
+                                                    <select name="product_0" class="form-select form-select-sm">
+                                                        <option value="" selected>Ürün Seçiniz...</option>
+                                                        <option value="EM-XYZ-100" data-birim="Adet">Endüksiyon Motoru XYZ-100</option>
+                                                        <option value="HDS-045" data-birim="Set">Helisel Dişli Seti</option>
+                                                    </select>
+                                                </td>
+                                                <td><input type="number" name="quantity_0" class="form-control form-control-sm" value="1" min="1"></td>
+                                                <td><input type="text" name="unit_0" class="form-control form-control-sm" readonly value="Adet"></td>
+                                                <td><button type="button" class="btn btn-sm btn-outline-danger remove-row">[X]</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-info mt-2" id="addProductLine">[+] Ürün Satırı Ekle</button>
+                            </div>
                         </div>
 
-                        <div class="form-actions" style="margin-top: 2rem;">
+                        <div class="card-footer text-end mt-3">
+                            <button type="button" class="btn btn-secondary me-2" onclick="location.href='is-emri-listesi.html'">[C] İptal</button>
                             <button type="submit" class="btn btn-success btn-lg">[S] İş Emrini Kaydet</button>
-                            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='is-emri-listesi.html'">[C] İptal</button>
                         </div>
                     </form>
                 </div>

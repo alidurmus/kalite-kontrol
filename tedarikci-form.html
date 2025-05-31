@@ -50,48 +50,49 @@
 
             <main class="page-content">
                 <div id="tedarikci-form-page">
-                    <header class="card-header">
-                        <h1 id="tedarikci-page-title">Yeni Tedarikçi Ekle</h1>
+                    <header class="card-header mb-3">
+                        <h1 id="tedarikci-page-title" class="h2">Yeni Tedarikçi Ekle</h1>
                     </header>
                     <form class="card" id="supplierForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="tedarikci-adi">Tedarikçi Adı</label>
-                                <input type="text" id="tedarikci-adi" name="tedarikci-adi" class="form-control" required>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-adi" class="form-label">Tedarikçi Adı</label>
+                                    <input type="text" id="tedarikci-adi" name="tedarikci-adi" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-kodu" class="form-label">Tedarikçi Kodu</label>
+                                    <input type="text" id="tedarikci-kodu" name="tedarikci-kodu" class="form-control" required>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="tedarikci-aciklama" class="form-label">Açıklama</label>
+                                    <textarea id="tedarikci-aciklama" name="tedarikci-aciklama" class="form-control" rows="3"></textarea>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="tedarikci-kodu">Tedarikçi Kodu</label>
-                                <input type="text" id="tedarikci-kodu" name="tedarikci-kodu" class="form-control" required>
-                            </div>
-                            <div class="form-group form-group-full">
-                                <label for="tedarikci-aciklama">Açıklama</label>
-                                <textarea id="tedarikci-aciklama" name="tedarikci-aciklama" class="form-control" rows="3"></textarea>
+
+                            <h5 class="mt-4 mb-3 text-muted">İletişim ve Diğer Bilgiler (Placeholder)</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-adres" class="form-label">Adres</label>
+                                    <input type="text" id="tedarikci-adres" name="tedarikci-adres" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
+                                 <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-telefon" class="form-label">Telefon</label>
+                                    <input type="text" id="tedarikci-telefon" name="tedarikci-telefon" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-email" class="form-label">E-posta</label>
+                                    <input type="email" id="tedarikci-email" name="tedarikci-email" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
+                                 <div class="col-md-6 mb-3">
+                                    <label for="tedarikci-vergi-no" class="form-label">Vergi No</label>
+                                    <input type="text" id="tedarikci-vergi-no" name="tedarikci-vergi-no" class="form-control" disabled placeholder="Yakında eklenecek...">
+                                </div>
                             </div>
                         </div>
-
-                        <h3 style="margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.1rem; color:var(--secondary-color);">İletişim ve Diğer Bilgiler (Placeholder)</h3>
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="tedarikci-adres">Adres</label>
-                                <input type="text" id="tedarikci-adres" name="tedarikci-adres" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                             <div class="form-group">
-                                <label for="tedarikci-telefon">Telefon</label>
-                                <input type="text" id="tedarikci-telefon" name="tedarikci-telefon" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                            <div class="form-group">
-                                <label for="tedarikci-email">E-posta</label>
-                                <input type="email" id="tedarikci-email" name="tedarikci-email" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                             <div class="form-group">
-                                <label for="tedarikci-vergi-no">Vergi No</label>
-                                <input type="text" id="tedarikci-vergi-no" name="tedarikci-vergi-no" class="form-control" disabled placeholder="Yakında eklenecek...">
-                            </div>
-                        </div>
-
-                        <div class="form-actions" style="margin-top: 2rem;">
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" onclick="location.href='tedarikci-listesi.html'">[C] İptal</button>
                             <button type="submit" class="btn btn-success">[S] Kaydet</button>
-                            <button type="button" class="btn btn-secondary" onclick="location.href='tedarikci-listesi.html'">[C] İptal</button>
                         </div>
                     </form>
                 </div>

@@ -49,30 +49,34 @@ body {
     line-height: 1.6;
     /* Ensure body takes full height for gradient if not using app-container for it */
     /* background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
-    /* display: flex; flex-direction: column; min-height: 100vh; */ /* Moved to .app-container */
+    /* display: flex; flex-direction: column; min-height: 100vh; */
 }
 
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    /* display: flex; */ /* Handled by Bootstrap .d-flex on body if needed, or naturally block */
+    /* flex-direction: column; */ /* Handled by Bootstrap .flex-column on body if needed */
+    /* min-height: 100vh; */ /* Handled by Bootstrap .min-vh-100 on body or html/body */
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Gradient on the main container */
 }
 
+/* .app-header is now a Bootstrap navbar, so most direct styling here might be redundant */
+/* Specific overrides for the navbar can remain if needed */
 .app-header {
-    background-color: var(--header-bg);
-    color: var(--header-text);
-    padding: 0.8rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    /* border-bottom: 1px solid var(--card-border); */ /* Removed to blend with gradient if header is transparent */
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent header */
+    /* background-color: var(--header-bg); */ /* Set by navbar-dark bg-primary or similar */
+    /* color: var(--header-text); */ /* Set by navbar-dark */
+    /* padding: 0.8rem 1.5rem; */ /* Navbar has its own padding */
+    /* display: flex; */ /* Navbar handles this */
+    /* justify-content: space-between; */ /* Navbar handles this */
+    /* align-items: center; */ /* Navbar handles this */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */ /* Navbar might have its own shadow or use Bootstrap shadow utils */
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Ensure custom background overrides Bootstrap if navbar bg- is also used */
     backdrop-filter: blur(10px);
-    color: white; /* Assuming text on gradient needs to be light */
+    color: white; /* Ensure text color is white for this custom header */
 }
-.app-header h1 {
+.navbar-brand, .navbar-nav .nav-link, .navbar-text {
+    color: white !important; /* Override Bootstrap's default link colors for this custom header */
+}
+.app-header h1 { /* If h1 is still used directly instead of navbar-brand */
     margin: 0;
     font-size: 1.5rem;
 }
@@ -89,106 +93,80 @@ body {
 }
 
 .app-main {
-    display: flex;
-    flex-grow: 1;
-    /* overflow: hidden; */ /* To ensure sidebar and content don't cause body scroll */
+    /* display: flex; */ /* Handled by Bootstrap .row */
+    /* flex-grow: 1; */ /* Handled by Bootstrap .row and .col */
+    /* overflow: hidden; */
 }
 
 .app-sidebar {
-    width: 250px;
-    background-color: var(--sidebar-bg); /* Use CSS var */
-    color: var(--sidebar-text); /* Use CSS var */
-    padding: 1rem;
-    height: calc(100vh - 60px); /* Adjust 60px based on actual header height */
-    overflow-y: auto;
-    position: sticky; /* Sticky sidebar */
-    top: 60px; /* Adjust based on header height */
-    transition: width 0.3s ease;
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    /* width: 250px; */ /* Handled by col-lg-2 col-md-3 */
+    background-color: var(--sidebar-bg) !important; /* Ensure custom bg overrides Bootstrap if light/dark classes are on sidebar */
+    color: var(--sidebar-text) !important;
+    /* padding: 1rem; */ /* Handled by Bootstrap p-3 */
+    /* height: calc(100vh - 60px); */ /* Flex grow on .app-main and .app-container handles height */
+    /* overflow-y: auto; */ /* Bootstrap can handle this with .overflow-auto if needed on the ul */
+    /* position: sticky; */ /* Bootstrap .sticky-top can be used if desired */
+    /* top: 60px; */
+    /* transition: width 0.3s ease; */ /* Bootstrap doesn't do this by default */
+    /* flex-shrink: 0; */ /* Columns handle this */
 }
 
-.app-sidebar.collapsed { /* For potential collapsed state */
-    width: 60px;
+/* Styling for Bootstrap nav classes within our sidebar */
+.app-sidebar .nav-link {
+    /* color: var(--sidebar-text) !important; */ /* Already set by text-white */
+    border-radius: var(--border-radius);
+    margin-bottom: 0.3rem;
 }
-.app-sidebar.collapsed .nav-text {
-    display: none;
+.app-sidebar .nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
 }
-/* ... other .collapsed styles ... */
+.app-sidebar .nav-link.active {
+    background-color: var(--sidebar-active-bg) !important;
+    /* color: white !important; */ /* Already set by text-white + Bootstrap active state on nav-pills */
+    font-weight: bold;
+}
+.app-sidebar .submenu .nav-link {
+    font-size: 0.9em;
+    padding: 0.5rem 1rem; /* Keep custom padding for submenu items */
+}
+.app-sidebar .submenu {
+     background-color: rgba(0,0,0,0.1); /* Slightly different bg for submenu */
+     border-radius: var(--border-radius);
+}
 
 
 .page-content {
-    flex-grow: 1;
-    padding: 1.5rem 2rem;
-    overflow-y: auto;
-    background-color: var(--background-color); /* Content area has its own background */
-    color: var(--text-color); /* Content area text color */
+    /* flex-grow: 1; */ /* Handled by Bootstrap .col */
+    /* padding: 1.5rem 2rem; */ /* Handled by Bootstrap p-4 */
+    /* overflow-y: auto; */ /* Already on the main element in HTML */
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .app-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: var(--header-bg); /* Similar to header */
-    color: var(--header-text);
-    border-top: 1px solid var(--card-border);
-    /* background-color: rgba(255, 255, 255, 0.1); */ /* Optional: Transparent footer */
-    /* color: white; */
+    /* text-align: center; */ /* Handled by Bootstrap .text-center */
+    /* padding: 1rem; */ /* Handled by Bootstrap p-3 */
+    /* background-color: var(--header-bg); */ /* Handled by Bootstrap .bg-light */
+    /* color: var(--header-text); */
+    /* border-top: 1px solid var(--card-border); */ /* Handled by Bootstrap .border-top */
 }
 
 
-/* Styles from the SPA to be integrated/reused */
-.sidebar-nav { /* This was the SPA sidebar, now it's .app-sidebar */
-    /* Styles from .sidebar-nav can be merged into .app-sidebar */
-}
-.sidebar-menu { /* New class for the ul in app-sidebar */
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.sidebar-menu li a {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    color: var(--sidebar-text);
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    margin-bottom: 0.3rem;
-    transition: background-color 0.2s, color 0.2s;
-}
-.sidebar-menu li a:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-.sidebar-menu li a.active {
-    background-color: var(--sidebar-active-bg);
-    color: white;
-    font-weight: bold;
-}
-.sidebar-menu li a svg { /* If using SVGs for icons */
-    margin-right: 0.8rem;
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-.sidebar-menu .submenu {
-    list-style-type: none;
-    padding-left: 1.5rem; /* Indent submenu */
-    max-height: 0; /* Initially hidden */
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-.sidebar-menu li:hover > .submenu,
-.sidebar-menu li.open > .submenu { /* For click-to-open */
-    max-height: 500px; /* Adjust as needed */
-}
-.sidebar-menu .submenu li a {
-    font-size: 0.9em;
-    padding: 0.5rem 1rem;
-}
+/* Remove original .sidebar-menu styles as Bootstrap .nav handles it */
+/* .sidebar-menu { ... } */
+/* .sidebar-menu li a { ... } */
+/* .sidebar-menu li a:hover { ... } */
+/* .sidebar-menu li a.active { ... } */
+/* .sidebar-menu li a svg { ... } */
+/* .sidebar-menu .submenu { ... } */
+/* .sidebar-menu li:hover > .submenu, */
+/* .sidebar-menu li.open > .submenu { ... } */
+/* .sidebar-menu .submenu li a { ... } */
 
 
-.main-content { /* This was the SPA main content area, now it's .page-content */
-    /* Styles can be merged */
-}
-.page {
+/* .main-content specific styles are now part of .page-content or individual .page elements */
+
+.page { /* Keep page transition */
     display: none;
 }
 .page.active {
@@ -216,9 +194,9 @@ body {
     border-bottom: 1px solid var(--card-border);
 }
 
-.form-group { margin-bottom: 1rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
-.form-group input[type="text"],
+/* .form-group { margin-bottom: 1rem; } */ /* Replaced by Bootstrap .mb-3 */
+/* .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; } */ /* Replaced by Bootstrap .form-label */
+/* .form-group input[type="text"],
 .form-group input[type="password"],
 .form-group input[type="email"],
 .form-group input[type="number"],
@@ -233,8 +211,8 @@ body {
     background-color: var(--card-bg);
     color: var(--text-color);
     box-sizing: border-box;
-}
-.form-group textarea { resize: vertical; min-height: 80px; }
+} */ /* Replaced by Bootstrap .form-control, .form-select */
+/* .form-group textarea { resize: vertical; min-height: 80px; } */
 
 .btn {
     display: inline-block;
@@ -263,18 +241,20 @@ body {
 .btn-lg { padding: 0.75rem 1.5rem; font-size: 1.1rem; }
 .form-actions { margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end; }
 
-.data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background-color: var(--card-bg); }
-.data-table th, .data-table td { border: 1px solid var(--card-border); padding: 0.75rem 1rem; text-align: left; }
-.data-table thead th { background-color: color-mix(in srgb, var(--card-bg) 90%, var(--secondary-color)); font-weight: 600; }
-.data-table tbody tr:nth-child(even) { background-color: color-mix(in srgb, var(--card-bg) 95%, var(--background-color)); }
-.data-table tbody tr:hover { background-color: color-mix(in srgb, var(--card-bg) 85%, var(--background-color)); }
-.data-table .action-link { color: var(--primary-color); text-decoration: none; margin-right: 0.5rem; }
+/* Custom .data-table styles are largely replaced by Bootstrap's .table classes */
+/* .data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; background-color: var(--card-bg); } */
+/* .data-table th, .data-table td { border: 1px solid var(--card-border); padding: 0.75rem 1rem; text-align: left; } */
+/* .data-table thead th { background-color: color-mix(in srgb, var(--card-bg) 90%, var(--secondary-color)); font-weight: 600; } */
+/* .data-table tbody tr:nth-child(even) { background-color: color-mix(in srgb, var(--card-bg) 95%, var(--background-color)); } */
+/* .data-table tbody tr:hover { background-color: color-mix(in srgb, var(--card-bg) 85%, var(--background-color)); } */
+/* Specific content styling within tables can be kept if needed */
+.data-table .action-link { color: var(--primary-color); text-decoration: none; margin-right: 0.5rem; } /* Keep for specific link styling if not using btn-link */
 .data-table .action-link:hover { text-decoration: underline; }
-.data-table .status-active, .data-table .status-pass { color: var(--success-color); font-weight: bold; }
-.data-table .status-inactive, .data-table .status-fail { color: var(--danger-color); font-weight: bold; }
+.data-table .status-active, .data-table .status-pass { color: var(--success-color); font-weight: bold; } /* Keep for status text colors */
+.data-table .status-inactive, .data-table .status-fail { color: var(--danger-color); font-weight: bold; } /* Keep for status text colors */
 
-.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.dashboard-card { padding: 1rem; }
+/* .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; } */ /* Handled by Bootstrap .row and .col classes */
+.dashboard-card { padding: 1rem; } /* This can be kept if it's for specific content padding inside Bootstrap cards, though .card-body might be preferred */
 .dashboard-card .count { font-size: 2rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem; text-align: center; }
 .dashboard-card .card-link { display: block; text-decoration: none; color: var(--primary-color); font-weight: 500; margin-top: 0.75rem; text-align: right; }
 .dashboard-card .card-link:hover { text-decoration: underline; }
@@ -306,13 +286,13 @@ body {
 .station-card .station-kpis { font-size: 0.85em; margin-bottom: 1rem; padding-top: 0.5em; border-top: 1px solid var(--card-border); }
 .station-card .station-kpis p { margin: 0.3em 0; }
 
-.config-layout-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-@media (min-width: 992px) { .config-layout-grid { grid-template-columns: 1fr 2fr; } }
-.filters-grid, .parameters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+/* .config-layout-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; } */ /* Replaced by Bootstrap row/col for responsive layout */
+/* @media (min-width: 992px) { .config-layout-grid { grid-template-columns: 1fr 2fr; } } */
+/* .filters-grid, .parameters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; } */ /* Replaced by Bootstrap row/col for responsive layout */
 .preview-placeholder { width:100%; min-height:200px; border:1px dashed var(--card-border); display:flex; align-items:center; justify-content:center; text-align:center; margin-top:1em; background-color: color-mix(in srgb, var(--card-bg) 95%, var(--background-color)); border-radius: var(--border-radius); }
 
-.settings-section .form-group { margin-bottom: 1.25em; }
-.settings-section .form-actions { margin-top: 1.5em; }
+/* .settings-section .form-group { margin-bottom: 1.25em; } */ /* Bootstrap .mb-3 should be used on form groups */
+/* .settings-section .form-actions { margin-top: 1.5em; } */ /* Bootstrap .mt- utility classes for spacing */
 
 /* Utility */
 .text-center { text-align: center; }
