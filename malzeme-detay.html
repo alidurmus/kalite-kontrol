@@ -17,7 +17,7 @@
         .detail-list { list-style-type: none; padding-left: 0; }
         .detail-list li { padding: 0.3rem 0; border-bottom: 1px dotted var(--card-border); }
         .detail-list li:last-child { border-bottom: none; }
-        .detail-list strong { margin-right: 0.5rem; color: var(--secondary-color); } /* Label color */
+        .detail-list strong { margin-right: 0.5rem; color: var(--secondary-color); }
     </style>
 </head>
 <body>
@@ -46,7 +46,14 @@
                             <li><a href="#">Proses Kategori Tanımları</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Kalite Kontrol Formları</a> <ul class="submenu"></ul></li>
+                    <li>
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu">
+                            <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
                     <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
                     <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
@@ -131,12 +138,11 @@
         </footer>
     </div>
     <script>
-        // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
-            if(themeToggle) { /* ... full theme logic ... */ }
+            if(themeToggle) { /* ... */ }
             const logoutButton = document.getElementById('logout-button');
-            if(logoutButton) { /* ... full logout logic ... */ }
+            if(logoutButton) { /* ... */ }
             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
@@ -160,27 +166,20 @@
                 }
             });
 
-            // Simulate data loading based on URL parameter
             const urlParams = new URLSearchParams(window.location.search);
             const malzemeId = urlParams.get('id');
             const malzemeDetayTitle = document.getElementById('malzeme-detay-title');
 
             if (malzemeId && malzemeDetayTitle) {
-                // In a real app, fetch data for malzemeId
                 if (malzemeId === "1") {
                     malzemeDetayTitle.textContent = "Malzeme Detayları: Çelik Mil Ø20mm";
-                    // Populate other fields like #detay-malzeme-adi etc.
                 } else if (malzemeId === "2") {
                     malzemeDetayTitle.textContent = "Malzeme Detayları: ABS Granül Siyah";
-                    document.getElementById('detay-malzeme-adi').textContent = "ABS Granül Siyah";
-                    document.getElementById('detay-malzeme-kodu').textContent = "MLZ-PLS-005";
-                    document.getElementById('detay-malzeme-kategori').textContent = "Plastik";
-                    // ... and so on
                 } else {
                     malzemeDetayTitle.textContent = "Malzeme Detayları: Bilinmeyen Malzeme";
                 }
             }
-             // Full theme logic for completeness on this page
+            // Full theme and logout script for completeness
             if(themeToggle) {
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
@@ -199,11 +198,14 @@
                     if (themeSelector) themeSelector.value = newTheme;
                 });
 
-                if(themeSelector){ // If a theme selector dropdown exists on *this* page (e.g. settings)
-                    themeSelector.addEventListener('change', function(){
-                        applyTheme(this.value);
-                    });
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
                 }
+            }
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                });
             }
         });
     </script>

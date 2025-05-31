@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girdi Kontrol Formları - Intermeks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Kalite Kontrol & Üretim Takip Sistemi</h1>
+            <div>
+                <button id="theme-toggle" title="Temayı Değiştir">☀️</button>
+                <button id="logout-button" class="btn btn-sm btn-danger">Çıkış Yap</button>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <aside class="app-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
+                    <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
+                    <li>
+                        <a href="#">Tanımlamalar</a>
+                        <ul class="submenu">
+                            <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
+                            <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
+                            <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
+                            <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
+                            <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
+                            <li><a href="#">Proses Kategori Tanımları</a></li>
+                        </ul>
+                    </li>
+                    <li class="open"> {/* Kalite Kontrol Formları open */}
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu" style="max-height: 500px;">
+                            <li><a href="girdi-kontrol-formu-listesi.html" class="active">Girdi Kontrol Formu (Malzeme)</a></li> {/* Active link */}
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Üretim Süreci İzleme</a></li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
+                </ul>
+            </aside>
+
+            <main class="page-content">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h1>Girdi Kontrol Formları Listesi</h1>
+                        <button class="btn btn-primary" onclick="location.href='girdi-kontrol-formu-ekle.html'">[+] Yeni Girdi Kontrol Formu</button>
+                    </div>
+
+                    <div class="filters-section card" style="background-color: var(--light-color); margin-top: 1rem; margin-bottom: 1rem; padding: 1rem;">
+                        <h3 style="margin-top:0; margin-bottom: 0.75rem;">Filtrele</h3>
+                        <form class="form-grid" style="gap: 0.5rem;">
+                            <div class="form-group">
+                                <label for="filter-malzeme">Malzeme</label>
+                                <select id="filter-malzeme" class="form-control">
+                                    <option value="">Tüm Malzemeler</option>
+                                    <option value="MLZ-STL-001">Çelik Mil Ø20mm</option>
+                                    <option value="MLZ-PLS-005">ABS Granül Siyah</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-tedarikci">Tedarikçi</label>
+                                <select id="filter-tedarikci" class="form-control">
+                                    <option value="">Tüm Tedarikçiler</option>
+                                    <option value="TED-MET-001">Metal Fabrikası A.Ş.</option>
+                                    <option value="TED-PLS-002">Plastik Enjeksiyon Ltd.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-kontrol-tarihi-bas">Kontrol Tarihi Başlangıç</label>
+                                <input type="date" id="filter-kontrol-tarihi-bas" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-kontrol-tarihi-bit">Kontrol Tarihi Bitiş</label>
+                                <input type="date" id="filter-kontrol-tarihi-bit" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-genel-sonuc">Genel Sonuç</label>
+                                <select id="filter-genel-sonuc" class="form-control">
+                                    <option value="">Tümü</option>
+                                    <option value="kabul">Kabul Edildi</option>
+                                    <option value="sartli_kabul">Şartlı Kabul Edildi</option>
+                                    <option value="red">Reddedildi</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="search-gkf">Arama (Kontrol No, Parti, İrsaliye)</label>
+                                <input type="text" id="search-gkf" class="form-control" placeholder="No, parti, irsaliye...">
+                            </div>
+                            <div class="form-actions" style="grid-column: 1 / -1; justify-content: flex-start;"> {/* Span across all columns */}
+                                <button type="submit" class="btn btn-secondary">[F] Filtrele</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Kontrol No</th>
+                                <th>Malzeme Adı</th>
+                                <th>Tedarikçi Adı</th>
+                                <th>Parti No</th>
+                                <th>İrsaliye No</th>
+                                <th>Kontrol Tarihi</th>
+                                <th>Genel Sonuç</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>GKF-001</td>
+                                <td>Çelik Mil Ø20mm</td>
+                                <td>Metal Fabrikası A.Ş.</td>
+                                <td>PARTI-2023-A15</td>
+                                <td>IRS-98765</td>
+                                <td>2023-10-15</td>
+                                <td class="status-pass">Kabul Edildi</td>
+                                <td>
+                                    <a href="girdi-kontrol-formu-ekle.html?id=GKF-001&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
+                                    <a href="girdi-kontrol-formu-ekle.html?id=GKF-001" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-danger">[X] Sil</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GKF-002</td>
+                                <td>ABS Granül Siyah</td>
+                                <td>Plastik Enjeksiyon Ltd.</td>
+                                <td>PARTI-2023-B02</td>
+                                <td>IRS-98799</td>
+                                <td>2023-10-18</td>
+                                <td class="status-fail">Reddedildi</td>
+                                <td>
+                                    <a href="girdi-kontrol-formu-ekle.html?id=GKF-002&view=true" class="btn btn-sm btn-info">[i] Görüntüle</a>
+                                    <a href="girdi-kontrol-formu-ekle.html?id=GKF-002" class="btn btn-sm btn-secondary">[E] Düzenle</a>
+                                    <button class="btn btn-sm btn-danger">[X] Sil</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 Intermeks Kalite Kontrol Sistemi. Tüm Hakları Saklıdır.</p>
+        </footer>
+    </div>
+   <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Full theme and logout script
+            const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
+                });
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
+            }
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                    // window.location.href = 'login.html';
+                });
+            }
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') event.preventDefault();
+                        const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
+                        parentLi.classList.toggle('open');
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

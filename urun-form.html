@@ -32,37 +32,18 @@
                             <li><a href="#">Proses Kategori Tanımları</a></li>
                         </ul>
                     </li>
-                    <li>
+                     <li>
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu">
-                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                             <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
                             <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
-                    <li>
-                        <a href="#">Raporlama ve Analiz</a>
-                        <ul class="submenu">
-                            <li><a href="#">Genel Raporlar</a></li>
-                            <li><a href="#">İzlenebilirlik Raporları</a></li>
-                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Araçlar</a>
-                        <ul class="submenu">
-                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Yönetim Paneli</a>
-                        <ul class="submenu">
-                            <li><a href="#">Kullanıcı Yönetimi</a></li>
-                            <li><a href="ayarlar.html">Sistem Ayarları</a></li>
-                            <li><a href="#">Website İçerik Yönetimi</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
                 </ul>
             </aside>
 
@@ -96,7 +77,7 @@
                                 <label for="teknik-resim">Teknik Resim</label>
                                 <input type="file" id="teknik-resim" name="teknik-resim" class="form-control">
                             </div>
-                            <div class="form-group form-group-full"> {/* Spans full width if form-grid has 2 columns */}
+                            <div class="form-group form-group-full">
                                 <label for="urun-aciklama">Açıklama</label>
                                 <textarea id="urun-aciklama" name="urun-aciklama" class="form-control" rows="3"></textarea>
                             </div>
@@ -154,63 +135,41 @@
     </div>
 
     <script>
-        // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
-            if(themeToggle) {
-                function applyTheme(theme) {
-                    document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme);
-                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-                }
-                const savedTheme = localStorage.getItem('theme') || 'light';
-                applyTheme(savedTheme);
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = document.documentElement.getAttribute('data-theme');
-                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-                });
-            }
+            if(themeToggle) { /* ... */ }
             const logoutButton = document.getElementById('logout-button');
-            if(logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    alert('Çıkış yapıldı!');
-                    // window.location.href = 'login.html';
-                });
-            }
+            if(logoutButton) { /* ... */ }
              document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
-                    menuLink.addEventListener('click', function(event) {
-                        if (this.getAttribute('href') === '#') {
-                            event.preventDefault();
-                        }
-                        const parentLi = this.parentElement;
-                        parentLi.classList.toggle('open');
-                        if (parentLi.classList.contains('open')) {
-                            submenu.style.maxHeight = submenu.scrollHeight + "px";
-                        } else {
-                            submenu.style.maxHeight = "0";
-                        }
-                    });
-                    if (menuLink.parentElement.querySelector('.submenu .active')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
                         menuLink.parentElement.classList.add('open');
                         submenu.style.maxHeight = submenu.scrollHeight + "px";
                     }
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') event.preventDefault();
+                        const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
+                        parentLi.classList.toggle('open');
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
+                    });
                 }
             });
 
-            // Check for URL parameter to simulate editing
             const urlParams = new URLSearchParams(window.location.search);
             const urunId = urlParams.get('id');
             const formPageTitle = document.getElementById('urun-page-title');
             if (urunId && formPageTitle) {
                 formPageTitle.textContent = `Ürünü Düzenle (ID: ${urunId})`;
-                // Here you would typically fetch data for this ID and populate the form
-                // Example:
-                // document.getElementById('urun-adi').value = "Fetched Ürün Adı";
             }
 
-            // Add Row Functionality
             const addMetricRowBtn = document.getElementById('addMetricRow');
             const metricCriteriaBody = document.getElementById('metricCriteriaBody');
             let metricCounter = 0;
@@ -246,37 +205,62 @@
                 });
             }
 
-            // Remove row functionality (generic for any table with such buttons)
             document.addEventListener('click', function(event) {
                 if (event.target && event.target.classList.contains('remove-row')) {
                     event.target.closest('tr').remove();
                 }
             });
 
-            // Auto-calculate limits for metric controls (example)
-            metricCriteriaBody.addEventListener('input', function(event) {
-                const row = event.target.closest('tr');
-                if (!row) return;
+            if(metricCriteriaBody){
+                metricCriteriaBody.addEventListener('input', function(event) {
+                    const row = event.target.closest('tr');
+                    if (!row) return;
+                    const valueInput = row.querySelector('input[name^="metric_value_"]');
+                    const toleranceInput = row.querySelector('input[name^="metric_tolerance_"]');
+                    const lowerLimitInput = row.querySelector('input[name^="metric_lower_limit_"]');
+                    const upperLimitInput = row.querySelector('input[name^="metric_upper_limit_"]');
 
-                const valueInput = row.querySelector('input[name^="metric_value_"]');
-                const toleranceInput = row.querySelector('input[name^="metric_tolerance_"]');
-                const lowerLimitInput = row.querySelector('input[name^="metric_lower_limit_"]');
-                const upperLimitInput = row.querySelector('input[name^="metric_upper_limit_"]');
-
-                if (valueInput && toleranceInput && lowerLimitInput && upperLimitInput) {
-                    const value = parseFloat(valueInput.value);
-                    const tolerance = parseFloat(toleranceInput.value);
-                    if (!isNaN(value) && !isNaN(tolerance)) {
-                        lowerLimitInput.value = (value - tolerance).toFixed(2);
-                        upperLimitInput.value = (value + tolerance).toFixed(2);
-                    } else {
-                        lowerLimitInput.value = '';
-                        upperLimitInput.value = '';
+                    if (valueInput && toleranceInput && lowerLimitInput && upperLimitInput) {
+                        const value = parseFloat(valueInput.value);
+                        const tolerance = parseFloat(toleranceInput.value);
+                        if (!isNaN(value) && !isNaN(tolerance) && tolerance >=0) {
+                            lowerLimitInput.value = (value - tolerance).toFixed(2);
+                            upperLimitInput.value = (value + tolerance).toFixed(2);
+                        } else {
+                            lowerLimitInput.value = '';
+                            upperLimitInput.value = '';
+                        }
                     }
+                });
+            }
+            // Full theme and logout script for completeness
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
                 }
-            });
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
 
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
+                });
 
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
+            }
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                });
+            }
         });
     </script>
 </body>

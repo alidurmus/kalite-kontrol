@@ -35,8 +35,8 @@
                     <li>
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu">
-                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
                             <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
                         </ul>
                     </li>
@@ -171,11 +171,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Theme and logout (copied from urun-form.html)
             const themeToggle = document.getElementById('theme-toggle');
-            if(themeToggle) { /* ... */ } // Keep full theme logic
+            if(themeToggle) { /* ... */ }
             const logoutButton = document.getElementById('logout-button');
-            if(logoutButton) { /* ... */ } // Keep full logout logic
+            if(logoutButton) { /* ... */ }
             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
@@ -198,7 +197,6 @@
                     });
                 }
             });
-            // Form title update for editing
             const urlParams = new URLSearchParams(window.location.search);
             const malzemeId = urlParams.get('id');
             const formPageTitle = document.getElementById('malzeme-page-title');
@@ -206,7 +204,6 @@
                 formPageTitle.textContent = `Malzeme Düzenle (ID: ${malzemeId})`;
             }
 
-            // Add Row Functionality for Metric Criteria
             const addMetricRowBtn = document.getElementById('addMetricRow');
             const metricCriteriaBody = document.getElementById('metricCriteriaBody');
             let metricCounter = 1;
@@ -225,7 +222,6 @@
                 });
             }
 
-            // Add Row Functionality for Visual Criteria
             const addVisualRowBtn = document.getElementById('addVisualRow');
             const visualCriteriaBody = document.getElementById('visualCriteriaBody');
             let visualCounter = 1;
@@ -241,35 +237,35 @@
                 });
             }
 
-            // Remove row functionality
             document.addEventListener('click', function(event) {
                 if (event.target && event.target.classList.contains('remove-row')) {
                     event.target.closest('tr').remove();
                 }
             });
 
-            // Auto-calculate limits for metric controls
-            metricCriteriaBody.addEventListener('input', function(event) {
-                const row = event.target.closest('tr');
-                if (!row) return;
-                const valueInput = row.querySelector('input[name^="metric_value_"]');
-                const toleranceInput = row.querySelector('input[name^="metric_tolerance_"]');
-                const lowerLimitInput = row.querySelector('input[name^="metric_lower_limit_"]');
-                const upperLimitInput = row.querySelector('input[name^="metric_upper_limit_"]');
+            if(metricCriteriaBody){
+                metricCriteriaBody.addEventListener('input', function(event) {
+                    const row = event.target.closest('tr');
+                    if (!row) return;
+                    const valueInput = row.querySelector('input[name^="metric_value_"]');
+                    const toleranceInput = row.querySelector('input[name^="metric_tolerance_"]');
+                    const lowerLimitInput = row.querySelector('input[name^="metric_lower_limit_"]');
+                    const upperLimitInput = row.querySelector('input[name^="metric_upper_limit_"]');
 
-                if (valueInput && toleranceInput && lowerLimitInput && upperLimitInput) {
-                    const value = parseFloat(valueInput.value);
-                    const tolerance = parseFloat(toleranceInput.value);
-                    if (!isNaN(value) && !isNaN(tolerance) && tolerance >= 0) {
-                        lowerLimitInput.value = (value - tolerance).toFixed(2); // Adjust precision as needed
-                        upperLimitInput.value = (value + tolerance).toFixed(2);
-                    } else {
-                        lowerLimitInput.value = '';
-                        upperLimitInput.value = '';
+                    if (valueInput && toleranceInput && lowerLimitInput && upperLimitInput) {
+                        const value = parseFloat(valueInput.value);
+                        const tolerance = parseFloat(toleranceInput.value);
+                        if (!isNaN(value) && !isNaN(tolerance) && tolerance >= 0) {
+                            lowerLimitInput.value = (value - tolerance).toFixed(2);
+                            upperLimitInput.value = (value + tolerance).toFixed(2);
+                        } else {
+                            lowerLimitInput.value = '';
+                            upperLimitInput.value = '';
+                        }
                     }
-                }
-            });
-             // Copy full theme and logout script for completeness
+                });
+            }
+            // Full theme and logout script for completeness
             if(themeToggle) {
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
@@ -278,7 +274,7 @@
                 }
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 applyTheme(savedTheme);
-                const themeSelector = document.getElementById('setting-theme-main'); // If this exists on a settings page
+                const themeSelector = document.getElementById('setting-theme-main');
                 if (themeSelector) themeSelector.value = savedTheme;
 
                 themeToggle.addEventListener('click', () => {
@@ -289,10 +285,13 @@
                 });
 
                 if(themeSelector){
-                    themeSelector.addEventListener('change', function(){
-                        applyTheme(this.value);
-                    });
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
                 }
+            }
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                });
             }
         });
     </script>

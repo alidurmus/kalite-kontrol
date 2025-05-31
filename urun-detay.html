@@ -17,7 +17,7 @@
         .detail-list { list-style-type: none; padding-left: 0; }
         .detail-list li { padding: 0.3rem 0; border-bottom: 1px dotted var(--card-border); }
         .detail-list li:last-child { border-bottom: none; }
-        .detail-list strong { margin-right: 0.5rem; }
+        .detail-list strong { margin-right: 0.5rem; color: var(--secondary-color); }
     </style>
 </head>
 <body>
@@ -46,7 +46,14 @@
                             <li><a href="#">Proses Kategori Tanımları</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Kalite Kontrol Formları</a> <ul class="submenu"></ul></li>
+                     <li>
+                        <a href="#">Kalite Kontrol Formları</a>
+                        <ul class="submenu">
+                             <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
                     <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
                     <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
@@ -116,10 +123,6 @@
                                         <td>Boya kalitesi ve renk uyumu</td>
                                         <td>RAL 7035 renginde, homojen boya kaplaması. Akma, kabarma olmamalı.</td>
                                     </tr>
-                                    <tr>
-                                        <td>Montaj vidaları sıkılığı</td>
-                                        <td>Tüm vidalar uygun torkta sıkılmış olmalı, gevşeklik olmamalı.</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </section>
@@ -133,9 +136,48 @@
         </footer>
     </div>
     <script>
-        // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
+            if(themeToggle) { /* ... */ }
+            const logoutButton = document.getElementById('logout-button');
+            if(logoutButton) { /* ... */ }
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+                const submenu = menuLink.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
+                    menuLink.addEventListener('click', function(event) {
+                        if (this.getAttribute('href') === '#') event.preventDefault();
+                        const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
+                        parentLi.classList.toggle('open');
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
+                    });
+                }
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const urunId = urlParams.get('id');
+            const urunDetayTitle = document.getElementById('urun-detay-title');
+
+            if (urunId && urunDetayTitle) {
+                 if (urunId === "1") {
+                    urunDetayTitle.textContent = "Ürün Detayları: Endüksiyon Motoru XYZ-100";
+                } else if (urunId === "2") {
+                    urunDetayTitle.textContent = "Ürün Detayları: Helisel Dişli Seti";
+                } else {
+                    urunDetayTitle.textContent = "Ürün Detayları: Bilinmeyen Ürün";
+                }
+            }
+            // Full theme and logout script for completeness
             if(themeToggle) {
                 function applyTheme(theme) {
                     document.documentElement.setAttribute('data-theme', theme);
@@ -144,71 +186,24 @@
                 }
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
+
                 themeToggle.addEventListener('click', () => {
                     const currentTheme = document.documentElement.getAttribute('data-theme');
-                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
                 });
+
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
             }
-            const logoutButton = document.getElementById('logout-button');
             if(logoutButton) {
                 logoutButton.addEventListener('click', function() {
                     alert('Çıkış yapıldı!');
-                    // window.location.href = 'login.html';
                 });
-            }
-             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
-                const submenu = menuLink.nextElementSibling;
-                if (submenu && submenu.classList.contains('submenu')) {
-                    menuLink.addEventListener('click', function(event) {
-                        if (this.getAttribute('href') === '#') {
-                            event.preventDefault();
-                        }
-                        const parentLi = this.parentElement;
-                        parentLi.classList.toggle('open');
-                        if (parentLi.classList.contains('open')) {
-                            submenu.style.maxHeight = submenu.scrollHeight + "px";
-                        } else {
-                            submenu.style.maxHeight = "0";
-                        }
-                    });
-                     if (menuLink.parentElement.querySelector('.submenu .active')) {
-                        menuLink.parentElement.classList.add('open');
-                        submenu.style.maxHeight = submenu.scrollHeight + "px";
-                    }
-                }
-            });
-
-            // Simulate data loading based on URL parameter (e.g., urun-detay.html?id=1)
-            const urlParams = new URLSearchParams(window.location.search);
-            const urunId = urlParams.get('id');
-            const urunDetayTitle = document.getElementById('urun-detay-title');
-
-            if (urunId && urunDetayTitle) {
-                // In a real app, you'd fetch product data using urunId
-                // For this example, we'll just update the title
-                // You can expand this to populate all fields like #detay-urun-adi, etc.
-                // For example:
-                // const productData = fetchProductById(urunId);
-                // if(productData) {
-                //    urunDetayTitle.textContent = `Ürün Detayları: ${productData.name}`;
-                //    document.getElementById('detay-urun-adi').textContent = productData.name;
-                //    // ... and so on for other fields and tables
-                // } else {
-                //    urunDetayTitle.textContent = "Ürün Bulunamadı";
-                // }
-                 if (urunId === "1") { // Sample data for ID 1
-                    urunDetayTitle.textContent = "Ürün Detayları: Endüksiyon Motoru XYZ-100";
-                    document.getElementById('detay-urun-adi').textContent = "Endüksiyon Motoru XYZ-100";
-                    document.getElementById('detay-urun-kodu').textContent = "EM-XYZ-100";
-                    document.getElementById('detay-urun-kategori').textContent = "Motor Parçaları";
-                    document.getElementById('detay-urun-aciklama').textContent = "Yüksek verimli, endüstriyel kullanım için tasarlanmış AC motor.";
-                    document.getElementById('detay-teknik-resim-link').href = "path/to/TR-EMXYZ100.pdf"; // Replace with actual path or variable
-                } else if (urunId === "2") {
-                     urunDetayTitle.textContent = "Ürün Detayları: Helisel Dişli Seti";
-                    // Populate other fields for product ID 2
-                } else {
-                    urunDetayTitle.textContent = "Ürün Detayları: Bilinmeyen Ürün";
-                }
             }
         });
     </script>

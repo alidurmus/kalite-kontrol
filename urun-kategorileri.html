@@ -21,10 +21,10 @@
                 <ul class="sidebar-menu">
                     <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
                     <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open"> {/* Assuming "Tanımlamalar" should be open */}
+                    <li class="open">
                         <a href="#">Tanımlamalar</a>
-                        <ul class="submenu" style="max-height: 500px;"> {/* Style to ensure it's visible */}
-                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li> {/* Mark Ürün Tanımları active */}
+                        <ul class="submenu" style="max-height: 500px;">
+                            <li><a href="urun-listesi.html" class="active">Ürün Tanımları</a></li>
                             <li><a href="malzeme-listesi.html">Malzeme Tanımları</a></li>
                             <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
                             <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
@@ -35,34 +35,15 @@
                     <li>
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu">
-                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
                             <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
-                    <li>
-                        <a href="#">Raporlama ve Analiz</a>
-                        <ul class="submenu">
-                            <li><a href="#">Genel Raporlar</a></li>
-                            <li><a href="#">İzlenebilirlik Raporları</a></li>
-                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Araçlar</a>
-                        <ul class="submenu">
-                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Yönetim Paneli</a>
-                        <ul class="submenu">
-                            <li><a href="#">Kullanıcı Yönetimi</a></li>
-                            <li><a href="ayarlar.html">Sistem Ayarları</a></li>
-                            <li><a href="#">Website İçerik Yönetimi</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
                 </ul>
             </aside>
 
@@ -126,7 +107,7 @@
         </footer>
     </div>
     <script>
-        // Basic theme toggle and logout functionality (can be moved to a global JS file later)
+        // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
             if(themeToggle) {
@@ -137,46 +118,43 @@
                 }
                 const savedTheme = localStorage.getItem('theme') || 'light';
                 applyTheme(savedTheme);
-
                 themeToggle.addEventListener('click', () => {
                     const currentTheme = document.documentElement.getAttribute('data-theme');
                     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
                 });
             }
-            // Logout (placeholder)
             const logoutButton = document.getElementById('logout-button');
             if(logoutButton) {
                 logoutButton.addEventListener('click', function() {
                     alert('Çıkış yapıldı!');
-                    // window.location.href = 'login.html'; // Or appropriate login page
                 });
             }
-             // Sidebar submenu toggle (simple version)
-            document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
+             document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
+                    const isActiveSubmenu = submenu.querySelector('a.active') !== null;
+                    if (isActiveSubmenu) {
+                        menuLink.parentElement.classList.add('open');
+                        submenu.style.maxHeight = submenu.scrollHeight + "px";
+                    }
                     menuLink.addEventListener('click', function(event) {
-                        // Allow navigation if href is not just "#"
                         if (this.getAttribute('href') === '#') {
                             event.preventDefault();
                         }
-
-                        // Toggle 'open' class on parent li
                         const parentLi = this.parentElement;
+                        document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
+                            if(openLi !== parentLi) {
+                                openLi.classList.remove('open');
+                                openLi.querySelector('.submenu').style.maxHeight = "0";
+                            }
+                        });
                         parentLi.classList.toggle('open');
-
-                        // Toggle max-height for animation
                         if (parentLi.classList.contains('open')) {
                             submenu.style.maxHeight = submenu.scrollHeight + "px";
                         } else {
                             submenu.style.maxHeight = "0";
                         }
                     });
-                     // Keep submenu open if an item within it is active
-                    if (menuLink.parentElement.querySelector('.submenu .active')) {
-                        menuLink.parentElement.classList.add('open');
-                        submenu.style.maxHeight = submenu.scrollHeight + "px";
-                    }
                 }
             });
         });

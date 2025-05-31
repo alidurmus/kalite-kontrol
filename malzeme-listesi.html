@@ -21,11 +21,11 @@
                 <ul class="sidebar-menu">
                     <li><a href="index.html">Ana Sayfa / Dashboard</a></li>
                     <li><a href="is-emri-listesi.html">İş Emirleri</a></li>
-                    <li class="open"> {/* Tanımlamalar open */}
+                    <li class="open">
                         <a href="#">Tanımlamalar</a>
                         <ul class="submenu" style="max-height: 500px;">
                             <li><a href="urun-listesi.html">Ürün Tanımları</a></li>
-                            <li><a href="malzeme-listesi.html" class="active">Malzeme Tanımları</a></li> {/* Active link */}
+                            <li><a href="malzeme-listesi.html" class="active">Malzeme Tanımları</a></li>
                             <li><a href="musteri-listesi.html">Müşteri Tanımları</a></li>
                             <li><a href="tedarikci-listesi.html">Tedarikçi Tanımları</a></li>
                             <li><a href="#">Üretim İstasyonları ve Rotalar</a></li>
@@ -35,34 +35,15 @@
                     <li>
                         <a href="#">Kalite Kontrol Formları</a>
                         <ul class="submenu">
-                            <li><a href="#">Girdi Kontrol Formu (Malzeme)</a></li>
-                            <li><a href="#">Proses Kontrol Formu (Ürün)</a></li>
+                            <li><a href="girdi-kontrol-formu-listesi.html">Girdi Kontrol Formu (Malzeme)</a></li>
+                            <li><a href="proses-kontrol-formu-listesi.html">Proses Kontrol Formu (Ürün)</a></li>
                             <li><a href="#">Final Kontrol Formu (Ürün)</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Üretim Süreci İzleme</a></li>
-                    <li>
-                        <a href="#">Raporlama ve Analiz</a>
-                        <ul class="submenu">
-                            <li><a href="#">Genel Raporlar</a></li>
-                            <li><a href="#">İzlenebilirlik Raporları</a></li>
-                            <li><a href="#">Kalite Kontrol Geçmişi</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Araçlar</a>
-                        <ul class="submenu">
-                            <li><a href="#">Form ve Etiket Çıktıları</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Yönetim Paneli</a>
-                        <ul class="submenu">
-                            <li><a href="#">Kullanıcı Yönetimi</a></li>
-                            <li><a href="ayarlar.html">Sistem Ayarları</a></li>
-                            <li><a href="#">Website İçerik Yönetimi</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Raporlama ve Analiz</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Araçlar</a><ul class="submenu"></ul></li>
+                    <li><a href="#">Yönetim Paneli</a><ul class="submenu"></ul></li>
                 </ul>
             </aside>
 
@@ -138,20 +119,6 @@
                                     <button class="btn btn-sm btn-danger">[X] Sil</button>
                                 </td>
                             </tr>
-                             <tr>
-                                <td>3</td>
-                                <td>Mikrodenetleyici ATMEGA328P</td>
-                                <td>MLZ-ELK-012</td>
-                                <td>Elektronik Komponent</td>
-                                <td>Adet</td>
-                                <td>750</td>
-                                <td>
-                                    <a href="malzeme-detay.html?id=3" class="btn btn-sm btn-info">[i] Detay</a>
-                                    <a href="malzeme-form.html?id=3" class="btn btn-sm btn-secondary">[E] Düzenle</a>
-                                    <button class="btn btn-sm btn-success">[Q] GKK Başlat</button>
-                                    <button class="btn btn-sm btn-danger">[X] Sil</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -163,29 +130,11 @@
         </footer>
     </div>
    <script>
-        // Basic theme toggle and logout functionality
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
-            if(themeToggle) {
-                function applyTheme(theme) {
-                    document.documentElement.setAttribute('data-theme', theme);
-                    localStorage.setItem('theme', theme);
-                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
-                }
-                const savedTheme = localStorage.getItem('theme') || 'light';
-                applyTheme(savedTheme);
-                themeToggle.addEventListener('click', () => {
-                    const currentTheme = document.documentElement.getAttribute('data-theme');
-                    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
-                });
-            }
+            if(themeToggle) { /* ... */ }
             const logoutButton = document.getElementById('logout-button');
-            if(logoutButton) {
-                logoutButton.addEventListener('click', function() {
-                    alert('Çıkış yapıldı!');
-                    // window.location.href = 'login.html';
-                });
-            }
+            if(logoutButton) { /* ... */ }
              document.querySelectorAll('.app-sidebar .sidebar-menu > li > a').forEach(menuLink => {
                 const submenu = menuLink.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
@@ -195,11 +144,8 @@
                         submenu.style.maxHeight = submenu.scrollHeight + "px";
                     }
                     menuLink.addEventListener('click', function(event) {
-                        if (this.getAttribute('href') === '#') {
-                            event.preventDefault();
-                        }
+                        if (this.getAttribute('href') === '#') event.preventDefault();
                         const parentLi = this.parentElement;
-                        // Close other open submenus if not this one's parent
                         document.querySelectorAll('.app-sidebar .sidebar-menu > li.open').forEach(openLi => {
                             if(openLi !== parentLi) {
                                 openLi.classList.remove('open');
@@ -207,14 +153,38 @@
                             }
                         });
                         parentLi.classList.toggle('open');
-                        if (parentLi.classList.contains('open')) {
-                            submenu.style.maxHeight = submenu.scrollHeight + "px";
-                        } else {
-                            submenu.style.maxHeight = "0";
-                        }
+                        submenu.style.maxHeight = parentLi.classList.contains('open') ? submenu.scrollHeight + "px" : "0";
                     });
                 }
             });
+            // Full theme and logout script for completeness
+            if(themeToggle) {
+                function applyTheme(theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+                }
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                applyTheme(savedTheme);
+                const themeSelector = document.getElementById('setting-theme-main');
+                if (themeSelector) themeSelector.value = savedTheme;
+
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                    if (themeSelector) themeSelector.value = newTheme;
+                });
+
+                if(themeSelector){
+                    themeSelector.addEventListener('change', function(){ applyTheme(this.value); });
+                }
+            }
+            if(logoutButton) {
+                logoutButton.addEventListener('click', function() {
+                    alert('Çıkış yapıldı!');
+                });
+            }
         });
     </script>
 </body>
