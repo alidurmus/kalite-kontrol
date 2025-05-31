@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Uygula</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Test Uygula</h2>
+            <form class="perform-test-form">
+                <div class="form-section">
+                    <h3>Test Parametreleri</h3>
+                    <div class="form-group">
+                        <label for="product-selection">Ürün Seçimi</label>
+                        <select id="product-selection" name="product-selection" required>
+                            <option value="">-- Ürün Seçiniz --</option>
+                            <option value="TR001">Model A Motor (TR001)</option>
+                            <option value="TR002">Endüstriyel Pompa X200 (TR002)</option>
+                            <option value="TR003">Kontrol Paneli V3 (TR003)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="test-definition-selection">Test Seçimi</label>
+                        <select id="test-definition-selection" name="test-definition-selection" required>
+                            <option value="">-- Test Tanımı Seçiniz --</option>
+                            <option value="test01">Boyut Kontrolü X</option>
+                            <option value="test02">Voltaj Testi</option>
+                            <option value="test03">Ağırlık Ölçümü</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Ölçüm Değerleri</h3>
+                    <div id="measurement-inputs">
+                        <!-- Dynamic inputs will be loaded here based on test selection -->
+                        <div class="form-group">
+                            <label for="sample-measurement">Ölçülen Değer (Örnek)</label>
+                            <input type="text" id="sample-measurement" name="sample-measurement" placeholder="Örn: 100.2 mm">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Görsel Kontrol</h3>
+                    <div class="form-group checkbox-group">
+                        <div><input type="checkbox" id="check-scratch" name="visual_checks[]" value="no_scratch"><label for="check-scratch">Çizik Yok</label></div>
+                        <div><input type="checkbox" id="check-color" name="visual_checks[]" value="color_ok"><label for="check-color">Renk Uygun</label></div>
+                        <div><input type="checkbox" id="check-assembly" name="visual_checks[]" value="assembly_correct"><label for="check-assembly">Montaj Doğru</label></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Ek Bilgiler</h3>
+                    <div class="form-group">
+                        <label for="visual-upload">Görsel Yükleme</label>
+                        <input type="file" id="visual-upload" name="visual-upload[]" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label for="drawing-reference">Teknik Çizim Referansı</label>
+                        <input type="text" id="drawing-reference" name="drawing-reference" placeholder="Çizim No veya Dosya Adı">
+                    </div>
+                    <div class="form-group">
+                        <label for="operator-notes">Operatör Notları</label>
+                        <textarea id="operator-notes" name="operator-notes" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Sonuç</h3>
+                    <div class="form-group">
+                        <label for="test-result">Test Sonucu</label>
+                        <select id="test-result" name="test-result" required>
+                            <option value="">-- Sonuç Seçiniz --</option>
+                            <option value="pass">Başarılı</option>
+                            <option value="fail">Başarısız</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">[S] Test Sonuçlarını Kaydet</button>
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

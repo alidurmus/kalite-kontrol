@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayları</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Ürün Detayları: <span id="product-name-placeholder">Örnek Ürün Adı</span></h2>
+            <a href="urun-form.html" class="btn btn-primary">[E] Düzenle</a>
+            <a href="urun-listesi.html" class="btn btn-secondary" style="margin-left: 10px;">[<] Ürün Listesine Dön</a>
+
+            <div class="product-details-grid">
+                <section class="product-info">
+                    <h3>Genel Bilgiler</h3>
+                    <p><strong>Ürün Kodu:</strong> <span id="product-code">TR001</span></p>
+                    <p><strong>Ürün Adı:</strong> <span id="product-title">Model A Motor</span></p>
+                    <p><strong>Açıklama:</strong> <span id="product-description">Yüksek performanslı elektrik motoru. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                </section>
+
+                <section class="product-qr-barcode">
+                    <h3>QR/Barkod</h3>
+                    <div class="qr-barcode-display">
+                        <!-- Placeholder for actual QR code or barcode image -->
+                        <img src="https://via.placeholder.com/150" alt="QR/Barkod Placeholder">
+                        <p>[QR_CODE_TR001]</p>
+                    </div>
+                </section>
+
+                <section class="product-documents">
+                    <h3>Teknik Dokümanlar</h3>
+                    <ul class="document-list">
+                        <li><a href="#" target="_blank">[P] Teknik Çizim - Model A.pdf</a></li>
+                        <li><a href="#" target="_blank">[W] Kullanım Kılavuzu - Model A.docx</a></li>
+                        <li><a href="#" target="_blank">[P] Bakım Talimatları.pdf</a></li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

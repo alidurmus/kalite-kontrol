@@ -1,0 +1,957 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.app-header {
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+}
+
+.app-body {
+    display: flex;
+}
+
+.sidebar-nav {
+    width: 200px;
+    background-color: #e0e0e0;
+    padding: 1em;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    padding: 0.5em 0;
+    cursor: pointer;
+}
+
+.sidebar-nav li:hover {
+    background-color: #d0d0d0;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 1em;
+}
+
+.app-footer {
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.login-form {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-form h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.login-form div {
+    margin-bottom: 1em;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+/* General Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5em; /* For spacing between buttons */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: 1px solid #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #545b62;
+}
+
+
+/* Data Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+.data-table thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e9e9e9;
+}
+
+.data-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.data-table a:hover {
+    text-decoration: underline;
+}
+
+/* User Form Styles */
+.user-form {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 1em;
+}
+
+.user-form .form-group {
+    margin-bottom: 1em;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.user-form input[type="text"],
+.user-form input[type="email"],
+.user-form input[type="password"],
+.user-form select {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.user-form .form-actions {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Card Style (Generic) */
+.card {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-bottom: 1.5em; /* For spacing between cards */
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+/* Reporting Page Styles */
+.report-config-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+    gap: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+@media (min-width: 992px) { /* Two columns for larger screens */
+    .report-config-layout {
+        grid-template-columns: 1fr 2fr; /* Selection smaller, filters larger */
+    }
+}
+
+.report-selection-area .form-group,
+.report-filters-area .form-group {
+    margin-bottom: 1em;
+}
+
+.report-selection-area label,
+.report-filters-area label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.report-selection-area select,
+.report-filters-area select,
+.report-filters-area input[type="date"],
+.report-filters-area input[type="text"] {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+}
+
+.report-filters-area .form-actions button {
+    margin-right: 0.5em; /* Space out buttons */
+}
+.report-filters-area .form-actions button:last-child {
+    margin-right: 0;
+}
+
+
+.report-display-area #report-output p {
+    font-style: italic;
+    color: #555;
+}
+
+.report-display-area #report-output table {
+    margin-top: 1em;
+}
+
+/* Output Generation Page Styles */
+.output-config-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+    gap: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+@media (min-width: 992px) { /* Two columns for larger screens */
+    .output-config-layout {
+        grid-template-columns: 1fr 2fr; /* Selection smaller, parameters larger */
+    }
+}
+
+.output-selection-area .form-group, /* Sharing styles with reporting form groups */
+.output-parameters-area .form-group {
+    margin-bottom: 1em;
+}
+
+.output-selection-area label,
+.output-parameters-area label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.output-selection-area select,
+.output-parameters-area input[type="text"],
+.output-parameters-area input[type="number"] {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.parameters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+}
+
+.output-preview-area #output-display p {
+    font-style: italic;
+    color: #555;
+}
+
+.preview-placeholder { /* Already has inline styles, but can be enhanced */
+    background-color: #f9f9f9;
+}
+
+/* Settings Page Styles */
+.settings-section .form-group { /* Ensures form groups in settings sections have consistent spacing */
+    margin-bottom: 1.25em;
+}
+
+.settings-section label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.settings-section select,
+.settings-section input[type="email"],
+.settings-section input[type="password"] {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.settings-section .form-actions { /* For profile update button, etc. */
+    margin-top: 1.5em;
+    text-align: left; /* Default for section-specific actions */
+}
+
+.main-settings-actions { /* For the main save button at the bottom */
+    margin-top: 1.5em;
+    padding-top: 1.5em;
+    border-top: 1px solid #eee; /* Optional: separator */
+}
+
+.btn-lg { /* Larger button style */
+    padding: 0.75em 1.5em;
+    font-size: 1.1em;
+}
+
+
+/* Dashboard Styles */
+.main-content .welcome-message {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #e9f5ff;
+    border-left: 5px solid #007bff;
+    border-radius: 4px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+}
+
+.dashboard-card {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.dashboard-card .count {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.dashboard-card a {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: right;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-card ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0.5em;
+}
+
+.dashboard-card ul li {
+    margin-bottom: 0.5em;
+}
+
+.dashboard-card ul li a {
+    display: inline; /* Keep these links inline */
+    margin-top: 0;
+    text-align: left;
+    font-weight: normal;
+}
+
+
+/* Perform Test Form Styles */
+.perform-test-form {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 1em;
+}
+
+.perform-test-form .form-section {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.perform-test-form .form-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.perform-test-form h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.perform-test-form .form-group {
+    margin-bottom: 1em;
+}
+
+.perform-test-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.perform-test-form input[type="text"],
+.perform-test-form input[type="file"],
+.perform-test-form select,
+.perform-test-form textarea {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.perform-test-form textarea {
+    resize: vertical;
+}
+
+.perform-test-form .checkbox-group div {
+    margin-bottom: 0.5em;
+}
+
+.perform-test-form .checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5em;
+}
+
+.perform-test-form .checkbox-group label {
+    font-weight: normal;
+    display: inline; /* Keep label next to checkbox */
+}
+
+.perform-test-form .form-actions {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#measurement-inputs .form-group { /* Style for dynamically added measurement inputs */
+    border-left: 3px solid #007bff;
+    padding-left: 1em;
+    margin-top: 0.5em;
+}
+
+/* Filters Bar Styles */
+.filters-bar {
+    background-color: #f9f9f9;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: flex-end;
+}
+
+.filters-bar .form-group {
+    margin-bottom: 0; /* Override default form-group margin */
+}
+
+.filters-bar label {
+    font-weight: normal; /* Lighter labels for filters */
+    margin-bottom: 0.25em;
+}
+
+.filters-bar select,
+.filters-bar input[type="date"] {
+    padding: 0.5em; /* Smaller padding for filter inputs */
+    /* width: auto; */ /* Allow them to size based on content or specific needs */
+}
+
+.filters-bar button {
+    padding: 0.5em 1em; /* Adjust button padding */
+}
+
+/* Status Indicator Styles */
+.status-pass {
+    color: green;
+    font-weight: bold;
+}
+
+.status-fail {
+    color: red;
+    font-weight: bold;
+}
+
+/* Test Result Detail Page Styles */
+.test-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.test-detail-section {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.test-detail-section h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+    color: #333;
+}
+
+.test-detail-section p,
+.test-detail-section ul {
+    margin-bottom: 0.5em;
+}
+
+.test-detail-section ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.test-detail-section ul li{
+    padding-left: 0;
+    list-style-type: none; /* Removing default bullets for custom indicators */
+}
+
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-gallery img {
+    max-width: 100px;
+    max-height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+/* Production Station Overview Styles */
+.stations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.station-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid #ccc; /* Default border */
+}
+
+.station-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+.station-card .station-status {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.station-card .station-job {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 1em;
+}
+
+.station-card .station-kpis {
+    font-size: 0.85em;
+    color: #333;
+    margin-bottom: 1.5em;
+    padding-top: 0.5em;
+    border-top: 1px solid #f0f0f0;
+}
+
+.station-card .station-kpis p {
+    margin: 0.3em 0;
+}
+
+/* Status-specific styles for station cards */
+.station-card.status-running {
+    border-left-color: #28a745; /* Green */
+}
+.station-card.status-running .station-status {
+    color: #28a745;
+}
+
+.station-card.status-idle {
+    border-left-color: #ffc107; /* Yellow */
+}
+.station-card.status-idle .station-status {
+    color: #b88b00;
+}
+
+.station-card.status-down {
+    border-left-color: #dc3545; /* Red */
+}
+.station-card.status-down .station-status {
+    color: #dc3545;
+}
+
+.btn-sm {
+    padding: 0.25em 0.5em;
+    font-size: 0.875em;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Station Detail Page Styles */
+.station-details-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column for smaller screens */
+    gap: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+@media (min-width: 768px) { /* Two columns for wider screens */
+    .station-details-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.station-info,
+.station-performance,
+.report-issue-section {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.station-info h3,
+.station-performance h3,
+.report-issue-section h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+.station-info h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.activity-log {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 0.9em;
+    max-height: 200px; /* Example height, make it scrollable if needed */
+    overflow-y: auto;
+    border: 1px solid #f0f0f0;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+.activity-log li {
+    padding: 0.3em 0;
+    border-bottom: 1px dashed #f0f0f0;
+}
+
+.activity-log li:last-child {
+    border-bottom: none;
+}
+
+.chart-placeholder {
+    background-color: #f9f9f9;
+    border: 1px dashed #ddd;
+    padding: 1em;
+    text-align: center;
+    color: #777;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.chart-placeholder img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0.5em;
+}
+
+.report-issue-form {
+    /* Uses general form styles, specific additions below if needed */
+}
+
+.report-issue-form label {
+    font-weight: bold;
+}
+
+.report-issue-form input[type="text"],
+.report-issue-form input[type="number"],
+.report-issue-form textarea,
+.report-issue-form select {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 1em; /* Add some space between form elements */
+}
+
+.report-issue-form textarea {
+    resize: vertical;
+}
+
+.report-issue-form .form-actions {
+    margin-top: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Test Definition Form Styles */
+.test-definition-form {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 1em;
+}
+
+.test-definition-form .form-group {
+    margin-bottom: 1em;
+}
+
+.test-definition-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.test-definition-form input[type="text"],
+.test-definition-form input[type="number"],
+.test-definition-form textarea {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.test-definition-form textarea {
+    resize: vertical;
+}
+
+.test-definition-form .form-actions {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Product Detail Page Styles */
+.product-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.product-info,
+.product-qr-barcode,
+.product-documents {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.product-info h3,
+.product-qr-barcode h3,
+.product-documents h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5em;
+}
+
+.qr-barcode-display {
+    text-align: center;
+}
+
+.qr-barcode-display img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 0.5em;
+}
+
+.document-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.document-list li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.document-list li:last-child {
+    border-bottom: none;
+}
+
+.document-list a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.document-list a:hover {
+    text-decoration: underline;
+}
+
+/* Placeholder for document type icons */
+.document-list a::before {
+    content: '[' attr(href*='.pdf') 'PDF] '; /* Basic example for PDF */
+    /* In a real scenario, you might use font icons or SVG */
+    font-weight: bold;
+    margin-right: 0.3em;
+}
+/* This is a very basic way to show type, more specific selectors would be needed for other types */
+.document-list a[href*='.docx']::before {
+    content: '[DOCX] ';
+}
+
+/* Product Form Styles */
+.product-form {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-top: 1em;
+}
+
+.product-form .form-group {
+    margin-bottom: 1em;
+}
+
+.product-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.product-form input[type="text"],
+.product-form input[type="file"],
+.product-form textarea {
+    width: 100%;
+    padding: 0.75em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.product-form small {
+    display: block;
+    margin-top: 0.25em;
+    color: #6c757d;
+}
+
+.product-form .form-actions {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+}

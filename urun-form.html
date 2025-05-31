@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Formu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Yeni Ürün Ekle / Ürün Düzenle</h2>
+            <form class="product-form">
+                <div class="form-group">
+                    <label for="product-code">Ürün Kodu</label>
+                    <input type="text" id="product-code" name="product-code" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-name">Ürün Adı</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-description">Açıklama</label>
+                    <textarea id="product-description" name="product-description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="technical-specifications">Teknik Özellikler</label>
+                    <textarea id="technical-specifications" name="technical-specifications" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="qr-barcode-data">QR/Barkod Verisi</label>
+                    <input type="text" id="qr-barcode-data" name="qr-barcode-data" placeholder="Manuel veri girişi veya tarama ile...">
+                </div>
+                <div class="form-group">
+                    <label for="technical-documents">Teknik Dokümanlar</label>
+                    <input type="file" id="technical-documents" name="technical-documents[]" multiple>
+                    <small>Birden fazla dosya seçebilirsiniz.</small>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">[S] Kaydet</button>
+                    <a href="urun-listesi.html" class="btn btn-secondary">[C] İptal</a>
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

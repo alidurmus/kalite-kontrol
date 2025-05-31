@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sonuçları</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li class="active"><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Test Sonuçları</h2>
+
+            <div class="filters-bar">
+                <div class="form-group">
+                    <label for="filter-product">Ürün</label>
+                    <select id="filter-product" name="filter-product">
+                        <option value="">Tüm Ürünler</option>
+                        <option value="TR001">Model A Motor</option>
+                        <option value="TR002">Endüstriyel Pompa X200</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-test-type">Test Tipi</label>
+                    <select id="filter-test-type" name="filter-test-type">
+                        <option value="">Tüm Testler</option>
+                        <option value="test01">Boyut Kontrolü X</option>
+                        <option value="test02">Voltaj Testi</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-date-range">Tarih Aralığı</label>
+                    <input type="date" id="filter-date-start" name="filter-date-start">
+                    <span>-</span>
+                    <input type="date" id="filter-date-end" name="filter-date-end">
+                </div>
+                <button class="btn btn-secondary">[F] Filtrele</button>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Ürün Adı/Kodu</th>
+                        <th>Test Adı</th>
+                        <th>Tarih</th>
+                        <th>Operatör</th>
+                        <th>Sonuç</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TS001</td>
+                        <td>Model A Motor (TR001)</td>
+                        <td>Boyut Kontrolü X</td>
+                        <td>2024-01-15 10:30</td>
+                        <td>Ali Veli</td>
+                        <td><span class="status-pass">Başarılı</span></td>
+                        <td><a href="test-sonuc-detay.html?id=TS001">[i] Detayları Gör</a></td>
+                    </tr>
+                    <tr>
+                        <td>TS002</td>
+                        <td>Endüstriyel Pompa X200 (TR002)</td>
+                        <td>Voltaj Testi</td>
+                        <td>2024-01-16 11:00</td>
+                        <td>Ayşe Can</td>
+                        <td><span class="status-fail">Başarısız</span></td>
+                        <td><a href="test-sonuc-detay.html?id=TS002">[i] Detayları Gör</a></td>
+                    </tr>
+                    <tr>
+                        <td>TS003</td>
+                        <td>Model A Motor (TR001)</td>
+                        <td>Ağırlık Ölçümü</td>
+                        <td>2024-01-17 14:15</td>
+                        <td>Ali Veli</td>
+                        <td><span class="status-pass">Başarılı</span></td>
+                        <td><a href="test-sonuc-detay.html?id=TS003">[i] Detayları Gör</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

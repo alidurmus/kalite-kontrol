@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstasyon Detayları</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>İstasyon Detayları: <span id="station-name-placeholder">Montaj İstasyonu 1</span></h2>
+             <a href="istasyon-izleme.html" class="btn btn-secondary btn-sm" style="margin-bottom: 1em;">[<] İstasyon İzlemeye Dön</a>
+            <div class="station-details-layout">
+                <section class="station-info">
+                    <h3>İstasyon Bilgileri</h3>
+                    <p><strong>İstasyon Adı:</strong> Montaj İstasyonu 1</p>
+                    <p><strong>Durum:</strong> <span class="status-running">Çalışıyor</span></p>
+                    <p><strong>Aktif İş:</strong> TR001-A</p>
+
+                    <h4>Güncel Aktivite Logu</h4>
+                    <ul class="activity-log">
+                        <li>[2024-01-18 10:05] Durum 'Çalışıyor' olarak değişti.</li>
+                        <li>[2024-01-18 10:00] TR001-A iş emri başlatıldı.</li>
+                        <li>[2024-01-18 09:55] Bakım tamamlandı.</li>
+                        <li>[2024-01-18 09:00] Periyodik bakım başlatıldı.</li>
+                    </ul>
+                </section>
+
+                <section class="station-performance">
+                    <h3>Performans Verileri</h3>
+                    <div class="chart-placeholder">
+                        <p>OEE Trend Grafiği (Placeholder)</p>
+                        <img src="https://via.placeholder.com/400x200?text=OEE+Grafiği" alt="OEE Grafiği Placeholder">
+                    </div>
+                    <div class="chart-placeholder">
+                        <p>Üretim Hızı Grafiği (Placeholder)</p>
+                        <img src="https://via.placeholder.com/400x200?text=Üretim+Hızı+Grafiği" alt="Üretim Hızı Placeholder">
+                    </div>
+                </section>
+            </div>
+
+            <section class="report-issue-section">
+                <h3 id="report-issue-form-title">Duraklama/Arıza/Sapma Bildirimi</h3>
+                <form class="report-issue-form">
+                    <div class="form-group">
+                        <label for="issue-type">Bildirim Tipi</label>
+                        <select id="issue-type" name="issue-type" required>
+                            <option value="">-- Tip Seçiniz --</option>
+                            <option value="duraklama">Duraklama (Planlı/Plansız)</option>
+                            <option value="ariza">Arıza</option>
+                            <option value="sapma">Kalite Sapması</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-description">Açıklama</label>
+                        <textarea id="issue-description" name="issue-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="affected-duration">Etkilenen Süre (dk)</label>
+                        <input type="number" id="affected-duration" name="affected-duration" min="0">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">[S] Gönder</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

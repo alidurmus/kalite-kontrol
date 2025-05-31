@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üretim İstasyonu İzleme</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li class="active"><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Üretim İstasyonu İzleme</h2>
+            <div class="stations-grid">
+                <div class="station-card status-running">
+                    <h3>Montaj İstasyonu 1</h3>
+                    <p class="station-status">Durum: Çalışıyor</p>
+                    <p class="station-job">İşlenen Ürün: TR001-A</p>
+                    <div class="station-kpis">
+                        <p>OEE: 85%</p>
+                        <p>Hız: 10 adet/dk</p>
+                    </div>
+                    <a href="istasyon-detay.html?station=montaj1" class="btn btn-secondary btn-sm">[i] Detaylar</a>
+                    <button class="btn btn-danger btn-sm">[!] Sorun Bildir</button>
+                </div>
+
+                <div class="station-card status-idle">
+                    <h3>Kalite Kontrol İstasyonu</h3>
+                    <p class="station-status">Durum: Boşta</p>
+                    <p class="station-job">İşlenen Ürün: -</p>
+                    <div class="station-kpis">
+                        <p>Bekleme Süresi: 15 dk</p>
+                    </div>
+                    <a href="istasyon-detay.html?station=kalite1" class="btn btn-secondary btn-sm">[i] Detaylar</a>
+                    <button class="btn btn-danger btn-sm">[!] Sorun Bildir</button>
+                </div>
+
+                <div class="station-card status-down">
+                    <h3>Paketleme İstasyonu</h3>
+                    <p class="station-status">Durum: Arızalı</p>
+                    <p class="station-job">İşlenen Ürün: TR002-B (Durduruldu)</p>
+                    <div class="station-kpis">
+                        <p>Arıza Süresi: 45 dk</p>
+                        <p>Hata Kodu: E-102</p>
+                    </div>
+                    <a href="istasyon-detay.html?station=paketleme1" class="btn btn-secondary btn-sm">[i] Detaylar</a>
+                    <button class="btn btn-danger btn-sm">[!] Sorun Bildir</button>
+                </div>
+                 <div class="station-card status-running">
+                    <h3>CNC İşleme Merkezi</h3>
+                    <p class="station-status">Durum: Çalışıyor</p>
+                    <p class="station-job">İşlenen Ürün: PRT-55B-Rev2</p>
+                    <div class="station-kpis">
+                        <p>OEE: 92%</p>
+                        <p>İşlem Süresi: 7 dk/adet</p>
+                    </div>
+                    <a href="istasyon-detay.html?station=cnc1" class="btn btn-secondary btn-sm">[i] Detaylar</a>
+                    <button class="btn btn-danger btn-sm">[!] Sorun Bildir</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

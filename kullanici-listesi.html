@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Listesi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li class="active"><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Kullanıcı Listesi</h2>
+            <a href="kullanici-form.html" class="btn btn-primary">[+] Yeni Kullanıcı Ekle</a>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ad Soyad</th>
+                        <th>E-posta</th>
+                        <th>Rol</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ahmet Yılmaz</td>
+                        <td>ahmet.yilmaz@example.com</td>
+                        <td>Admin</td>
+                        <td>Aktif</td>
+                        <td>
+                            <a href="kullanici-form.html?id=1">[E] Düzenle</a> | <a href="#" onclick="alert('Silme işlemi için ID: 1');">[X] Sil</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ayşe Kaya</td>
+                        <td>ayse.kaya@example.com</td>
+                        <td>Operatör</td>
+                        <td>Aktif</td>
+                        <td>
+                            <a href="kullanici-form.html?id=2">[E] Düzenle</a> | <a href="#" onclick="alert('Silme işlemi için ID: 2');">[X] Sil</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mehmet Demir</td>
+                        <td>mehmet.demir@example.com</td>
+                        <td>Yönetici</td>
+                        <td>Pasif</td>
+                        <td>
+                            <a href="kullanici-form.html?id=3">[E] Düzenle</a> | <a href="#" onclick="alert('Silme işlemi için ID: 3');">[X] Sil</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

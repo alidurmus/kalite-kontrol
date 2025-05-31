@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raporlama ve Analitik</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li class="active"><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Raporlama ve Analitik</h2>
+
+            <div class="report-config-layout">
+                <section class="report-selection-area card">
+                    <h3>Rapor Seçimi</h3>
+                    <div class="form-group">
+                        <label for="report-type-select">Rapor Türü</label>
+                        <select id="report-type-select" name="report-type-select">
+                            <option value="daily-production">Günlük Üretim Raporu</option>
+                            <option value="weekly-quality">Haftalık Kalite Raporu</option>
+                            <option value="monthly-defect">Aylık Hata Analizi</option>
+                            <option value="station-performance">İstasyon Performans Raporu</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="report-filters-area card">
+                    <h3>Filtreler</h3>
+                    <div class="filters-grid">
+                        <div class="form-group">
+                            <label for="filter-date-start">Tarih Aralığı Başlangıç</label>
+                            <input type="date" id="filter-date-start" name="filter-date-start">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-date-end">Tarih Aralığı Bitiş</label>
+                            <input type="date" id="filter-date-end" name="filter-date-end">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-product">Ürün/Ürün Grubu</label>
+                            <select id="filter-product" name="filter-product">
+                                <option value="">Tümü</option>
+                                <option value="TR001">Model A Motor</option>
+                                <option value="TR002">Endüstriyel Pompa X200</option>
+                                <option value="GRP01">Motor Grubu</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-station">İstasyon</label>
+                            <select id="filter-station" name="filter-station">
+                                <option value="">Tümü</option>
+                                <option value="montaj1">Montaj İstasyonu 1</option>
+                                <option value="kalite1">Kalite Kontrol İstasyonu</option>
+                                <option value="paketleme1">Paketleme İstasyonu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-actions" style="margin-top:1em;">
+                        <button id="generate-report-btn" class="btn btn-primary">[R] Rapor Oluştur</button>
+                        <button id="download-pdf-btn" class="btn btn-secondary">[P] PDF İndir</button>
+                        <button id="download-excel-btn" class="btn btn-secondary">[X] Excel İndir</button>
+                    </div>
+                </section>
+            </div>
+
+            <section class="report-display-area card" style="margin-top: 2em;">
+                <h3>Rapor Sonucu</h3>
+                <div id="report-output">
+                    <p>Raporu oluşturmak için yukarıdaki seçenekleri kullanın.</p>
+                    <!-- Optional: Sample Table (initially hidden or empty) -->
+                    <table class="data-table" id="sample-report-table" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th>Veri Başlığı 1</th>
+                                <th>Veri Başlığı 2</th>
+                                <th>Sayısal Değer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Örnek Veri A</td>
+                                <td>Açıklama A</td>
+                                <td>123</td>
+                            </tr>
+                            <tr>
+                                <td>Örnek Veri B</td>
+                                <td>Açıklama B</td>
+                                <td>456</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

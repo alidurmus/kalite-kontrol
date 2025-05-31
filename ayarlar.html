@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayarlar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li class="active"><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Uygulama Ayarları</h2>
+
+            <form id="settings-form">
+                <section class="settings-section card">
+                    <h3>Genel Uygulama Ayarları</h3>
+                    <div class="form-group">
+                        <label for="setting-language">Dil Seçimi</label>
+                        <select id="setting-language" name="setting-language">
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="setting-theme">Tema Seçimi</label>
+                        <select id="setting-theme" name="setting-theme">
+                            <option value="light">Açık Tema</option>
+                            <option value="dark">Koyu Tema</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="settings-section card">
+                    <h3>Kullanıcı Profili Ayarları</h3>
+                    <div class="form-group">
+                        <label for="profile-email">E-posta Adresi</label>
+                        <input type="email" id="profile-email" name="profile-email" value="mevcutkullanici@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-current-password">Mevcut Şifre</label>
+                        <input type="password" id="profile-current-password" name="profile-current-password" placeholder="Mevcut şifrenizi girin">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-new-password">Yeni Şifre</label>
+                        <input type="password" id="profile-new-password" name="profile-new-password" placeholder="Yeni şifre">
+                    </div>
+                    <div class="form-group">
+                        <label for="profile-new-password-confirm">Yeni Şifre Tekrar</label>
+                        <input type="password" id="profile-new-password-confirm" name="profile-new-password-confirm" placeholder="Yeni şifreyi tekrar girin">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="update-profile-btn" class="btn btn-primary">[S] Profili Güncelle</button>
+                    </div>
+                </section>
+
+                <section class="settings-section card">
+                    <h3>Modül Ayarları</h3>
+                    <p>İlgili modüllerin özel ayarları burada yer alacaktır (örneğin, Test Tanımları için varsayılan toleranslar).</p>
+                    <!-- Placeholder for future module-specific settings -->
+                </section>
+
+                <div class="form-actions main-settings-actions card" style="text-align:right;">
+                    <button type="submit" class="btn btn-primary btn-lg">[S] Tüm Ayarları Kaydet</button>
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Tanım Formu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Yeni Test Tanımı / Test Tanımı Düzenle</h2>
+            <form class="test-definition-form">
+                <div class="form-group">
+                    <label for="test-name">Test Adı</label>
+                    <input type="text" id="test-name" name="test-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="test-description">Açıklama</label>
+                    <textarea id="test-description" name="test-description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="measured-parameter">Ölçülen Parametre</label>
+                    <input type="text" id="measured-parameter" name="measured-parameter" required>
+                </div>
+                <div class="form-group">
+                    <label for="unit">Birim</label>
+                    <input type="text" id="unit" name="unit" required>
+                </div>
+                <div class="form-group">
+                    <label for="min-tolerance">Min Tolerans</label>
+                    <input type="number" step="any" id="min-tolerance" name="min-tolerance">
+                </div>
+                <div class="form-group">
+                    <label for="max-tolerance">Max Tolerans</label>
+                    <input type="number" step="any" id="max-tolerance" name="max-tolerance">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">[S] Kaydet</button>
+                    <a href="test-tanimlari.html" class="btn btn-secondary">[C] İptal</a>
+                </div>
+            </form>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>

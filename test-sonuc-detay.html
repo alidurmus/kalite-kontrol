@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sonuç Detayı</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Logo/Title</h1>
+        <nav>User Menu</nav>
+    </header>
+    <div class="app-body">
+        <aside class="sidebar-nav">
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="kullanici-listesi.html">Kullanıcı Yönetimi</a></li>
+                <li><a href="urun-listesi.html">Ürün Takip Sistemi</a></li>
+                <li><a href="test-sonuclari.html">Test ve Kalite Kontrol</a></li>
+                <li><a href="istasyon-izleme.html">Üretim Süreci İzleme</a></li>
+                <li><a href="raporlama.html">Raporlama</a></li>
+                <li><a href="cikti-olusturma.html">Form ve Etiketler</a></li>
+                <li><a href="ayarlar.html">Ayarlar</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Test Sonuç Detayı: <span id="test-id-placeholder">TS001</span></h2>
+
+            <div class="test-detail-grid">
+                <section class="test-detail-section">
+                    <h3>Genel Test Bilgileri</h3>
+                    <p><strong>Test ID:</strong> TS001</p>
+                    <p><strong>Test Adı:</strong> Boyut Kontrolü X</p>
+                    <p><strong>Test Tarihi:</strong> 2024-01-15 10:30</p>
+                    <p><strong>Operatör:</strong> Ali Veli</p>
+                    <p><strong>Sonuç:</strong> <span class="status-pass">Başarılı</span></p>
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Ürün Bilgileri</h3>
+                    <p><strong>Ürün Kodu:</strong> TR001</p>
+                    <p><strong>Ürün Adı:</strong> Model A Motor</p>
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Ölçüm Değerleri</h3>
+                    <!-- This would be dynamically populated based on the test definition -->
+                    <p><strong>Uzunluk X:</strong> 100.2 mm (Beklenen: 100.0 - 100.5 mm)</p>
+                    <!-- Add more measurement values as needed -->
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Görsel Kontroller</h3>
+                    <ul>
+                        <li>Çizik Yok: <span class="status-pass">Evet</span></li>
+                        <li>Renk Uygun: <span class="status-pass">Evet</span></li>
+                        <li>Montaj Doğru: <span class="status-pass">Evet</span></li>
+                    </ul>
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Yüklenen Görseller</h3>
+                    <div class="image-gallery">
+                        <a href="images/sample-test-image1.jpg" target="_blank"><img src="https://via.placeholder.com/100?text=Test+Görseli+1" alt="Test Görseli 1"></a>
+                        <a href="images/sample-test-image2.jpg" target="_blank"><img src="https://via.placeholder.com/100?text=Test+Görseli+2" alt="Test Görseli 2"></a>
+                    </div>
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Teknik Çizim Referansı</h3>
+                    <p><a href="drawings/TR001-revB.pdf" target="_blank">TR001-revB.pdf</a></p>
+                </section>
+
+                <section class="test-detail-section">
+                    <h3>Operatör Notları</h3>
+                    <p>Ölçümler stabil. Görsel olarak bir problem gözlenmedi.</p>
+                </section>
+            </div>
+             <div class="form-actions" style="margin-top: 2em;">
+                <a href="test-sonuclari.html" class="btn btn-secondary">[<] Geri Dön</a>
+            </div>
+        </main>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; 2024 Application</p>
+    </footer>
+</body>
+</html>
