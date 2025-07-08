@@ -1,0 +1,184 @@
+{
+    "type": "girdi_kontrol",
+    "record_id": "62",
+    "created_at": "2025-07-08 14:34:46",
+    "migrated_at": "2025-07-08 14:34:46",
+    "data": {
+        "olcum": {
+            "k1": {
+                "adi": "K1",
+                "olcu": "110",
+                "tolerans": "0",
+                "alt_limit": "109.7",
+                "ust_limit": "110.3",
+                "olcum": "110.05",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Çapak Olmayacak",
+                "gorsel": "1"
+            },
+            "k2": {
+                "adi": "K2",
+                "olcu": "0.95",
+                "tolerans": "0",
+                "alt_limit": "0.92",
+                "ust_limit": "0.97",
+                "olcum": "0.96",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Darbe Olmayacak",
+                "gorsel": "1"
+            },
+            "k3": {
+                "adi": "K3",
+                "olcu": "Rulo",
+                "tolerans": "0",
+                "alt_limit": "1",
+                "ust_limit": "1",
+                "olcum": "1",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Yüzeyde Dalga Olmayacak",
+                "gorsel": "1"
+            },
+            "k4": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Çizik Olmayacak",
+                "gorsel": "1"
+            },
+            "k5": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Sıvama\/Uzama",
+                "gorsel": "1"
+            },
+            "k6": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k7": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-"
+            },
+            "k8": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k9": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-"
+            },
+            "k10": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k11": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k12": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k13": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k14": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k15": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-"
+            },
+            "k16": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            }
+        }
+    },
+    "checksum": "faad5b28c99f05268a8a72dae1c75003"
+}

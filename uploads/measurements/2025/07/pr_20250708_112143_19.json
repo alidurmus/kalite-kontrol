@@ -1,0 +1,186 @@
+{
+    "type": "proses_kontrol",
+    "record_id": "19",
+    "created_at": "2025-07-08 11:21:43",
+    "data": {
+        "olcum": {
+            "k1": {
+                "adi": "K1",
+                "olcu": "27.5",
+                "tolerans": "0",
+                "alt_limit": "26.8",
+                "ust_limit": "27.8",
+                "olcum": "27.45",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Çapak Olmayacak",
+                "gorsel": "1"
+            },
+            "k2": {
+                "adi": "K2",
+                "olcu": "2.3",
+                "tolerans": "0",
+                "alt_limit": "2.25",
+                "ust_limit": "2.35",
+                "olcum": "2.31",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Formlar Net Olacak",
+                "gorsel": "1"
+            },
+            "k3": {
+                "adi": "K4",
+                "olcu": "4",
+                "tolerans": "0",
+                "alt_limit": "3.8",
+                "ust_limit": "4.2",
+                "olcum": "4.03",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k4": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k5": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k6": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k7": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k8": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k9": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k10": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k11": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k12": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k13": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k14": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k15": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k16": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            }
+        }
+    },
+    "checksum": "75b90aaea502e92b09fadc57cb73e089"
+}

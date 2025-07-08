@@ -1,0 +1,186 @@
+{
+    "type": "final_kontrol",
+    "record_id": true,
+    "created_at": "2025-07-08 17:16:28",
+    "data": {
+        "olcum": {
+            "k1": {
+                "adi": "K1",
+                "olcu": "19.6",
+                "tolerans": "0",
+                "alt_limit": "19.4",
+                "ust_limit": "19.8",
+                "olcum": "19.7",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Çapak Olmayacak",
+                "gorsel": "3"
+            },
+            "k2": {
+                "adi": "K8",
+                "olcu": "40",
+                "tolerans": "0",
+                "alt_limit": "39.9",
+                "ust_limit": "40.2",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Formlar Net Olacak",
+                "gorsel": "1"
+            },
+            "k3": {
+                "adi": "K10",
+                "olcu": "62.9",
+                "tolerans": "0",
+                "alt_limit": "62.65",
+                "ust_limit": "63.15",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Parçalar birbiri içerisine takılıyor olması",
+                "gorsel": "2"
+            },
+            "k4": {
+                "adi": "K11",
+                "olcu": "368.9",
+                "tolerans": "0",
+                "alt_limit": "368.6",
+                "ust_limit": "369.2",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k5": {
+                "adi": "K16",
+                "olcu": "3.5",
+                "tolerans": "0",
+                "alt_limit": "3.4",
+                "ust_limit": "3.6",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Alev Delikler Boyunca Yürüyecek",
+                "gorsel": "3"
+            },
+            "k6": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Dalgalanma Olmayacak",
+                "gorsel": "3"
+            },
+            "k7": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Brülör Ön Tarafında Fazla Alev Olmayacak",
+                "gorsel": "2"
+            },
+            "k8": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k9": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k10": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k11": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k12": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k13": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k14": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k15": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k16": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            }
+        }
+    },
+    "checksum": "d1581933629de480ce49978e7498c3b7"
+}

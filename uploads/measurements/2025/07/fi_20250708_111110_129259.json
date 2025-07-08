@@ -1,0 +1,186 @@
+{
+    "type": "final_kontrol",
+    "record_id": "129259",
+    "created_at": "2025-07-08 11:11:10",
+    "data": {
+        "olcum": {
+            "k1": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Buji Ateşlemesi",
+                "gorsel": "1"
+            },
+            "k2": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "Thermokupl Tutuşu",
+                "gorsel": "1"
+            },
+            "k3": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k4": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k5": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k6": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k7": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k8": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k9": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k10": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k11": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k12": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k13": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k14": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k15": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k16": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            }
+        }
+    },
+    "checksum": "580e0d365334f7dfa611dbb755fa585f"
+}

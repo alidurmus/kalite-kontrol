@@ -1,0 +1,347 @@
+/**
+ * QMS Dashboard SCSS Mixins
+ * 
+ * Reusable mixins for consistent styling and responsive design
+ */
+
+// ==============================================================================
+// RESPONSIVE BREAKPOINTS
+// ==============================================================================
+
+// Media query mixins for responsive design
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @if $max {
+    @media (max-width: $max - 1px) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $lower);
+  $max: map-get($breakpoints, $upper);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max - 1px) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// ==============================================================================
+// COMPONENT MIXINS
+// ==============================================================================
+
+// Card component mixin
+@mixin card-variant($bg: $card-bg, $border: $card-border-color) {
+  background-color: $bg;
+  border: $card-border-width solid $border;
+  border-radius: $card-border-radius;
+  box-shadow: $box-shadow-sm;
+}
+
+// Stats card mixin
+@mixin stats-card($color: $brand-primary) {
+  @include card-variant($white, rgba($color, 0.2));
+  padding: $stats-card-padding;
+  border-radius: $stats-card-border-radius;
+  box-shadow: $stats-card-shadow;
+  
+  .stats-icon {
+    color: $color;
+    background: rgba($color, 0.1);
+    border-radius: $border-radius;
+    padding: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .stats-number {
+    color: $color;
+    font-weight: $font-weight-bold;
+    font-size: 2rem;
+    line-height: 1;
+  }
+}
+
+// Button variant mixin
+@mixin button-variant($color, $bg, $border: $bg) {
+  color: $color;
+  background-color: $bg;
+  border-color: $border;
+  box-shadow: $box-shadow-sm;
+  
+  &:hover {
+    color: $color;
+    background-color: darken($bg, 7.5%);
+    border-color: darken($border, 10%);
+    transform: translateY(-1px);
+    box-shadow: $box-shadow;
+  }
+  
+  &:focus, &.focus {
+    color: $color;
+    background-color: darken($bg, 7.5%);
+    border-color: darken($border, 10%);
+    box-shadow: 0 0 0 0.2rem rgba($border, 0.5);
+  }
+  
+  &:active, &.active {
+    color: $color;
+    background-color: darken($bg, 10%);
+    border-color: darken($border, 12.5%);
+    transform: translateY(0);
+  }
+}
+
+// Quick action mixin
+@mixin quick-action($color: $brand-primary) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: $quick-action-size;
+  height: $quick-action-size;
+  border-radius: $quick-action-border-radius;
+  background: rgba($color, 0.1);
+  border: 2px solid rgba($color, 0.2);
+  color: $color;
+  text-decoration: none;
+  transition: $transition-base;
+  
+  &:hover {
+    background: rgba($color, 0.15);
+    border-color: rgba($color, 0.3);
+    transform: $quick-action-hover-transform;
+    color: darken($color, 10%);
+    text-decoration: none;
+  }
+  
+  i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  span {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-align: center;
+  }
+}
+
+// ==============================================================================
+// ANIMATION MIXINS
+// ==============================================================================
+
+// Fade in animation
+@mixin fade-in($duration: $animation-duration-base, $delay: 0s) {
+  animation: fadeIn $duration ease-out $delay both;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Slide up animation
+@mixin slide-up($duration: $animation-duration-base, $delay: 0s) {
+  animation: slideUp $duration ease-out $delay both;
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Scale animation
+@mixin scale-in($duration: $animation-duration-fast, $delay: 0s) {
+  animation: scaleIn $duration ease-out $delay both;
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+// Hover lift effect
+@mixin hover-lift($lift: 4px, $shadow: $box-shadow-lg) {
+  transition: $transition-base;
+  
+  &:hover {
+    transform: translateY(-$lift);
+    box-shadow: $shadow;
+  }
+}
+
+// ==============================================================================
+// UTILITY MIXINS
+// ==============================================================================
+
+// Center content
+@mixin center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Absolute center
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Clear float
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Truncate text
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Visually hidden
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Focus ring
+@mixin focus-ring($color: $brand-primary) {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+}
+
+// ==============================================================================
+// LAYOUT MIXINS
+// ==============================================================================
+
+// Grid container
+@mixin container-fluid {
+  width: 100%;
+  padding-right: calc(#{map-get($spacers, 3)} / 2);
+  padding-left: calc(#{map-get($spacers, 3)} / 2);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Flexbox utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ==============================================================================
+// DASHBOARD SPECIFIC MIXINS
+// ==============================================================================
+
+// Dashboard widget container
+@mixin dashboard-widget {
+  @include card-variant;
+  padding: map-get($spacers, 4);
+  margin-bottom: map-get($spacers, 4);
+  
+  .widget-header {
+    @include flex-between;
+    margin-bottom: map-get($spacers, 3);
+    
+    h4 {
+      margin: 0;
+      color: $gray-800;
+      font-weight: $font-weight-medium;
+    }
+  }
+  
+  .widget-content {
+    min-height: 200px;
+  }
+}
+
+// Chart container
+@mixin chart-container {
+  @include dashboard-widget;
+  
+  .chart-wrapper {
+    position: relative;
+    height: $chart-height;
+    
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+} 

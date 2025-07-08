@@ -1,0 +1,142 @@
+.input-form-error{
+    font-size: 12px;
+    color : #ff5b5b;
+    font-style: italic;
+}
+
+td{
+    vertical-align: middle!important;
+}
+th{
+    text-align: center;
+}
+
+.order{
+    text-align: center;
+    width: 50px;
+}
+
+.w100{
+    width: 100px;
+}
+.w200{
+    width: 200px;
+}
+.w300{
+    width: 300px;
+}
+.w400{
+    width: 400px;
+}
+.w50{
+    width: 50px;
+}
+
+.sortable{
+    cursor: move;
+}
+
+.video_url_container{
+    display: none;
+}
+
+.button-information-container{
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Layout Fixes for Sidebar Issue */
+.app-main {
+    margin-left: 280px !important;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+.menubar-left.menubar-unfold .app-main {
+    margin-left: 280px !important;
+}
+
+.menubar-left.menubar-fold .app-main {
+    margin-left: 70px !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .app-main {
+        margin-left: 0 !important;
+    }
+    
+    .menubar-left.menubar-unfold .app-main {
+        margin-left: 0 !important;
+    }
+}
+
+/* Content area padding */
+.app-content {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 60px);
+}
+
+/* Widget improvements */
+.widget {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.stats-widget .widget-body {
+    padding: 20px;
+}
+
+.stats-widget .big-icon {
+    font-size: 2.5em;
+    opacity: 0.3;
+}
+
+/* Table improvements */
+.table-responsive {
+    border: none;
+}
+
+.content-container {
+    background: #fff;
+}
+
+/* Button group spacing */
+.btn-group .btn {
+    margin: 0 2px;
+}
+
+/* Form inline improvements */
+.form-inline .form-group {
+    margin-bottom: 10px;
+}
+
+.form-inline .form-control {
+    margin-right: 10px;
+}
+
+/* Loading and animation improvements */
+.counter {
+    font-weight: bold;
+    color: inherit;
+}
+
+/* Pagination improvements */
+.pagination {
+    margin: 20px 0;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}

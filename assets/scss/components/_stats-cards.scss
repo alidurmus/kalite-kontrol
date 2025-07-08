@@ -1,0 +1,343 @@
+/**
+ * Dashboard Statistics Cards Component
+ * 
+ * Modernized SCSS version of dashboard-stats.css
+ * Uses variables, mixins and SCSS features
+ */
+
+// ==============================================================================
+// MAIN STATS CARDS
+// ==============================================================================
+
+.stats-card {
+  background: $white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 5px 25px rgba($black, 0.08);
+  border: none;
+  transition: $transition-base;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: map-get($spacers, 4);
+
+  // Top border accent
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  // Hover effect
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba($black, 0.15);
+  }
+
+  // Color variants
+  &-primary {
+    &::before {
+      background: $brand-primary;
+    }
+    
+    .stats-icon {
+      background: $brand-primary;
+      color: $white;
+    }
+    
+    .stats-number {
+      color: $brand-primary;
+    }
+    
+    .stats-link:hover {
+      color: $brand-primary;
+    }
+  }
+
+  &-success {
+    &::before {
+      background: $brand-success;
+    }
+    
+    .stats-icon {
+      background: $brand-success;
+      color: $white;
+    }
+    
+    .stats-number {
+      color: $brand-success;
+    }
+    
+    .stats-link:hover {
+      color: $brand-success;
+    }
+  }
+
+  &-danger {
+    &::before {
+      background: $brand-danger;
+    }
+    
+    .stats-icon {
+      background: $brand-danger;
+      color: $white;
+    }
+    
+    .stats-number {
+      color: $brand-danger;
+    }
+    
+    .stats-link:hover {
+      color: $brand-danger;
+    }
+  }
+
+  &-warning {
+    &::before {
+      background: $brand-warning;
+    }
+    
+    .stats-icon {
+      background: $brand-warning;
+      color: $white;
+    }
+    
+    .stats-number {
+      color: $brand-warning;
+    }
+    
+    .stats-link:hover {
+      color: $brand-warning;
+    }
+  }
+}
+
+// Stats Icon
+.stats-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0.15;
+}
+
+// Stats Content
+.stats-content {
+  z-index: 1;
+  position: relative;
+  flex-grow: 1;
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: $font-weight-bolder;
+  margin-bottom: map-get($spacers, 2);
+  line-height: 1.2;
+}
+
+.stats-label {
+  font-size: 1.1rem;
+  font-weight: $font-weight-bold;
+  color: $gray-800;
+  margin-bottom: map-get($spacers, 3);
+}
+
+.stats-today {
+  color: $gray-600;
+  font-size: $font-size-sm;
+  display: flex;
+  align-items: center;
+  gap: map-get($spacers, 1);
+  margin-bottom: map-get($spacers, 3);
+}
+
+.stats-action {
+  margin-top: auto;
+  padding-top: map-get($spacers, 3);
+}
+
+.stats-link {
+  color: $gray-600;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  transition: $transition-base;
+}
+
+// ==============================================================================
+// MINI STATS CARDS
+// ==============================================================================
+
+.mini-stats-card {
+  background: $white;
+  border-radius: 15px;
+  padding: map-get($spacers, 4);
+  box-shadow: 0 3px 15px rgba($black, 0.08);
+  display: flex;
+  align-items: center;
+  transition: $transition-base;
+  border: none;
+  margin-bottom: map-get($spacers, 4);
+  min-height: 80px;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba($black, 0.12);
+  }
+}
+
+.mini-stats-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  margin-right: map-get($spacers, 3);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.mini-stats-content {
+  flex-grow: 1;
+
+  h4 {
+    font-size: 1.5rem;
+    font-weight: $font-weight-bolder;
+    margin: 0 0 map-get($spacers, 1) 0;
+    color: $gray-800;
+    line-height: 1.2;
+  }
+
+  span {
+    color: $gray-600;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// ==============================================================================
+// RESPONSIVE DESIGN
+// ==============================================================================
+
+// Mobile optimizations
+@include media-breakpoint-down(md) {
+  .stats-card {
+    margin-bottom: map-get($spacers, 3);
+    padding: map-get($spacers, 4);
+    min-height: 160px;
+
+    .stats-icon {
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+
+    .stats-number {
+      font-size: 2rem;
+    }
+
+    .stats-label {
+      font-size: 1rem;
+    }
+  }
+
+  .mini-stats-card {
+    padding: map-get($spacers, 3);
+    margin-bottom: map-get($spacers, 3);
+
+    .mini-stats-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      margin-right: map-get($spacers, 2);
+    }
+
+    .mini-stats-content h4 {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Tablet optimizations
+@include media-breakpoint-between(md, lg) {
+  .stats-card .stats-number {
+    font-size: 2.2rem;
+  }
+}
+
+// ==============================================================================
+// ANIMATION VARIANTS
+// ==============================================================================
+
+// Fade in animation for stats cards
+.stats-card {
+  &[data-aos="fade-up"] {
+    @include fade-in;
+  }
+}
+
+// Scale animation for mini stats
+.mini-stats-card {
+  &[data-aos="scale-in"] {
+    @include scale-in;
+  }
+}
+
+// Staggered animation delays
+@for $i from 1 through 6 {
+  .stats-card:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.1}s;
+  }
+}
+
+// ==============================================================================
+// ACCESSIBILITY IMPROVEMENTS
+// ==============================================================================
+
+.stats-link {
+  &:focus {
+    @include focus-ring;
+    outline-offset: 2px;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .stats-card {
+    border: 2px solid $gray-800;
+    
+    .stats-number {
+      font-weight: $font-weight-bolder;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .stats-card,
+  .mini-stats-card {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+} 

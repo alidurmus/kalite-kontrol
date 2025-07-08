@@ -1,0 +1,66 @@
+parameters:
+    level: 5
+    paths:
+        - application/controllers
+        - application/models  
+        - application/libraries
+        - application/helpers
+        - application/modules
+    excludePaths:
+        - application/cache/*
+        - application/logs/*
+        - application/third_party/*
+        - application/config/*
+        - application/views/*
+        - application/modules/*/views/*
+        - application/libraries/qrcode/*
+        - application/libraries/vendor/*
+        - vendor/*
+        - tests/*
+        - system/*
+    ignoreErrors:
+        - '#Call to an undefined method CI_Controller::#'
+        - '#Call to an undefined method CI_Model::#'
+        - '#Call to an undefined method CI_Loader::#'
+        - '#Access to an undefined property CI_Controller::#'
+        - '#Access to an undefined property CI_Model::#'
+        - '#Access to an undefined property .+::\$load#'
+        - '#Access to an undefined property .+::\$input#'
+        - '#Access to an undefined property .+::\$session#'
+        - '#Access to an undefined property .+::\$db#'
+        - '#Access to an undefined property .+::\$form_validation#'
+        - '#Access to an undefined property .+::\$pagination#'
+        - '#Access to an undefined property .+::\$uri#'
+        - '#Access to an undefined property .+::\$config#'
+        - '#Access to an undefined property .+::\$security#'
+        - '#Access to an undefined property .+::\$output#'
+        - '#Access to an undefined property .+::\$upload#'
+        - '#Access to an undefined property .+::\$ciqrcode#'
+        - '#Access to an undefined property .+::\$performance_cache#'
+        - '#Access to an undefined property .+::\$measurementdataservice#'
+        - '#Access to an undefined property .+_model#'
+        - '#Variable \$this might not be defined#'
+        - '#Variable \$.+ might not be defined#'
+        - '#Function [a-zA-Z_]+\(\) should return [a-zA-Z_\\]+\|null but return statement is missing#'
+        - '#Function xcrud_get_instance not found#'
+        - '#Class .+ extends unknown class MX_Controller#'
+        - '#Class .+ extends unknown class MY_Controller#'
+        - '#Comparison operation .+ between .+ results in an error#'
+        -
+            identifier: missingType.iterableValue
+        -
+            identifier: missingType.generics
+    bootstrapFiles:
+        - tests/bootstrap.php
+    scanDirectories:
+        - system/
+    scanFiles:
+        - application/core/MY_Controller.php
+        - application/core/MY_Model.php
+        - application/core/MY_Loader.php
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    universalObjectCratesClasses:
+        - stdClass
+    reportUnmatchedIgnoredErrors: false
+    treatPhpDocTypesAsCertain: false 

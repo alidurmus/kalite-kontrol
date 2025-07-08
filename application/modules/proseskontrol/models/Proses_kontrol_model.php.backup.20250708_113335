@@ -1,0 +1,418 @@
+<?php
+
+class Proses_kontrol_model extends MY_Model
+{
+    protected $measurement_service;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->tableName = "proses_kontrol";
+        
+        // MeasurementDataService'i yükle
+        $CI = &get_instance();
+        if (!isset($CI->measurementdataservice)) {
+            $CI->load->library('MeasurementDataService');
+        }
+        $this->measurement_service = $CI->measurementdataservice;
+    }
+
+    public function get_limit($where = array(), $limit, $start, $search = "")
+    {
+        // $this->db->limit($limit, $start);
+        //$query = $this->db->where($where)->get($this->tableName);
+        /*
+         $query = $this->db->query(
+            'SELECT pk.*, 
+            ur.adi as urun_adi, 
+            us.user_name as kullanici_adi, 
+            son.adi as sonuc_adi  
+            FROM proses_kontrol pk   
+            INNER JOIN urunler ur ON ur.id = pk.urun 
+            INNER JOIN users us ON us.id = pk.kullanici 
+            INNER JOIN sonuc_secim son ON son.id = pk.sonuc 
+ 
+             ORDER BY pk.id DESC
+             LIMIT '. $limit.' OFFSET '. $start.'
+              ');        
+        */
+
+        $this->db->select('pk.id, pk.urun,pk.lot,pk.kontrol_no,pk.tarih,pk.parti_no,pk.hpk,   
+        ur.adi as urun_adi, 
+        us.user_name as kullanici_adi , 
+        son.adi as sonuc_adi');
+        $this->db->from('proses_kontrol pk');
+        $this->db->join('urunler ur', 'ur.id = pk.urun', 'inner');
+        $this->db->join('users us', 'us.id = pk.kullanici', 'inner');
+        $this->db->join('sonuc_secim son', 'son.id = pk.sonuc', 'inner');
+        $this->db->order_by("pk.id ", "DESC");
+        $this->db->limit($limit, $start);
+        if ($search != '') {
+            $this->db->like('ur.adi', $search);
+            $this->db->or_like('pk.lot', $search);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
+    /*
+<td><?php echo $item->urun_adi; ?></td>
+<td><?php echo $item->lot; ?></td>
+<td><?php echo $item->kontrol_no; ?></td>
+<td><?php echo $item->parti_no; ?></td>
+<td><?php  echo tarih_ayarla($item->tarih,"Y/m/d H:i");  ?></td>
+
+     */
+
+    public function listele()
+    {
+        $query = $this->db->query(
+            'SELECT pk.id, pk.urun,pk.lot,pk.kontrol_no,pk.tarih,pk.parti_no, pk.buji_braket_lot,
+            pk.aciklama,pk.hpk,pk.klips_hpk,   
+        ur.adi as urun_adi, 
+        us.user_name as kullanici_adi, 
+        son.adi as sonuc_adi  
+        FROM proses_kontrol pk   
+        INNER JOIN urunler ur ON ur.id = pk.urun 
+        INNER JOIN users us ON us.id = pk.kullanici 
+        INNER JOIN sonuc_secim son ON son.id = pk.sonuc 
+		ORDER BY pk.tarih DESC
+        LIMIT 10000
+        '
+        );
+        return $query->result();
+    }
+
+    // Select total records
+    public function getrecordCount($search = '')
+    {
+        $this->db->select('count(*) as allcount, pk.id, 
+        ur.adi as urun_adi, 
+        us.user_name as kullanici_adi , 
+        son.adi as sonuc_adi');
+        $this->db->from('proses_kontrol pk');
+        $this->db->join('urunler ur', 'ur.id = pk.urun', 'inner');
+        $this->db->join('users us', 'us.id = pk.kullanici', 'inner');
+        $this->db->join('sonuc_secim son', 'son.id = pk.sonuc', 'inner');
+        if ($search != '') {
+            $this->db->like('ur.adi', $search);
+            $this->db->or_like('pk.lot', $search);
+        }
+
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        return $result[0]['allcount'];
+    }
+
+    public function getSearchCount($search = '')
+    {
+        echo $search;
+        $this->db->select('count(*) as allcount, pk.id, pk.lot,
+        ur.adi as urun_adi, 
+        us.user_name as kullanici_adi , 
+        son.adi as sonuc_adi');
+        $this->db->from('proses_kontrol pk');
+        $this->db->join('urunler ur', 'ur.id = pk.urun', 'inner');
+        $this->db->join('users us', 'us.id = pk.kullanici', 'inner');
+        $this->db->join('sonuc_secim son', 'son.id = pk.sonuc', 'inner');
+        if ($search != '') {
+            $this->db->like('pk.lot', $search);
+        }
+
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result[0]['allcount'];
+    }
+
+
+    public function getSearch($where = array(),  $search = "")
+    {
+        $this->db->select('pk.id, pk.urun,pk.lot,pk.kontrol_no,pk.tarih,pk.parti_no,  
+        ur.adi as urun_adi, 
+        us.user_name as kullanici_adi , 
+        son.adi as sonuc_adi');
+        $this->db->from('proses_kontrol pk');
+        $this->db->join('urunler ur', 'ur.id = pk.urun', 'inner');
+        $this->db->join('users us', 'us.id = pk.kullanici', 'inner');
+        $this->db->join('sonuc_secim son', 'son.id = pk.sonuc', 'inner');
+        $this->db->limit(1000);
+        $this->db->order_by("pk.id ", "DESC");
+        if ($search != '') {
+            $this->db->like('pk.lot', $search);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    /**
+     * Kayıt ekle (ölçüm verisi ile birlikte)
+     * 
+     * @param array $data Kayıt verisi
+     * @param array $measurement_data Ölçüm verisi
+     * @return int|false Eklenen kayıt ID'si veya false
+     */
+    public function add_with_measurement($data, $measurement_data = null)
+    {
+        try {
+            $this->db->trans_start();
+            
+            // Kayıt ekle
+            $insert_id = $this->add($data);
+            
+            if (!$insert_id) {
+                throw new Exception("Failed to insert record");
+            }
+            
+            // Ölçüm verisi varsa dosyaya kaydet
+            if (!empty($measurement_data)) {
+                $filename = $this->measurement_service->save_measurement_data(
+                    'proses_kontrol', 
+                    $insert_id, 
+                    $measurement_data
+                );
+                
+                if ($filename) {
+                    // Kayıt güncelle
+                    $this->update(
+                        array('id' => $insert_id),
+                        array(
+                            'measurement_file' => $filename,
+                            'measurement_checksum' => md5(json_encode($measurement_data))
+                        )
+                    );
+                }
+            }
+            
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE) {
+                throw new Exception("Transaction failed");
+            }
+            
+            return $insert_id;
+            
+        } catch (Exception $e) {
+            log_message('error', "Proses_kontrol_model::add_with_measurement() - " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Kayıt güncelle (ölçüm verisi ile birlikte)
+     * 
+     * @param array $where WHERE koşulları
+     * @param array $data Güncellenecek veri
+     * @param array $measurement_data Ölçüm verisi
+     * @return bool Başarı durumu
+     */
+    public function update_with_measurement($where, $data, $measurement_data = null)
+    {
+        try {
+            $this->db->trans_start();
+            
+            // Mevcut kaydı bul
+            $existing_record = $this->get($where);
+            if (!$existing_record) {
+                throw new Exception("Record not found");
+            }
+            
+            // Ölçüm verisi varsa dosyaya kaydet
+            if (!empty($measurement_data)) {
+                // Eski dosyayı sil (eğer varsa)
+                if (!empty($existing_record->measurement_file)) {
+                    $this->measurement_service->delete_measurement_data($existing_record->measurement_file);
+                }
+                
+                // Yeni dosya kaydet
+                $filename = $this->measurement_service->save_measurement_data(
+                    'proses_kontrol', 
+                    $existing_record->id, 
+                    $measurement_data
+                );
+                
+                if ($filename) {
+                    $data['measurement_file'] = $filename;
+                    $data['measurement_checksum'] = md5(json_encode($measurement_data));
+                }
+            }
+            
+            // Kayıt güncelle
+            $result = $this->update($where, $data);
+            
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE) {
+                throw new Exception("Transaction failed");
+            }
+            
+            return $result;
+            
+        } catch (Exception $e) {
+            log_message('error', "Proses_kontrol_model::update_with_measurement() - " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Kayıt ile birlikte ölçüm verisini getir
+     * 
+     * @param array $where WHERE koşulları
+     * @return object|false Kayıt verisi veya false
+     */
+    public function get_with_measurement($where)
+    {
+        try {
+            $record = $this->get($where);
+            
+            if (!$record) {
+                return false;
+            }
+            
+            // Ölçüm verisini dosyadan yükle
+            if (!empty($record->measurement_file)) {
+                $measurement_data = $this->measurement_service->load_measurement_data($record->measurement_file);
+                $record->olcum_data = $measurement_data;
+                
+                // Geriye uyumluluk için JSON string olarak da ekle
+                if ($measurement_data) {
+                    $record->olcum = json_encode($measurement_data);
+                }
+            } else {
+                // Eski sistemde olcum alanı varsa onu kullan
+                if (isset($record->olcum) && !empty($record->olcum)) {
+                    $record->olcum_data = json_decode($record->olcum, true);
+                } else {
+                    $record->olcum_data = null;
+                    $record->olcum = null;
+                }
+            }
+            
+            return $record;
+            
+        } catch (Exception $e) {
+            log_message('error', "Proses_kontrol_model::get_with_measurement() - " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Kayıt sil (ölçüm dosyası ile birlikte)
+     * 
+     * @param array $where WHERE koşulları
+     * @return bool Başarı durumu
+     */
+    public function delete_with_measurement($where)
+    {
+        try {
+            $this->db->trans_start();
+            
+            // Mevcut kaydı bul
+            $existing_record = $this->get($where);
+            if (!$existing_record) {
+                log_message('warning', "Record not found for deletion");
+                return true; // Kayıt zaten yok
+            }
+            
+            // Ölçüm dosyasını sil (eğer varsa)
+            if (!empty($existing_record->measurement_file)) {
+                $this->measurement_service->delete_measurement_data($existing_record->measurement_file);
+            }
+            
+            // Kayıt sil
+            $result = $this->delete($where);
+            
+            $this->db->trans_complete();
+            
+            if ($this->db->trans_status() === FALSE) {
+                throw new Exception("Transaction failed");
+            }
+            
+            return $result;
+            
+        } catch (Exception $e) {
+            log_message('error', "Proses_kontrol_model::delete_with_measurement() - " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Eski JSON verilerini dosya sistemine migrate et
+     * 
+     * @param int $limit Bir seferde işlenecek kayıt sayısı
+     * @return array Migrate istatistikleri
+     */
+    public function migrate_json_to_files($limit = 100)
+    {
+        $stats = [
+            'processed' => 0,
+            'migrated' => 0,
+            'errors' => 0,
+            'skipped' => 0
+        ];
+        
+        try {
+            // Eski olcum alanı olan kayıtları getir
+            $this->db->select('id, olcum');
+            $this->db->where('olcum IS NOT NULL');
+            $this->db->where('olcum !=', '');
+            $this->db->where('(measurement_file IS NULL OR measurement_file = "")');
+            $this->db->limit($limit);
+            $query = $this->db->get($this->tableName);
+            $records = $query->result();
+            
+            foreach ($records as $record) {
+                $stats['processed']++;
+                
+                try {
+                    // JSON'u decode et
+                    $measurement_data = json_decode($record->olcum, true);
+                    
+                    if (json_last_error() !== JSON_ERROR_NONE) {
+                        log_message('warning', "Invalid JSON for proses_kontrol ID: {$record->id}");
+                        $stats['errors']++;
+                        continue;
+                    }
+                    
+                    if (empty($measurement_data)) {
+                        $stats['skipped']++;
+                        continue;
+                    }
+                    
+                    // Dosyaya kaydet
+                    $filename = $this->measurement_service->save_measurement_data(
+                        'proses_kontrol', 
+                        $record->id, 
+                        $measurement_data
+                    );
+                    
+                    if ($filename) {
+                        // Veritabanını güncelle
+                        $this->update(
+                            array('id' => $record->id),
+                            array(
+                                'measurement_file' => $filename,
+                                'measurement_checksum' => md5(json_encode($measurement_data))
+                            )
+                        );
+                        
+                        $stats['migrated']++;
+                        log_message('info', "Migrated proses_kontrol ID: {$record->id} to file: {$filename}");
+                    } else {
+                        $stats['errors']++;
+                    }
+                    
+                } catch (Exception $e) {
+                    log_message('error', "Migration error for proses_kontrol ID: {$record->id} - " . $e->getMessage());
+                    $stats['errors']++;
+                }
+            }
+            
+        } catch (Exception $e) {
+            log_message('error', "Proses_kontrol_model::migrate_json_to_files() - " . $e->getMessage());
+        }
+        
+        return $stats;
+    }
+}

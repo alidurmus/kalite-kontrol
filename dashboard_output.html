@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Admin, Dashboard, Bootstrap" />
+
+<link rel="shortcut icon" sizes="196x196" href="http://localhost:8090/assets/assets/images/logo.png">
+
+<title>Åžirket AdÄ± | CMS </title>
+
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css">
+<!-- build:css /assets/css/app.min.css -->
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/animate.css/animate.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/fullcalendar/dist/fullcalendar.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/perfect-scrollbar/css/perfect-scrollbar.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/bootstrap.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/core.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/app.css">
+<!-- endbuild -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/iziToast.min.css">
+
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/custom.css">
+<script src="http://localhost:8090/assets/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
+<script>
+    Breakpoints();
+</script>    <!-- Optional theme -->      
+    <link rel="stylesheet" href="http://localhost:8090/assets/assets/css/jquery.dataTables.min.css">
+    <style>
+        .stats-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        .quick-action-btn {
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .recent-activity {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body class="menubar-left menubar-unfold menubar-light theme-primary">
+<!--============= start main area -->
+
+    <!-- APP NAVBAR ==========-->
+    
+<nav id="app-navbar" class="navbar navbar-inverse navbar-fixed-top primary">
+    <!-- navbar header -->
+    <div class="navbar-header">
+        <button type="button" id="menubar-toggle-btn" class="navbar-toggle visible-xs-inline-block navbar-toggle-left hamburger hamburger--collapse js-hamburger">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+        </button>
+
+        <button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="zmdi zmdi-hc-lg zmdi-more"></span>
+        </button>
+
+        <button type="button" class="navbar-toggle navbar-toggle-right collapsed" data-toggle="collapse" data-target="#navbar-search" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="zmdi zmdi-hc-lg zmdi-search"></span>
+        </button>
+
+        <a href="http://localhost:8090/dashboard" class="navbar-brand">
+            <span class="brand-icon">
+
+                
+                    <img
+                        width="70"
+                        src="http://localhost:8090/assets/assets/images/index/infinity-logo.png"
+                        alt=""
+                        class="img-responsive">
+
+                
+            </span>
+            <span class="brand-name">
+                Åžirket AdÄ±            </span>
+        </a>
+    </div><!-- .navbar-header -->
+
+    <div class="navbar-container container-fluid">
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <ul class="nav navbar-toolbar navbar-toolbar-left navbar-left">
+                <li class="hidden-float hidden-menubar-top">
+                    <a href="javascript:void(0)" role="button" id="menubar-fold-btn" class="hamburger hamburger--arrowalt is-active js-hamburger">
+                        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+                    </a>
+                </li>
+                <li>
+                    <h5 class="page-title hidden-menubar-top hidden-float">Dashboard</h5>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-toolbar navbar-toolbar-right navbar-right">
+                <li class="nav-item dropdown hidden-float">
+                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#navbar-search" aria-expanded="false">
+                        <i class="zmdi zmdi-hc-lg zmdi-search"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div><!-- navbar-container -->
+</nav>    <!--========== END app navbar -->
+
+    <!-- APP ASIDE ==========-->
+    
+<aside id="menubar" class="menubar light">
+    <div class="app-user">
+        <div class="media">
+            <br>
+            <div class="media-body">
+                <div class="foldable">
+                    <h5><a href="http://localhost:8090/users/update_form/1" class="username">
+<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
+
+<h4>A PHP Error was encountered</h4>
+
+<p>Severity: Notice</p>
+<p>Message:  Undefined property: stdClass::$full_name</p>
+<p>Filename: views/aside.php</p>
+<p>Line Number: 9</p>
+
+
+	<p>Backtrace:</p>
+	
+		
+	
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/modules/includes/views/aside.php<br />
+			Line: 9<br />
+			Function: _error_handler			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/third_party/MX/Loader.php<br />
+			Line: 357<br />
+			Function: include			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/third_party/MX/Loader.php<br />
+			Line: 300<br />
+			Function: _ci_load			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/modules/dashboard/views/dashboard/index.php<br />
+			Line: 44<br />
+			Function: view			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/third_party/MX/Loader.php<br />
+			Line: 357<br />
+			Function: include			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/third_party/MX/Loader.php<br />
+			Line: 300<br />
+			Function: _ci_load			</p>
+
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/application/modules/dashboard/controllers/Dashboard.php<br />
+			Line: 136<br />
+			Function: view			</p>
+
+		
+	
+		
+	
+		
+			<p style="margin-left:10px">
+			File: /var/www/html/index.php<br />
+			Line: 315<br />
+			Function: require_once			</p>
+
+		
+	
+
+</div></a></h5>
+                    <h5><a href="http://localhost:8090/logout" class="username"> <span class="m-r-xs"><i class="fa fa-power-off"></i></span>
+                            <span>Çıkış</span></a></h5>
+
+
+                </div>
+            </div><!-- .media-body -->
+        </div><!-- .media -->
+    </div><!-- .app-user -->
+
+    <div class="menubar-scroll">
+        <div class="menubar-scroll-inner">
+            <ul class="app-menu">
+                <!-- Ana Sayfa ve Dashboard -->
+                <li>
+                    <a href="http://localhost:8090/dashboard">
+                        <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+                        <span class="menu-text">Ana Sayfa</span>
+                    </a>
+                </li>
+                
+                <!-- Kalite Kontrol Merkezi -->
+                <li>
+                    <a href="http://localhost:8090/anasayfa/kalite">
+                        <i class="menu-icon zmdi zmdi-shield-check zmdi-hc-lg"></i>
+                        <span class="menu-text">Kalite İşlemleri</span>
+                    </a>
+                </li>
+
+                <!-- Üretim ve Malzeme Yönetimi -->
+                
+                
+                <!-- İş Ortakları -->
+                
+                
+                <!-- İş Emri ve Planlama -->
+                
+                <!-- Kullanıcı Yönetimi -->
+                
+                
+                <!-- Kalite Kontrol Modülleri -->
+                
+                
+                
+                
+                
+                <!-- Veritabanı Yönetimi -->
+                
+                <!-- İçerik Yönetimi -->
+                
+                
+                
+                <!-- Portfolyo ve Hizmetler -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <!-- Sistem Ayarları -->
+                
+                
+                <!-- Web Sitesi -->
+                <li>
+                    <a href="http://localhost:8090/">
+                        <i class="menu-icon zmdi zmdi-globe zmdi-hc-lg"></i>
+                        <span class="menu-text">Web Sitesi</span>
+                    </a>
+                </li>
+            </ul><!-- .app-menu -->
+        </div><!-- .menubar-scroll-inner -->
+    </div><!-- .menubar-scroll -->
+</aside>    <!--========== END app aside -->
+
+    <!-- navbar search -->
+    <div id="navbar-search" class="navbar-search collapse">
+    <div class="navbar-search-inner">
+        <form action="#">
+            <span class="search-icon"><i class="fa fa-search"></i></span>
+            <input class="search-field" type="search" placeholder="search..."/>
+        </form>
+        <button type="button" class="search-close" data-toggle="collapse" data-target="#navbar-search" aria-expanded="false">
+            <i class="fa fa-close"></i>
+        </button>
+    </div>
+    <div class="navbar-search-backdrop" data-toggle="collapse" data-target="#navbar-search" aria-expanded="false"></div>
+</div>    <!-- .navbar-search -->
+
+    <!-- APP MAIN ==========-->
+    <main id="app-main" class="app-main">
+        <div class="wrap">
+            <section class="app-content">
+                <div class="container-fluid">
+    
+    <!-- Dashboard Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="text-primary"><i class="zmdi zmdi-view-dashboard"></i> Kalite Yönetim Dashboard</h2>
+                    <p class="text-muted">Kalite kontrol süreçlerinizi tek yerden yönetin</p>
+                </div>
+                <div>
+                    <a href="http://localhost:8090/anasayfa/kalite" class="btn btn-outline-primary">
+                        <i class="zmdi zmdi-settings"></i> Kalite Modülü
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card stats-card bg-primary text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="mb-1">0</h3>
+                            <p class="mb-0">Girdi Kontrol</p>
+                            <small>Bugün: 0</small>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="zmdi zmdi-inbox zmdi-hc-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-primary">
+                    <a href="http://localhost:8090/girdikontrol" class="text-white text-decoration-none">
+                        <small>Detayları Gör <i class="zmdi zmdi-arrow-right"></i></small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card stats-card bg-success text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="mb-1">0</h3>
+                            <p class="mb-0">Proses Kontrol</p>
+                            <small>Bugün: 0</small>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="zmdi zmdi-settings zmdi-hc-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-success">
+                    <a href="http://localhost:8090/proseskontrol" class="text-white text-decoration-none">
+                        <small>Detayları Gör <i class="zmdi zmdi-arrow-right"></i></small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card stats-card bg-danger text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="mb-1">0</h3>
+                            <p class="mb-0">Final Kontrol</p>
+                            <small>Bugün: 0</small>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="zmdi zmdi-check-circle zmdi-hc-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-danger">
+                    <a href="http://localhost:8090/finalkontrol" class="text-white text-decoration-none">
+                        <small>Detayları Gör <i class="zmdi zmdi-arrow-right"></i></small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-md-6 mb-3">
+            <div class="card stats-card bg-warning text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="mb-1">0</h3>
+                            <p class="mb-0">Kontrol No</p>
+                            <small>Toplam Kayıt</small>
+                        </div>
+                        <div class="align-self-center">
+                            <i class="zmdi zmdi-assignment zmdi-hc-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-warning">
+                    <a href="http://localhost:8090/kontrol_no" class="text-white text-decoration-none">
+                        <small>Detayları Gör <i class="zmdi zmdi-arrow-right"></i></small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"><i class="zmdi zmdi-flash"></i> Hızlı Erişim</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/anasayfa/kalite" class="btn btn-outline-primary quick-action-btn btn-block">
+                                <i class="zmdi zmdi-settings d-block mb-2"></i>
+                                Kalite Merkezi
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/girdikontrol/new_form" class="btn btn-outline-info quick-action-btn btn-block">
+                                <i class="zmdi zmdi-plus d-block mb-2"></i>
+                                Girdi Kontrol
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/proseskontrol/new_form" class="btn btn-outline-success quick-action-btn btn-block">
+                                <i class="zmdi zmdi-plus d-block mb-2"></i>
+                                Proses Kontrol
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/finalkontrol/new_form" class="btn btn-outline-danger quick-action-btn btn-block">
+                                <i class="zmdi zmdi-plus d-block mb-2"></i>
+                                Final Kontrol
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/malzemeler" class="btn btn-outline-secondary quick-action-btn btn-block">
+                                <i class="zmdi zmdi-storage d-block mb-2"></i>
+                                Malzemeler
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                            <a href="http://localhost:8090/urunler" class="btn btn-outline-dark quick-action-btn btn-block">
+                                <i class="zmdi zmdi-widgets d-block mb-2"></i>
+                                Ürünler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts and Tables Row -->
+    <div class="row mb-4">
+        <!-- Quality Control Chart -->
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"><i class="zmdi zmdi-chart"></i> Kalite Kontrol Dağılımı</h5>
+                </div>
+                <div class="card-body">
+                    <div style="height: 300px;">
+                        <canvas id="qualityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Stats -->
+        <div class="col-lg-8 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"><i class="zmdi zmdi-info"></i> Sistem Özeti</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span><i class="zmdi zmdi-accounts"></i> Tedarikçiler</span>
+                                    <strong>3</strong>
+                                </div>
+                                <div class="progress mt-1" style="height: 5px;">
+                                    <div class="progress-bar bg-info" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span><i class="zmdi zmdi-storage"></i> Malzemeler</span>
+                                    <strong>3</strong>
+                                </div>
+                                <div class="progress mt-1" style="height: 5px;">
+                                    <div class="progress-bar bg-warning" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span><i class="zmdi zmdi-widgets"></i> Ürünler</span>
+                                    <strong>3</strong>
+                                </div>
+                                <div class="progress mt-1" style="height: 5px;">
+                                    <div class="progress-bar bg-success" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span><i class="zmdi zmdi-accounts"></i> Kullanıcılar</span>
+                                    <strong>1</strong>
+                                </div>
+                                <div class="progress mt-1" style="height: 5px;">
+                                    <div class="progress-bar bg-primary" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a href="http://localhost:8090/anasayfa/kalite" class="btn btn-primary">
+                            <i class="zmdi zmdi-settings"></i> Kalite Kontrol Merkezi
+                        </a>
+                        <a href="http://localhost:8090/etiket" class="btn btn-outline-primary ml-2">
+                            <i class="zmdi zmdi-label"></i> Etiket İşlemleri
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Control Records -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0"><i class="zmdi zmdi-assignment"></i> Son Kontrol Kayıtları</h5>
+                </div>
+                <div class="card-body">
+                                            <div class="text-center py-5">
+                            <i class="zmdi zmdi-assignment zmdi-hc-5x text-muted mb-3"></i>
+                            <h4 class="text-muted">Henüz Kontrol Kaydı Bulunmuyor</h4>
+                            <p class="text-muted">Yeni kontrol kaydı eklemek için aşağıdaki butonu kullanın</p>
+                            <a href="http://localhost:8090/kontrol_no/new_form" class="btn btn-primary">
+                                <i class="zmdi zmdi-plus"></i> Yeni Kontrol Kaydı Ekle
+                            </a>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+
+</div>             </section><!-- #dash-content -->
+        </div><!-- .wrap -->
+
+        <!-- APP FOOTER -->
+        <div class="wrap p-t-0">
+    <footer class="app-footer">
+        <div class="clearfix">
+            <div class="copyright pull-left">Tüm hakları saklıdır |  2025 &copy;</div>
+        </div>
+    </footer>
+</div>
+        <!-- /#app-footer -->
+    </main>
+    <!--========== END app main -->
+
+    <!-- build:js /assets/js/core.min.js -->
+<script src="http://localhost:8090/assets/libs/bower/jquery/dist/jquery.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/jquery-ui/jquery-ui.min.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/PACE/pace.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js http://localhost:8090/assets/assets/js/app.min.js -->
+<!--<script src="--><!--/assets/js/library.js"></script>-->
+<script>
+    var LIBS = {
+        // Chart libraries
+        plot: [
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.min.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.pie.min.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.stack.min.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.resize.min.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.curvedLines.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.tooltip.min.js",
+            "http://localhost:8090/assets/libs/misc/flot/jquery.flot.categories.min.js"
+        ],
+        chart: [
+            'http://localhost:8090/assets/libs/misc/echarts/build/dist/echarts-all.js',
+            'http://localhost:8090/assets/libs/misc/echarts/build/dist/theme.js',
+            'http://localhost:8090/assets/libs/misc/echarts/build/dist/jquery.echarts.js'
+        ],
+        circleProgress: [
+            "http://localhost:8090/assets/libs/bower/jquery-circle-progress/dist/circle-progress.js"
+        ],
+        sparkline: [
+            "http://localhost:8090/assets/libs/misc/jquery.sparkline.min.js"
+        ],
+        maxlength: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-maxlength/src/bootstrap-maxlength.js"
+        ],
+        tagsinput: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.css",
+            "http://localhost:8090/assets/libs/bower/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+        ],
+        TouchSpin: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css",
+            "http://localhost:8090/assets/libs/bower/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"
+        ],
+        selectpicker: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-select/dist/css/bootstrap-select.min.css",
+            "http://localhost:8090/assets/libs/bower/bootstrap-select/dist/js/bootstrap-select.min.js"
+        ],
+        filestyle: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-filestyle/src/bootstrap-filestyle.min.js"
+        ],
+        timepicker: [
+            "http://localhost:8090/assets/libs/bower/bootstrap-timepicker/js/bootstrap-timepicker.js"
+        ],
+        datetimepicker: [
+            "http://localhost:8090/assets/libs/bower/moment/moment.js",
+            "http://localhost:8090/assets/libs/bower/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
+            "http://localhost:8090/assets/libs/bower/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
+        ],
+        select2: [
+            "http://localhost:8090/assets/libs/bower/select2/dist/css/select2.min.css",
+            "http://localhost:8090/assets/libs/bower/select2/dist/js/select2.full.min.js"
+        ],
+        vectorMap: [
+            "http://localhost:8090/assets/libs/misc/jvectormap/jquery-jvectormap.css",
+            "http://localhost:8090/assets/libs/misc/jvectormap/jquery-jvectormap.min.js",
+            "http://localhost:8090/assets/libs/misc/jvectormap/maps/jquery-jvectormap-us-mill.js",
+            "http://localhost:8090/assets/libs/misc/jvectormap/maps/jquery-jvectormap-world-mill.js",
+            "http://localhost:8090/assets/libs/misc/jvectormap/maps/jquery-jvectormap-africa-mill.js"
+        ],
+        summernote: [
+            "http://localhost:8090/assets/libs/bower/summernote/dist/summernote.css",
+            "http://localhost:8090/assets/libs/bower/summernote/dist/summernote.min.js"
+        ],
+        DataTable: [
+            "http://localhost:8090/assets/libs/misc/datatables/datatables.min.css",
+            "http://localhost:8090/assets/libs/misc/datatables/datatables.min.js"
+        ],
+        fullCalendar: [
+            "http://localhost:8090/assets/libs/bower/moment/moment.js",
+            "http://localhost:8090/assets/libs/bower/fullcalendar/dist/fullcalendar.min.css",
+            "http://localhost:8090/assets/libs/bower/fullcalendar/dist/fullcalendar.min.js"
+        ],
+        dropzone: [
+            "http://localhost:8090/assets/libs/bower/dropzone/dist/min/dropzone.min.css",
+            "http://localhost:8090/assets/libs/bower/dropzone/dist/min/dropzone.min.js"
+        ],
+        counterUp: [
+            "http://localhost:8090/assets/libs/bower/waypoints/lib/jquery.waypoints.min.js",
+            "http://localhost:8090/assets/libs/bower/counterup/jquery.counterup.min.js"
+        ],
+        others: [
+            "http://localhost:8090/assets/libs/bower/switchery/dist/switchery.min.css",
+            "http://localhost:8090/assets/libs/bower/switchery/dist/switchery.min.js",
+            "http://localhost:8090/assets/libs/bower/lightbox2/dist/css/lightbox.min.css",
+            "http://localhost:8090/assets/libs/bower/lightbox2/dist/js/lightbox.min.js",
+            "http://localhost:8090/assets/assets/js/custom.js"
+        ]
+    };
+</script>
+<script src="http://localhost:8090/assets/assets/js/plugins.js"></script>
+<script src="http://localhost:8090/assets/assets/js/app.js"></script>
+<!-- endbuild -->
+<script src="http://localhost:8090/assets/libs/bower/moment/moment.js"></script>
+<script src="http://localhost:8090/assets/libs/bower/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="http://localhost:8090/assets/assets/js/fullcalendar.js"></script>
+
+<script src="http://localhost:8090/assets/assets/js/sweetalert2.all.js"></script>
+
+<script src="http://localhost:8090/assets/assets/js/iziToast.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+  <script src="http://localhost:8090/assets/assets/js/jquery.dataTables.min.js"></script>
+
+<!--<script src="--><!--/assets/js/custom.js"></script>-->
+<script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // DataTable initialization
+            $('#controlTable').DataTable({
+                responsive: true,
+                pageLength: 10,
+                order: [[5, 'desc']], // Order by date
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Turkish.json'
+                }
+            });
+
+            // Chart for quality control statistics
+            var ctx = document.getElementById('qualityChart').getContext('2d');
+            var qualityChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Girdi Kontrol', 'Proses Kontrol', 'Final Kontrol'],
+                    datasets: [{
+                        data: [
+                            0,
+                            0,
+                            0                        ],
+                        backgroundColor: [
+                            '#007bff',
+                            '#28a745',
+                            '#dc3545'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

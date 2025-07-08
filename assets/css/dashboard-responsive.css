@@ -1,0 +1,158 @@
+/* Dashboard Responsive Design & Animations */
+
+/* Row and Column Spacing Fix */
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.row > [class*="col-"] {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Container Spacing */
+.container-fluid {
+    padding: 20px;
+}
+
+/* Responsive Design - Enhanced */
+@media (max-width: 1200px) {
+    .stats-card {
+        min-height: 160px;
+    }
+    
+    .stats-number {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-welcome-card {
+        padding: 25px;
+    }
+    
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .stats-card {
+        min-height: 150px;
+    }
+    
+    .stats-number {
+        font-size: 2rem;
+    }
+    
+    .quick-action-item {
+        min-height: 90px;
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 15px;
+    }
+    
+    .dashboard-welcome-card {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .welcome-actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .welcome-title {
+        font-size: 1.8rem;
+    }
+    
+    .stats-card {
+        min-height: 140px;
+        margin-bottom: 15px;
+    }
+    
+    .stats-number {
+        font-size: 1.8rem;
+    }
+    
+    .mini-stats-card {
+        margin-bottom: 15px;
+        min-height: 70px;
+    }
+    
+    .mini-stats-content h4 {
+        font-size: 1.3rem;
+    }
+    
+    .quick-action-item {
+        min-height: 80px;
+        padding: 12px 8px;
+    }
+    
+    .quick-action-icon {
+        font-size: 1.5rem;
+    }
+    
+    .chart-controls {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .welcome-title {
+        font-size: 1.6rem;
+    }
+    
+    .stats-card {
+        min-height: 130px;
+    }
+    
+    .stats-number {
+        font-size: 1.6rem;
+    }
+    
+    .btn-premium,
+    .btn-outline-premium {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.zmdi-hc-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Loading States */
+.btn:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Clear Fix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+/*# sourceMappingURL=dashboard-responsive.css.map */

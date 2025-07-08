@@ -1,0 +1,187 @@
+{
+    "type": "proses_kontrol",
+    "record_id": "37787",
+    "created_at": "2025-07-08 14:34:47",
+    "migrated_at": "2025-07-08 14:34:47",
+    "data": {
+        "olcum": {
+            "k1": {
+                "adi": "K1",
+                "olcu": "600",
+                "tolerans": "0",
+                "alt_limit": "590",
+                "ust_limit": "610",
+                "olcum": "610",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Görsel Kontrol",
+                "gorsel": "1"
+            },
+            "k2": {
+                "adi": "K2",
+                "olcu": "250",
+                "tolerans": "0",
+                "alt_limit": "240",
+                "ust_limit": "260",
+                "olcum": "250",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Teknik Resme Uygunluk",
+                "gorsel": "1"
+            },
+            "k3": {
+                "adi": "K3",
+                "olcu": "3.3",
+                "tolerans": "0",
+                "alt_limit": "32.80",
+                "ust_limit": "33.80",
+                "olcum": "33.25",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Kaynak uygunluğu",
+                "gorsel": "1"
+            },
+            "k4": {
+                "adi": "K4",
+                "olcu": "53",
+                "tolerans": "0",
+                "alt_limit": "53",
+                "ust_limit": "53.80",
+                "olcum": "53.67",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "Lehim Uygunluğu",
+                "gorsel": "1"
+            },
+            "k5": {
+                "adi": "K5",
+                "olcu": "7.5",
+                "tolerans": "0",
+                "alt_limit": "7.40",
+                "ust_limit": "7.50",
+                "olcum": "7.4",
+                "sonuc": "Geçti",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k6": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k7": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k8": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k9": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k10": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k11": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k12": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k13": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "1"
+            },
+            "k14": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            },
+            "k15": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "2"
+            },
+            "k16": {
+                "adi": "-",
+                "olcu": "0",
+                "tolerans": "0",
+                "alt_limit": "0",
+                "ust_limit": "0",
+                "olcum": "0",
+                "sonuc": "",
+                "kontrol_noktasi": "-",
+                "gorsel": "3"
+            }
+        }
+    },
+    "checksum": "569bbdf7c892ab4d43de49e3f0aef3cf"
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="33" assertions="105" errors="0" warnings="0" failures="0" skipped="3" time="0.168687">
+    <testsuite name="unit" tests="33" assertions="105" errors="0" warnings="0" failures="0" skipped="3" time="0.168687">
+      <testsuite name="QMS\Tests\Unit\BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" tests="11" assertions="58" errors="0" warnings="0" failures="0" skipped="1" time="0.020855">
+        <testcase name="testBreadcrumbCreation" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="23" assertions="0" time="0.007545">
+          <skipped/>
+        </testcase>
+        <testcase name="testSegmentTitleFormatting" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="31" assertions="3" time="0.001371"/>
+        <testcase name="testBreadcrumbArrayStructure" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="55" assertions="6" time="0.001406"/>
+        <testcase name="testHtmlOutputSafety" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="75" assertions="2" time="0.006016"/>
+        <testcase name="testUrlValidation" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="91" assertions="3" time="0.001369"/>
+        <testcase name="testSeparatorFunctionality" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="106" assertions="3" time="0.001051"/>
+        <testcase name="testModuleTitleMapping" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="119" assertions="19" time="0.000568"/>
+        <testcase name="testActionTitleMapping" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="146" assertions="13" time="0.000807"/>
+        <testcase name="testBreadcrumbCount" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="170" assertions="3" time="0.000206"/>
+        <testcase name="testHomePageConfiguration" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="185" assertions="3" time="0.000212"/>
+        <testcase name="testCssClassGeneration" class="QMS\Tests\Unit\BreadcrumbTest" classname="QMS.Tests.Unit.BreadcrumbTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\BreadcrumbTest.php" line="198" assertions="3" time="0.000303"/>
+      </testsuite>
+      <testsuite name="QMS\Tests\Unit\SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" tests="11" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="0.003860">
+        <testcase name="testSafeOutputWithNormalText" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="27" assertions="1" time="0.000249"/>
+        <testcase name="testSafeOutputWithXSSAttempt" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="39" assertions="1" time="0.000276"/>
+        <testcase name="testSafeOutputWithQuotes" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="51" assertions="1" time="0.000275"/>
+        <testcase name="testSafeAttr" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="63" assertions="2" time="0.000335"/>
+        <testcase name="testSafeUrl" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="80" assertions="2" time="0.000765"/>
+        <testcase name="testSanitizeSearch" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="98" assertions="2" time="0.000334"/>
+        <testcase name="testSafeOutputWithEmptyInput" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="115" assertions="1" time="0.000225"/>
+        <testcase name="testSafeOutputWithNullInput" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="125" assertions="1" time="0.000297"/>
+        <testcase name="testSafeOutputWithNumericInput" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="135" assertions="1" time="0.000221"/>
+        <testcase name="testSafeOutputDoubleEncodingPrevention" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="145" assertions="1" time="0.000606"/>
+        <testcase name="testSafeOutputWithMixedContent" class="QMS\Tests\Unit\SecurityHelperTest" classname="QMS.Tests.Unit.SecurityHelperTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\SecurityHelperTest.php" line="157" assertions="4" time="0.000278"/>
+      </testsuite>
+      <testsuite name="QMS\Tests\Unit\UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" tests="11" assertions="30" errors="0" warnings="0" failures="0" skipped="2" time="0.143972">
+        <testcase name="testCreateUserWithInvalidEmail" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="27" assertions="0" time="0.001888">
+          <skipped/>
+        </testcase>
+        <testcase name="testCreateUserWithInvalidUsername" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="35" assertions="0" time="0.001017">
+          <skipped/>
+        </testcase>
+        <testcase name="testPasswordHashing" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="43" assertions="4" time="0.136776"/>
+        <testcase name="testUserDataValidation" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="57" assertions="5" time="0.000236"/>
+        <testcase name="testSearchSanitization" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="77" assertions="2" time="0.000257"/>
+        <testcase name="testPaginationCalculation" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="93" assertions="3" time="0.000203"/>
+        <testcase name="testRoleIdValidation" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="115" assertions="3" time="0.000166"/>
+        <testcase name="testDateFormatting" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="130" assertions="3" time="0.002500"/>
+        <testcase name="testErrorResponseFormat" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="144" assertions="4" time="0.000532"/>
+        <testcase name="testSuccessResponseFormat" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="160" assertions="4" time="0.000172"/>
+        <testcase name="testAdminRoleProtection" class="QMS\Tests\Unit\UserServiceTest" classname="QMS.Tests.Unit.UserServiceTest" file="C:\xampp\htdocs\cms\panel\tests\Unit\UserServiceTest.php" line="177" assertions="2" time="0.000225"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

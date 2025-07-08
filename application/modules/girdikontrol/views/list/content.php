@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <hr>
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="<?php 
+// Load security helper for XSS protection
+$this->load->helper('security');
+echo base_url("anasayfa/kalite"); ?>" class="btn btn-primary  btn-lg"><-- Kalite</a>
+
+                            <a href="<?php echo base_url("dashboard"); ?>" class="btn btn-warning  btn-lg"><-- Yönetim</a>
+
+                                    <a href="<?php echo base_url("excel/girdi_kontrol"); ?>" class="btn btn-danger  btn-lg">Excel</a>
+
+                                    <a href="<?php echo base_url("anasayfa/malzeme"); ?>" class="btn btn-success  btn-lg">Yeni Ekle --></a>
+    </div>
+
+                <div class="col-md-5">
+                    <a href="#" class="btn btn-primary  btn-lg  btn-block"><STRong>GİRDİ KONTROL</STRong></a>
+                </div>
+
+            </div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <h4 class="m-b-lg">
+                Girdi Kontrol Listesi
+                <a href="<?php echo base_url("girdikontrol/new_form"); ?>" class="btn btn-outline btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
+            </h4>
+        </div>
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="widget-body">
+                    <form action="<?php echo base_url("girdikontrol/index"); ?>" method="get">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="search_tedarikci">Tedarikçi</label>
+                                <input type="text" name="search_tedarikci" class="form-control" placeholder="Tedarikçi adı..." value="<?php echo safe_attr($search_tedarikci); ?>">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="search_malzeme">Malzeme</label>
+                                <input type="text" name="search_malzeme" class="form-control" placeholder="Malzeme adı..." value="<?php echo safe_attr($search_malzeme); ?>">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="search_parti_no">Parti No</label>
+                                <input type="text" name="search_parti_no" class="form-control" placeholder="Parti no..." value="<?php echo safe_attr($search_parti_no); ?>">
+                            </div>
+                            <div class="form-group col-md-3 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary mr-2">Ara</button>
+                                <a href="<?php echo base_url("girdikontrol"); ?>" class="btn btn-outline-secondary">Temizle</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <table id="dataTablex" class="table table-hover table-striped table-bordered content-container">
+                <thed>
+                    <th>id</th>
+                    <th>Malzeme</th>
+                    <th>Tedarikçi</th>
+                    <th>Kontrol No</th>
+                    <th>Parti_no</th>
+                    <th>İrsaliye</th>
+                    <th>Tarih</th>
+                    <th>İşlem</th>
+                </thed>
+                            <tbody class="sortable" data-url="<?php echo base_url("girdikontrol/rankSetter"); ?>">
+                                <?php foreach ($items as $item) { ?>
+                                    <tr>
+                            <td><?php echo safe_output($item->id); ?></td>
+                                        <td><?php echo safe_output($item->malzeme_adi); ?></td>
+                                        <td><?php echo safe_output($item->tedarikci_adi); ?></td>
+                            <td><?php echo safe_output($item->kontrol_no); ?></td>
+                            <td><?php echo safe_output($item->parti_no); ?></td>
+                                        <td><?php echo safe_output($item->irsaliye); ?></td>
+                            <td><?php echo tarih_ayarla($item->tarih, "Y/m/d H:i");  ?></td>
+                            <td>
+                                <a href="<?php echo base_url("anasayfa/girdikontrol_duzenle"); ?>/<?php echo safe_output($item->id); ?>" class="btn btn-info">Düzenle</a>
+                                <button data-url="<?php echo base_url("anasayfa/girdikontrol_sil/$item->id"); ?>" class="btn btn-sm btn-danger btn-outline remove-btn">
+                                    <i class="fa fa-trash"></i> Sil
+                                                </button>
+
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+
+                        </table>
+            <p><?php echo safe_output($links); ?></p>
+        </div>
+    </div>
+</div>
+
+    <script>
+        $(document).ready(function() {
+        $('#dataTable').DataTable();
+        });
+    </script>

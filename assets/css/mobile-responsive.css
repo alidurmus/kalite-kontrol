@@ -1,0 +1,423 @@
+/**
+ * QMS Mobile Responsive Enhancements
+ * 
+ * Mobile-first responsive design for tables, forms and dashboard
+ */
+
+/* Mobile Table Responsive */
+@media (max-width: 768px) {
+    .table-responsive-mobile {
+        border: none;
+    }
+    
+    .table-responsive-mobile table,
+    .table-responsive-mobile thead,
+    .table-responsive-mobile tbody,
+    .table-responsive-mobile th,
+    .table-responsive-mobile td,
+    .table-responsive-mobile tr {
+        display: block;
+    }
+    
+    .table-responsive-mobile thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .table-responsive-mobile tr {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .table-responsive-mobile td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding: 8px 8px 8px 35% !important;
+        word-wrap: break-word;
+    }
+    
+    .table-responsive-mobile td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 6px;
+        width: 30%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .table-responsive-mobile td:last-child {
+        border-bottom: 0;
+    }
+    
+    /* Action buttons in mobile */
+    .table-responsive-mobile .btn {
+        margin: 2px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile Form Enhancements */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .col-md-3,
+    .col-md-4,
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        margin-bottom: 5px;
+        border-radius: 4px !important;
+    }
+    
+    /* Search form mobile layout */
+    .search-form-mobile .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .search-form-mobile .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Dashboard Cards Mobile */
+@media (max-width: 768px) {
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+    
+    .dashboard-card .card-body {
+        padding: 15px;
+    }
+    
+    .dashboard-stats {
+        text-align: center;
+    }
+    
+    .dashboard-stats .stat-number {
+        font-size: 24px;
+        font-weight: 700;
+        color: #007bff;
+    }
+    
+    .dashboard-stats .stat-label {
+        font-size: 12px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Touch-friendly buttons */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .btn-sm {
+        min-height: 36px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .btn-lg {
+        min-height: 52px;
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Navigation Mobile */
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin: 0;
+    }
+    
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        float: none;
+        width: 100%;
+        margin-top: 0;
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+/* Sidebar Mobile */
+@media (max-width: 768px) {
+    .menubar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .menubar.open {
+        transform: translateX(0);
+    }
+    
+    .menubar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: none;
+    }
+    
+    .menubar-overlay.active {
+        display: block;
+    }
+}
+
+/* Form Controls Mobile */
+@media (max-width: 768px) {
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 15px;
+        height: auto;
+    }
+    
+    .form-control-lg {
+        font-size: 18px;
+        padding: 15px 20px;
+    }
+    
+    .form-control-sm {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    
+    select.form-control {
+        padding: 12px 15px;
+        background-size: 12px;
+    }
+}
+
+/* Loading States Mobile */
+@media (max-width: 768px) {
+    .qms-spinner {
+        width: 24px;
+        height: 24px;
+        border-width: 2px;
+    }
+    
+    .qms-notification-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .qms-notification {
+        margin-bottom: 8px;
+        padding: 12px;
+    }
+    
+    .qms-notification-title {
+        font-size: 14px;
+    }
+    
+    .qms-notification-message {
+        font-size: 13px;
+    }
+}
+
+/* Breadcrumb Mobile */
+@media (max-width: 768px) {
+    .breadcrumb {
+        padding: 8px 12px;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    
+    .breadcrumb-item {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .breadcrumb-compact .breadcrumb-item:not(:first-child):not(:last-child) {
+        display: none;
+    }
+    
+    .breadcrumb-compact .breadcrumb-item:nth-last-child(2)::after {
+        content: "...";
+        margin: 0 8px;
+        color: #6c757d;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .btn,
+    .navbar,
+    .menubar,
+    .breadcrumb,
+    .qms-notification-container {
+        display: none !important;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 4px;
+        border: 1px solid #000;
+    }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .qms-spinner,
+    .qms-notification,
+    .btn,
+    .dropdown-menu {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .table-responsive-mobile tr {
+        border: 2px solid #000;
+    }
+    
+    .table-responsive-mobile td:before {
+        color: #000;
+        font-weight: bold;
+    }
+    
+    .btn {
+        border: 2px solid #000;
+        font-weight: bold;
+    }
+    
+    .form-control {
+        border: 2px solid #000;
+    }
+}
+
+/* Dark Theme Support */
+.theme-dark .table-responsive-mobile tr {
+    background: #343a40;
+    border-color: #495057;
+}
+
+.theme-dark .table-responsive-mobile td {
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+.theme-dark .table-responsive-mobile td:before {
+    color: #adb5bd;
+}
+
+/* Focus States for Keyboard Navigation */
+.btn:focus,
+.form-control:focus,
+.breadcrumb-item a:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Loading Overlay for Mobile */
+.qms-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.qms-loading-overlay .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: qms-spin 1s linear infinite;
+}
+
+/* Utility Classes */
+.mobile-hidden {
+    display: block;
+}
+
+.mobile-visible {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+    
+    .mobile-visible {
+        display: block;
+    }
+}
+
+.touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.text-truncate-mobile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 150px;
+}
+
+@media (max-width: 480px) {
+    .text-truncate-mobile {
+        max-width: 100px;
+    }
+} 
+/*# sourceMappingURL=mobile-responsive.css.map */

@@ -1,0 +1,18 @@
+/**
+ * Typography Styles
+ */
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $gray-900;
+}
+
+.text-primary { color: $brand-primary !important; }
+.text-success { color: $brand-success !important; }
+.text-danger { color: $brand-danger !important; }
+.text-warning { color: $brand-warning !important; }
+
+.fw-bold { font-weight: $font-weight-bold !important; }
+.fw-normal { font-weight: $font-weight-normal !important; } 

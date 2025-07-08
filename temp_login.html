@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Admin, Dashboard, Bootstrap" />
+
+<link rel="shortcut icon" sizes="196x196" href="http://localhost:8090/assets/assets/images/default_image.png">
+
+<title>Tempar | CMS </title>
+
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css">
+<!-- build:css /assets/css/app.min.css -->
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/animate.css/animate.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/fullcalendar/dist/fullcalendar.min.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/libs/bower/perfect-scrollbar/css/perfect-scrollbar.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/bootstrap.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/core.css">
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/app.css">
+<!-- endbuild -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/iziToast.min.css">
+
+<link rel="stylesheet" href="http://localhost:8090/assets/assets/css/custom.css">
+<script src="http://localhost:8090/assets/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>
+<script>
+    Breakpoints();
+</script>    <link rel="stylesheet" href="http://localhost:8090/assets/assets/css/misc-pages.css">
+</head>
+
+<body class="simple-page">
+<!--============= start main area -->
+
+    <!-- APP MAIN ==========-->
+        <div class="simple-page-wrap">
+    <div class="simple-page-logo animated swing">
+        <a href="index.html">
+            <span><i class="fa fa-gg"></i></span>
+            <span>TEMPAR</span>
+        </a>
+    </div><!-- logo -->
+    <div class="simple-page-form animated flipInY" id="login-form">
+        <h4 class="form-title m-b-xl text-center">Kullan─▒c─▒ Giri┼ş Ekran─▒</h4>
+        <form action="http://localhost:8090/userop/do_login" method="post">
+            <div class="form-group">           
+                <select id="sign-in-email"  name="user_name" class="form-control">
+                                                               
+                            <option value="admin">
+                                admin                            </option>
+                                           
+                            <option value="kalite">
+                                kalite                            </option>
+                                           
+                            <option value="yonetim">
+                                yonetim                            </option>
+                                           
+                            <option value="planlama">
+                                planlama                            </option>
+                                           
+                            <option value="arge">
+                                arge                            </option>
+                                                            </select>
+                            </div>
+            <div class="form-group">
+                <input id="sign-in-password" type="password" class="form-control" placeholder="┼Şifre" name="user_password">
+                            </div>
+            <button type="submit" class="btn btn-primary">Giri┼ş Yap</button>
+        </form>
+    </div><!-- #login-form -->
+    <div class="simple-page-footer">
+        <p><a href="http://localhost:8090/sifremi-unuttum">┼Şifremi Unuttum ?</a></p>
+    </div><!-- .simple-page-footer -->
+</div><!-- .simple-page-wrap -->    <!--========== END app main -->
+
+<script src="http://localhost:8090/assets/assets/js/iziToast.min.js"></script>
+
+
+</body>
+</html>

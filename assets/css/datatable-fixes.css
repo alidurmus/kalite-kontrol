@@ -1,0 +1,61 @@
+/* DataTable Sorting Icons Fix */
+table.dataTable thead .sorting {
+    background-image: none !important;
+    position: relative;
+}
+
+table.dataTable thead .sorting:after {
+    content: "⇅";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 12px;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: none !important;
+    position: relative;
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "↑";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 12px;
+}
+
+table.dataTable thead .sorting_desc {
+    background-image: none !important;
+    position: relative;
+}
+
+table.dataTable thead .sorting_desc:after {
+    content: "↓";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 12px;
+}
+
+/* Remove default DataTable background images */
+table.dataTable thead th {
+    background-image: none !important;
+}
+
+/* Fix for responsive tables */
+@media (max-width: 768px) {
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_desc:after {
+        right: 4px;
+        font-size: 10px;
+    }
+} 
+/*# sourceMappingURL=datatable-fixes.css.map */

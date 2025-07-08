@@ -1,0 +1,47 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+TODO.md
+prd.md
+
+# Development files
+.vscode
+.idea
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache and temporary files
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+# Logs
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# Node modules (if any)
+node_modules
+
+# Test files
+test-results
+playwright-report
+
+# Local environment files
+.env
+.env.local
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp 

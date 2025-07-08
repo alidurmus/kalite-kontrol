@@ -1,0 +1,26 @@
+/**
+ * QMS Dashboard Main SCSS File
+ * 
+ * Simplified version with existing files only
+ */
+
+// ==============================================================================
+// UTILITIES - Variables, Functions, Mixins
+// ==============================================================================
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/functions';
+
+// ==============================================================================
+// BASE - Reset, Typography, Base Styles
+// ==============================================================================
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+// ==============================================================================
+// COMPONENTS - Reusable UI Components
+// ==============================================================================
+@import 'components/stats-cards';
+
+/*! QMS Dashboard SCSS v2.0.0 | Build Test */ 

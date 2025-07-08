@@ -1,0 +1,397 @@
+# **🏛️ Kalite Yönetim Sistemi - Geliştirme ve Kalite Kuralları v2.0**
+
+**Amaç:** Mevcut Kalite Yönetim Sistemi (QMS) projesini yeniden yapılandırarak (refactoring) ve geliştirerek; güvenli, sürdürülebilir, yüksek performanslı ve test edilebilir bir yapıya kavuşturmak. Bu doküman, tüm geliştirme süreçleri için ana rehber niteliğindedir.
+
+**Hedefler:**
+
+* **Kod Kalitesi:** Tüm kod tabanında PSR-12 standartlarına tam uyum. PHPStan ile statik analizde seviye 5 ve üzeri başarı.
+* **Güvenlik:** TODO.md dosyasında belirtilen tüm kritik güvenlik maddelerinin çözülmesi. Sıfır kritik zafiyet.
+* **Performans:** Ortalama sayfa yanıt süresinin < 400ms olması. Veritabanı sorgularının < 50ms altında çalışması.
+* **Test Kapsamı:** Kritik kalite kontrol modülleri (girdikontrol, proseskontrol, finalkontrol) için PHPUnit ile **%85+** birim ve entegrasyon testi kapsamı. Ana kullanıcı akışları için **%100** Playwright E2E testi kapsamı.
+* **Modülerlik:** Tüm modüllerin HMVC prensiplerine uygun, birbirinden bağımsız ve yeniden kullanılabilir olması.
+
+---
+
+## **🔒 1. GÜVENLİK - KRİTİK ÖNCELİK**
+
+### **1.1. XSS (Cross-Site Scripting) Koruması - ZORUNLU**
+
+* **Tüm user input/output'larda** `htmlspecialchars()` kullanılmalıdır
+* View dosyalarında `<?php echo $variable; ?>` yerine **MUTLAKA** `<?php echo htmlspecialchars($variable, ENT_QUOTES, 'UTF-8'); ?>` kullanın
+* **Helper function oluşturun:**
+```php
+// application/helpers/security_helper.php
+function safe_output($data, $double_encode = FALSE) {
+    return htmlspecialchars($data, ENT_QUOTES, 'UTF-8', $double_encode);
+}
+```
+
+### **1.2. CSRF Koruması - ZORUNLU**
+
+* Tüm formlara CSRF token eklenmelidir
+* Ajax isteklerine CSRF token kontrolü yapılmalıdır
+* CodeIgniter'ın built-in CSRF koruması aktif edilmelidir
+
+### **1.3. Input Validation ve Sanitization - ZORUNLU**
+
+* **Tüm POST/GET parametreleri validate edilmelidir**
+* Search input'ları sanitize edilmelidir
+* Numeric değerler `intval()` ile kontrol edilmelidir
+* File upload'larda extension ve MIME type kontrolü yapılmalıdır
+
+### **1.4. SQL Injection Koruması - ZORUNLU**
+
+* **Active Record kullanımı zorunludur**
+* Raw SQL kullanımında prepared statement şart
+* Dynamic WHERE clause'larda binding kullanılmalıdır
+
+---
+
+## **📂 2. Kod Kalitesi ve Yeniden Yapılandırma (Refactoring)**
+
+### **2.1. Kodlama Standartları (PSR-12 - ZORUNLU)**
+
+* Tüm PHP dosyaları **PSR-12** standardına uymalıdır
+* **Otomasyon:** PHP-CS-Fixer kullanılacaktır
+* Her commit öncesi kod stili kontrol edilmelidir
+
+### **2.2. Mimarî Desenler ve Sorumlulukların Ayrılması**
+
+* **"Fat Controller" YASAK:** Controller'lar sadece HTTP isteklerini almak, ilgili servisi çağırmak ve yanıtı döndürmekle sorumludur
+* **Service Layer (Hizmet Katmanı - ZORUNLU):** İş mantığı `application/services/` klasörü altında Service sınıflarında yapılmalıdır
+
+```php
+// KÖTÜ ❌ (Controller içinde iş mantığı)
+public function create_kontrol() {
+    $data = $this->input->post();
+    if ($data['deger'] > 100) {
+        $data['status'] = 'RED';
+    }
+    $this->kontrol_model->insert($data);
+}
+
+// İYİ ✅ (İş mantığı Service katmanında)
+public function create_kontrol() {
+    $this->load->library('kontrol_service');
+    $data = $this->input->post();
+    $result = $this->kontrol_service->create($data);
+    // ...
+}
+```
+
+### **2.3. Exception Handling - ZORUNLU**
+
+* Tüm model method'larında try-catch blokları kullanılmalıdır
+* Custom exception class'ları oluşturulmalıdır
+* Error logging sistemi aktif olmalıdır
+* User-friendly error message'lar gösterilmelidir
+
+### **2.4. PHPDoc Dokümantasyonu - ZORUNLU**
+
+* Tüm sınıflar, method'lar ve karmaşık kod blokları için **PHPDoc** formatında açıklama yazılmalıdır
+
+---
+
+## **📦 3. HMVC Mimarisi ve Modüler Geliştirme**
+
+### **3.1. Modül Bağımsızlığı (ZORUNLU)**
+
+* Her modül kendi controllers, models, views, libraries ve config dosyalarına sahip olmalıdır
+* Bir modül, başka bir modülün **Model'ini veya Kütüphanesini doğrudan load edemez**
+
+### **3.2. Modüller Arası İletişim**
+
+* Modüller arası iletişim sadece `Modules::run('module/controller/method', $params)` ile yapılmalıdır
+* Ortak fonksiyonlar `application/helpers` veya `application/libraries` altına taşınmalıdır
+
+### **3.3. Modüle Özel Kurallar (ZORUNLU)**
+
+* Her modülün kök dizininde `_module_rules.md` dosyası bulunmalıdır:
+
+```markdown
+# Modül: girdikontrol
+
+**Sorumluluk:** Tedarikçiden gelen malzemelerin kalite kontrol süreçlerini yönetir.
+**Bağımlılıklar:** `tedarikciler`, `malzemeler` modüllerinden veri okur.
+**Ana İş Mantığı:**
+1. Gelen malzeme için bir kontrol kaydı oluşturur.
+2. Belirlenen kriterlere göre "KABUL" veya "RED" statüsü verir.
+3. Reddedilen ürünler için otomatik bildirim sürecini başlatır.
+**Test Stratejisi:** `tests/GirdiKontrol_test.php` altında birim testleri bulunur.
+```
+
+---
+
+## **⚡ 4. PERFORMANCE - ORTA ÖNCELİK**
+
+### **4.1. Database Optimizasyonu**
+
+* Çoklu model call'ları tek query'de birleştirilmelidir
+* Index'ler kontrol edilmelidir (tarih, process_isim, id alanları)
+* Pagination query'leri optimize edilmelidir
+* `get_count()` method'ları cache'lenmelidir (5 dakika)
+
+### **4.2. Caching Stratejisi**
+
+* İstatistik verileri Redis/Memcached ile cache'lenmelidir
+* View fragment caching eklenmelidir
+* Database query result caching yapılmalıdır
+* Static asset'ler için browser caching aktif edilmelidir
+
+### **4.3. Frontend Optimizasyonu**
+
+* Chart.js lazy loading uygulanmalıdır
+* CSS/JS minification yapılmalıdır
+* Image optimization uygulanmalıdır
+* DataTable pagination server-side yapılmalıdır
+
+---
+
+## **🧪 5. Test Stratejisi ve Otomasyon**
+
+### **5.1. Test Piramidi ve Kapsam Hedefleri**
+
+* **Birim Testleri (PHPUnit):**
+  * **Kapsam:** Modeller, Kütüphaneler, Helper'lar, Service'ler
+  * **Hedef:** **%85+** kod kapsamı
+  
+* **Entegrasyon Testleri (PHPUnit):**
+  * **Kapsam:** Service katmanının modellerle çalışması
+  * **Hedef:** Ana iş akışları için %100 kapsam
+  
+* **E2E Testler (Playwright - ZORUNLU):**
+  * **Kapsam:** Kritik kullanıcı akışları:
+    1. Kullanıcı girişi ve dashboard'a erişim
+    2. Girdi kontrol modülünde CRUD işlemleri
+    3. Proses ve final kontrol kayıt oluşturma
+    4. Tedarikçiler listesinde arama/filtreleme
+    5. Excel export işlemleri
+  * **Hedef:** %100 başarı
+
+### **5.2. Test Ortamı**
+
+* Testler production'dan izole **test veritabanı** üzerinde çalışmalıdır
+* Docker test servisi yapılandırılmalıdır
+* Test data seeding otomatize edilmelidir
+
+### **5.3. Playwright Test Kuralları**
+
+* Page Object Model pattern kullanılmalıdır
+* Test'ler paralel çalışabilir olmalıdır
+* Screenshot ve video recording aktif olmalıdır
+* Test raporları HTML formatında oluşturulmalıdır
+
+---
+
+## **🛠️ 6. Geliştirme Araçları ve Denetim**
+
+### **6.1. Statik Kod Analizi (PHPStan - ZORUNLU)**
+
+* **Hedef Seviye:** Minimum **seviye 5**
+* Düzenli tarama yapılmalıdır
+* CI/CD pipeline'a entegre edilmelidir
+
+### **6.2. Kod Stili Denetimi (PHP-CS-Fixer - ZORUNLU)**
+
+* PSR-12 kuralları ile yapılandırılmalıdır
+* Pre-commit hook olarak çalışmalıdır
+
+### **6.3. Otomasyon Komutları (composer.json)**
+
+```json
+{
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test:coverage": "vendor/bin/phpunit --coverage-html build/coverage",
+    "style:check": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+    "style:fix": "vendor/bin/php-cs-fixer fix",
+    "analyze": "vendor/bin/phpstan analyse -c phpstan.neon",
+    "e2e:run": "npx playwright test",
+    "e2e:ui": "npx playwright test --ui",
+    "security:check": "vendor/bin/security-checker security:check",
+    "audit": [
+      "@style:check",
+      "@analyze", 
+      "@test",
+      "@security:check"
+    ]
+  }
+}
+```
+
+---
+
+## **🎨 7. UI/UX İYİLEŞTİRMELERİ**
+
+### **7.1. User Experience**
+
+* Loading spinner'lar eklenmelidir (Ajax işlemlerde)
+* Empty state'ler iyileştirilmelidir
+* Success/Error notification sistemi aktif olmalıdır
+* Breadcrumb navigation eklenmelidir
+
+### **7.2. Mobile Responsiveness**
+
+* Dashboard card'ları mobile'da test edilmelidir
+* Table'ların mobile görünümü iyileştirilmelidir
+* Touch-friendly button size'ları kullanılmalıdır
+
+### **7.3. Accessibility (A11y)**
+
+* ARIA label'ları eklenmelidir
+* Keyboard navigation desteği sağlanmalıdır
+* Color contrast kontrolü yapılmalıdır
+* Screen reader compatibility sağlanmalıdır
+
+---
+
+## **🐳 8. Docker ve DevOps**
+
+### **8.1. Docker Best Practices**
+
+* Multi-stage build kullanılmalıdır
+* .dockerignore dosyası optimize edilmelidir
+* Health check'ler tanımlanmalıdır
+* Environment variables güvenli şekilde yönetilmelidir
+
+### **8.2. CI/CD Pipeline**
+
+* GitHub Actions veya GitLab CI kullanılmalıdır
+* Automated testing pipeline kurulmalıdır
+* Code quality gates tanımlanmalıdır
+* Deployment automation yapılmalıdır
+
+---
+
+## **📊 9. Monitoring ve Logging**
+
+### **9.1. Application Monitoring**
+
+* Error tracking sistemi (Sentry) entegre edilmelidir
+* Performance monitoring aktif olmalıdır
+* User analytics takip edilmelidir
+
+### **9.2. Logging Standards**
+
+* Structured logging (JSON format) kullanılmalıdır
+* Log levels doğru şekilde kullanılmalıdır
+* Sensitive data loglanmamalıdır
+* Log rotation yapılandırılmalıdır
+
+---
+
+## **🚀 10. İMPLEMENTASYON ÖNCELİKLERİ**
+
+### **Sprint 1 (1-2 hafta) - GÜVENLİK KRİTİK**
+1. ✅ XSS koruması ekle
+2. ✅ CSRF token'ları implement et  
+3. ✅ Input validation ekle
+4. ✅ SQL injection kontrolü
+
+### **Sprint 2 (1 hafta) - PERFORMANCE**
+1. Database query optimizasyonu
+2. Cache layer ekle
+3. Frontend optimizasyonu
+
+### **Sprint 3 (2 hafta) - UX/UI**
+1. Loading states
+2. Error handling iyileştirme
+3. Mobile responsiveness
+4. Accessibility iyileştirmeleri
+
+### **Sprint 4 (1-2 hafta) - CODE QUALITY**
+1. Service layer pattern
+2. Exception handling
+3. Code refactoring
+4. Testing setup
+
+### **Sprint 5 (1 hafta) - TESTING**
+1. PHPUnit setup
+2. Playwright E2E tests
+3. Test coverage raporları
+4. CI/CD integration
+
+---
+
+## **📋 11. KALITE KONTROL CHECKLİSTİ**
+
+### **Her Feature için Zorunlu Kontroller:**
+- [ ] PSR-12 kod standartları uygulandı
+- [ ] PHPStan seviye 5+ geçiyor
+- [ ] XSS koruması var
+- [ ] CSRF koruması var
+- [ ] Input validation yapıldı
+- [ ] Exception handling var
+- [ ] PHPDoc dokümantasyonu yazıldı
+- [ ] Unit test yazıldı (%85+ coverage)
+- [ ] E2E test yazıldı (kritik akışlar için)
+- [ ] Mobile responsive test edildi
+- [ ] Accessibility kontrol edildi
+- [ ] Performance test yapıldı
+- [ ] Security scan geçti
+
+---
+
+## **🔗 12. CONTEXT7 VE MODERN ARAÇLAR**
+
+### **12.1. Context7 Kullanımı**
+* Modern kütüphane dokümantasyonları için Context7 kullanılmalıdır
+* API referansları güncel tutulmalıdır
+* Best practice'ler dokümante edilmelidir
+
+### **12.2. Modern Development Tools**
+* VS Code extensions kullanılmalıdır
+* Git hooks yapılandırılmalıdır
+* Code review süreçleri tanımlanmalıdır
+
+---
+
+**Proje Mottosu:** "Kalite sadece kontrol ettiğimiz bir sonuç değil, kodumuzun her satırına işlediğimiz bir süreçtir."
+
+**🔴 KRİTİK:** Güvenlik sorunları (Hemen çözülmeli)
+**🟡 YÜKSEK:** Performance ve UX iyileştirmeleri (1-2 hafta içinde)
+**🟢 ORTA:** Code quality ve test iyileştirmeleri (1 ay içinde)
+**🔵 DÜŞÜK:** Long-term iyileştirmeler (3 ay içinde)
+
+---
+
+## **📁 Detaylı Kurallar**
+
+Bu dokümanda temel kurallar yer almaktadır. Detaylı kurallar için:
+
+- **🧪 Test Kuralları:** [`.cursor/rules/testing.md`](./.cursor/rules/testing.md)
+- **📂 Kod Kalitesi:** [`.cursor/rules/code-quality.md`](./.cursor/rules/code-quality.md)
+- **📋 Kural İndeksi:** [`.cursor/rules/README.md`](./.cursor/rules/README.md)
+
+## **🚀 Hızlı Komutlar**
+
+```bash
+# Test komutları
+npm test                    # Tüm testleri çalıştır
+npm run test:ui            # UI modunda test
+npm run test:smoke         # Smoke testleri
+npm run show:report        # Test raporunu görüntüle
+
+# PowerShell'de sorunsuz çalışır ✅
+```
+
+---
+
+**Sürüm:** v2.1 (Test automation + PowerShell support)
+**Son Güncelleme:** 2025-01-07
+**Durum:** Test otomasyonu aktif - Production ready
+
+## **📚 Güncel Durum**
+
+✅ **Test Otomasyonu Tamamlandı:**
+- Playwright E2E framework kurulumu ✅
+- PowerShell destekli npm komutları ✅  
+- Cross-browser test desteği ✅
+- `docs/reports/` rapor sistemi ✅
+- `.cursor/rules/` organize kurallar ✅
+
+🎯 **Sıradaki Adımlar:**
+1. PHPUnit kurulumu ve unit testler
+2. CI/CD pipeline konfigürasyonu  
+3. Security audit ve güvenlik testleri
+4. Performance optimizasyon

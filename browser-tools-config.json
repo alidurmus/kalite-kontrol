@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "browser-tools": {
+      "command": "npx",
+      "args": ["@agentdeskai/browser-tools-mcp"],
+      "env": {
+        "BROWSER_TOOLS_DEBUG": "true",
+        "BROWSER_TOOLS_PORT": "3000"
+      }
+    }
+  },
+  "browserSettings": {
+    "defaultBrowser": "chrome",
+    "headless": false,
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "timeout": 30000
+  },
+  "features": {
+    "screenshotCapture": true,
+    "domMonitoring": true,
+    "networkTracking": true,
+    "performanceMetrics": true,
+    "userInteractionTracking": true
+  },
+  "security": {
+    "allowedDomains": [
+      "localhost",
+      "127.0.0.1",
+      "*.local",
+      "*.dev"
+    ],
+    "blockSensitiveData": true,
+    "sanitizeInputs": true
+  }
+} 

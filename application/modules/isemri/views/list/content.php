@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="m-b-lg">
+            İş Emri Listesi
+            <?php   
+// Load security helper for XSS protection
+$this->load->helper('security');
+if(isAllowedWriteModule()){ ?>
+                <a href="<?php echo base_url("isemri/new_form"); ?>" class="btn btn-outline btn-primary btn-xs pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
+            <?php } ?>
+        </h4>
+    </div><!-- END column -->
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-body">
+                <form action="<?php echo base_url("isemri/index"); ?>" method="get">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="search_isemri_no">İş Emri No</label>
+                            <input type="text" name="search_isemri_no" class="form-control" placeholder="İş Emri No..." value="<?php echo safe_attr($search_isemri_no); ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="search_stok_kodu">Stok Kodu</label>
+                            <input type="text" name="search_stok_kodu" class="form-control" placeholder="Stok Kodu..." value="<?php echo safe_attr($search_stok_kodu); ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="search_parti_no">Parti No</label>
+                            <input type="text" name="search_parti_no" class="form-control" placeholder="Parti No..." value="<?php echo safe_attr($search_parti_no); ?>">
+                        </div>
+                        <div class="form-group col-md-3 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary mr-2">Ara</button>
+                            <a href="<?php echo base_url("isemri"); ?>" class="btn btn-outline-secondary">Temizle</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="widget p-lg">
+
+            <?php if(empty($items)) { ?>
+
+                <div class="alert alert-info text-center">
+                    <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("isemri/new_form"); ?>">tıklayınız</a></p>
+                </div>
+
+
+
+                
+            <?php } else { ?>
+
+                <table class="table table-hover table-striped table-bordered content-container">
+                    <thead>
+                        <th class="order"><i class="fa fa-reorder"></i></th>
+                        <th class="w50">#id</th>
+                        <th>lot</th>
+                        <th>musteri</th>                      
+                        <th>siparis_no</th>
+                        <th>uretim_tarihi</th>
+                        <th>sevk_tarihi</th>
+                        <th>tarih</th>
+                        <th>İşlem</th>
+                    </thead>
+                    <tbody class="sortable" data-url="<?php echo base_url("isemri/rankSetter"); ?>">
+
+                        <?php foreach($items as $item) { ?>
+                            <tr id="ord-<?php echo safe_output($item->id); ?>">
+                                <td class="order"><i class="fa fa-reorder"></i></td>
+                                <td class="w50 text-center">#<?php echo safe_output($item->id); ?></td>
+                                <td><?php echo safe_output($item->lot); ?></td>                               
+                                <td><?php echo safe_output($item->musteri); ?></td>                                
+                                <td><?php echo safe_output($item->siparis_no); ?></td>
+                                <td><?php echo safe_output($item->uretim_tarihi); ?></td>
+                                <td><?php echo safe_output($item->sevk_tarihi); ?></td>
+                                <td><?php echo safe_output($item->tarih); ?></td>
+                                <td class="text-center w200">
+                                    <?php   if(isAllowedDeleteModule()){ ?>
+                                        <button
+                                            data-url="<?php echo base_url("isemri/delete/$item->id"); ?>"
+                                            class="btn btn-sm btn-danger btn-outline remove-btn">
+                                            <i class="fa fa-trash"></i> Sil
+                                        </button>
+                                    <?php } ?> 
+                                    <?php   if(isAllowedUpdateModule()){ ?>
+                                        <a href="<?php echo base_url("isemri/update_form/$item->id"); ?>" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
+                                    <?php } ?>                                   
+                                 </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
+            <div class="widget-body">
+                <nav aria-label="Page navigation">
+                    <?php echo isset($links) ? $links : ""; ?>
+                </nav>
+            </div>
+        </div><!-- .widget -->
+    </div><!-- END column -->
+</div>

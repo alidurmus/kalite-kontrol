@@ -1,0 +1,533 @@
+<?php $this->load->view("includes/head"); ?>
+<?php $this->load->view("includes/aside"); ?>
+
+<main class="content-page">
+    <?php $this->load->view("includes/navbar"); ?>
+
+    <!-- Kontrol Numarası Yönetimi - Modern Tasarım -->
+    <div class="container-fluid">
+        
+        <!-- Header Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="mb-1"><i class="zmdi zmdi-assignment"></i> Kontrol Numarası Takip</h2>
+                        <p class="text-muted mb-0">Proses kontrol kayıtlarının takip ve yönetimi</p>
+                    </div>
+                    <div>
+                        <a href="<?php echo base_url('dashboard'); ?>" class="btn btn-outline-secondary mr-2">
+                            <i class="zmdi zmdi-view-dashboard"></i> Dashboard
+                        </a>
+                        <?php if(isAllowedWriteModule()){ ?>
+                            <a href="<?php echo base_url('kontrol_no/new_form'); ?>" class="btn btn-primary">
+                                <i class="zmdi zmdi-plus"></i> Yeni Kontrol Kaydı
+                            </a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card stats-card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon">
+                                <i class="zmdi zmdi-assignment zmdi-hc-2x"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="mb-0"><?php echo isset($total_rows) ? $total_rows : 0; ?></h3>
+                                <small>Toplam Kayıt</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card stats-card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon">
+                                <i class="zmdi zmdi-calendar zmdi-hc-2x"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="mb-0"><?php echo isset($today_count) ? $today_count : 0; ?></h3>
+                                <small>Bugünkü Kayıt</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card stats-card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon">
+                                <i class="zmdi zmdi-settings zmdi-hc-2x"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="mb-0"><?php echo isset($girdi_count) ? $girdi_count : 0; ?></h3>
+                                <small>Girdi Kontrol</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-3">
+                <div class="card stats-card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="stats-icon">
+                                <i class="zmdi zmdi-time zmdi-hc-2x"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="mb-0"><?php echo isset($week_count) ? $week_count : 0; ?></h3>
+                                <small>Son 7 Gün</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Filtreleme</h5>
+                        <form method="get" action="<?php echo base_url('kontrol_no'); ?>" class="row">
+                            <div class="form-group col-lg-3 col-md-6 mb-3">
+                                <label for="search_process" class="font-weight-bold">Proses Türü</label>
+                                <select name="search_process" id="search_process" class="form-control">
+                                    <option value="">Tümü</option>
+                                    <option value="girdikontrol" <?php echo (isset($search_process) && $search_process == 'girdikontrol') ? 'selected' : ''; ?>>Girdi Kontrol</option>
+                                    <option value="proseskontrol" <?php echo (isset($search_process) && $search_process == 'proseskontrol') ? 'selected' : ''; ?>>Proses Kontrol</option>
+                                    <option value="finalkontrol" <?php echo (isset($search_process) && $search_process == 'finalkontrol') ? 'selected' : ''; ?>>Final Kontrol</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-3 col-md-6 mb-3">
+                                <label for="search_parti" class="font-weight-bold">Parti No</label>
+                                <input type="text" name="search_parti" id="search_parti" class="form-control" placeholder="Parti no giriniz..." value="<?php echo isset($search_parti) ? htmlspecialchars($search_parti) : ''; ?>">
+                            </div>
+                            <div class="form-group col-lg-3 col-md-6 mb-3">
+                                <label for="search_date" class="font-weight-bold">Tarih</label>
+                                <input type="date" name="search_date" id="search_date" class="form-control" value="<?php echo isset($search_date) ? htmlspecialchars($search_date) : ''; ?>">
+                            </div>
+                            <div class="form-group col-lg-3 col-md-6 d-flex align-items-end mb-3">
+                                <div class="btn-group w-100" role="group">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="zmdi zmdi-search"></i> Ara
+                                    </button>
+                                    <a href="<?php echo base_url('kontrol_no'); ?>" class="btn btn-outline-secondary">
+                                        <i class="zmdi zmdi-refresh"></i> Temizle
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">
+                                <i class="zmdi zmdi-assignment"></i> Kontrol Kayıtları Listesi
+                            </h5>
+                            <div class="card-tools">
+                                <button class="btn btn-outline-primary btn-sm" onclick="exportToExcel()">
+                                    <i class="zmdi zmdi-download"></i> Excel İndir
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ml-2" onclick="refreshTable()">
+                                    <i class="zmdi zmdi-refresh"></i> Yenile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <?php if(empty($items)) { ?>
+                            <!-- Empty State -->
+                            <div class="text-center py-5">
+                                <div class="empty-state">
+                                    <i class="zmdi zmdi-assignment zmdi-hc-5x text-muted mb-3"></i>
+                                    <h4 class="text-muted">Henüz Kontrol Kaydı Bulunmuyor</h4>
+                                    <p class="text-muted mb-4">Sisteminizde henüz hiç kontrol kaydı oluşturulmamış. Yeni bir kayıt ekleyerek başlayın.</p>
+                                    <?php if(isAllowedWriteModule()){ ?>
+                                        <a href="<?php echo base_url('kontrol_no/new_form'); ?>" class="btn btn-primary btn-lg">
+                                            <i class="zmdi zmdi-plus"></i> İlk Kontrol Kaydını Oluştur
+                                        </a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        <?php } else { ?>
+                            <!-- Data Table -->
+                            <div class="table-responsive">
+                                <table id="controlNoTable" class="table table-hover mb-0">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th width="50">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="selectAll">
+                                                    <label class="custom-control-label" for="selectAll"></label>
+                                                </div>
+                                            </th>
+                                            <th width="80">Kontrol No</th>
+                                            <th>Proses Türü</th>
+                                            <th>Parti No</th>
+                                            <th>Lot No</th>
+                                            <th>Kutu No</th>
+                                            <th width="120">Tarih</th>
+                                            <th width="120">Durum</th>
+                                            <th width="120" class="text-center">İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach($items as $item) { ?>
+                                            <tr id="row-<?php echo $item->id; ?>">
+                                                <td>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input row-checkbox" id="check-<?php echo $item->id; ?>" value="<?php echo $item->id; ?>">
+                                                        <label class="custom-control-label" for="check-<?php echo $item->id; ?>"></label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="badge badge-primary font-weight-bold">#<?php echo str_pad($item->id, 4, '0', STR_PAD_LEFT); ?></span>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                    $process_badges = [
+                                                        'girdikontrol' => 'badge-info',
+                                                        'proseskontrol' => 'badge-success', 
+                                                        'finalkontrol' => 'badge-danger'
+                                                    ];
+                                                    $process_names = [
+                                                        'girdikontrol' => 'Girdi Kontrol',
+                                                        'proseskontrol' => 'Proses Kontrol',
+                                                        'finalkontrol' => 'Final Kontrol'
+                                                    ];
+                                                    $badge_class = isset($process_badges[$item->process_isim]) ? $process_badges[$item->process_isim] : 'badge-secondary';
+                                                    $process_name = isset($process_names[$item->process_isim]) ? $process_names[$item->process_isim] : $item->process_isim;
+                                                    ?>
+                                                    <span class="badge <?php echo $badge_class; ?>"><?php echo $process_name; ?></span>
+                                                </td>
+                                                <td>
+                                                    <strong><?php echo htmlspecialchars($item->parti_no); ?></strong>
+                                                </td>
+                                                <td>
+                                                    <?php echo htmlspecialchars($item->lot_no ?: '-'); ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo htmlspecialchars($item->kutu_no ?: '-'); ?>
+                                                </td>
+                                                <td>
+                                                    <small class="text-muted">
+                                                        <?php echo date('d.m.Y H:i', strtotime($item->tarih)); ?>
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                    $is_recent = (strtotime($item->tarih) > strtotime('-24 hours'));
+                                                    if($is_recent) {
+                                                        echo '<span class="badge badge-success"><i class="zmdi zmdi-check"></i> Aktif</span>';
+                                                    } else {
+                                                        echo '<span class="badge badge-secondary"><i class="zmdi zmdi-time"></i> Eski</span>';
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="btn-group" role="group">
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                                onclick="viewDetails(<?php echo $item->id; ?>)" 
+                                                                title="Detayları Görüntüle">
+                                                            <i class="zmdi zmdi-eye"></i>
+                                                        </button>
+                                                        <?php if(isAllowedWriteModule()){ ?>
+                                                            <a href="<?php echo base_url('kontrol_no/update_form/' . $item->id); ?>" 
+                                                               class="btn btn-sm btn-outline-info" 
+                                                               title="Düzenle">
+                                                                <i class="zmdi zmdi-edit"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <?php if(isAllowedDeleteModule()){ ?>
+                                                            <button type="button" 
+                                                                    class="btn btn-sm btn-outline-danger" 
+                                                                    onclick="deleteRecord(<?php echo $item->id; ?>, '<?php echo htmlspecialchars($item->parti_no); ?>')"
+                                                                    title="Sil">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </button>
+                                                        <?php } ?> 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Table Footer with Bulk Actions and Pagination -->
+                            <div class="card-footer">
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-md-6">
+                                        <div class="bulk-actions" style="display: none;">
+                                            <small class="text-muted mr-3">Seçili kayıtlar:</small>
+                                            <?php if(isAllowedDeleteModule()){ ?>
+                                                <button class="btn btn-sm btn-outline-danger" onclick="bulkDelete()">
+                                                    <i class="zmdi zmdi-delete"></i> Seçilileri Sil
+                                                </button>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <small class="text-muted">
+                                            <?php if(isset($total_rows) && isset($current_page) && isset($per_page)) { ?>
+                                                Sayfa <strong><?php echo $current_page; ?></strong> / <strong><?php echo isset($total_pages) ? $total_pages : 1; ?></strong> 
+                                                (Toplam <strong><?php echo $total_rows; ?></strong> kayıt, Sayfa başına <strong><?php echo $per_page; ?></strong>)
+                                            <?php } else { ?>
+                                                Toplam <strong><?php echo count($items); ?></strong> kayıt gösteriliyor
+                                            <?php } ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <!-- Pagination Links -->
+                                <?php if(isset($links) && !empty($links)) { ?>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="pagination-wrapper">
+                                                <?php echo $links; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Panel -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0"><i class="zmdi zmdi-flash"></i> Hızlı İşlemler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('girdikontrol/new_form'); ?>" class="btn btn-outline-info btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-inbox d-block mb-2"></i>
+                                    Girdi Kontrol
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('proseskontrol/new_form'); ?>" class="btn btn-outline-success btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-settings d-block mb-2"></i>
+                                    Proses Kontrol
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('finalkontrol/new_form'); ?>" class="btn btn-outline-danger btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-check-circle d-block mb-2"></i>
+                                    Final Kontrol
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('anasayfa/kalite'); ?>" class="btn btn-outline-primary btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-view-module d-block mb-2"></i>
+                                    Kalite Merkezi
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('etiket'); ?>" class="btn btn-outline-warning btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-label d-block mb-2"></i>
+                                    Etiket İşlemleri
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                <a href="<?php echo base_url('dashboard'); ?>" class="btn btn-outline-secondary btn-block quick-action-btn">
+                                    <i class="zmdi zmdi-view-dashboard d-block mb-2"></i>
+                                    Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <style>
+    .stats-card {
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.2s ease;
+    }
+    .stats-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .stats-icon {
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .quick-action-btn {
+        padding: 15px;
+        height: auto;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    .quick-action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .empty-state {
+        padding: 60px 20px;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .card-header {
+        border-bottom: 1px solid #f0f0f0;
+        background: #fafafa;
+    }
+    .badge {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    .table th {
+        border-top: none;
+        border-bottom: 2px solid #f0f0f0;
+        color: #666;
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    .table td {
+        border-top: 1px solid #f5f5f5;
+        vertical-align: middle;
+    }
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+    </style>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        
+        const selectAllCheckbox = document.getElementById('selectAll');
+        if(selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.row-checkbox');
+                const bulkActions = document.querySelector('.bulk-actions');
+                
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+                
+                if (bulkActions) {
+                    bulkActions.style.display = this.checked ? 'block' : 'none';
+                }
+            });
+        }
+
+        document.querySelectorAll('.row-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+                const bulkActions = document.querySelector('.bulk-actions');
+                const selectAll = document.getElementById('selectAll');
+                
+                if (bulkActions) {
+                    bulkActions.style.display = checkedBoxes.length > 0 ? 'block' : 'none';
+                }
+                if (selectAll) {
+                    selectAll.checked = checkedBoxes.length === document.querySelectorAll('.row-checkbox').length;
+                }
+            });
+        });
+    });
+
+    function clearFilters() {
+        window.location.href = '<?php echo base_url("kontrol_no"); ?>';
+    }
+
+    function viewDetails(id) {
+        window.location.href = '<?php echo base_url("kontrol_no/view/"); ?>' + id;
+    }
+
+    function deleteRecord(id, partiNo) {
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: `Parti No: ${partiNo} olan kaydı silmek üzeresiniz. Bu işlem geri alınamaz!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, sil!',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '<?php echo base_url("kontrol_no/delete/"); ?>' + id;
+            }
+        })
+    }
+
+    function bulkDelete() {
+        const checkedBoxes = document.querySelectorAll('.row-checkbox:checked');
+        if(checkedBoxes.length === 0) {
+            Swal.fire('Uyarı', 'Lütfen silinecek kayıtları seçin.', 'info');
+            return;
+        }
+        
+        Swal.fire({
+            title: 'Toplu Silme Onayı',
+            text: `${checkedBoxes.length} adet kaydı silmek istediğinize emin misiniz? Bu işlem geri alınamaz!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Evet, tümünü sil!',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const ids = Array.from(checkedBoxes).map(cb => cb.value);
+                // TODO: AJAX request to a new bulk_delete controller method
+                console.log('Toplu silme için gönderilecek IDler:', ids);
+                Swal.fire('İşlem Başlatıldı', 'Seçili kayıtlar siliniyor...', 'success');
+            }
+        })
+    }
+
+    function exportToExcel() {
+        const currentUrl = new URL(window.location.href);
+        const params = new URLSearchParams(currentUrl.search);
+        window.location.href = `<?php echo base_url("kontrol_no/export_excel"); ?>?${params.toString()}`;
+    }
+
+    function refreshTable() {
+        location.reload();
+    }
+
+    </script>
+</main>
+
+<?php $this->load->view("includes/footer"); ?>
+<?php $this->load->view("includes/include_script"); ?>
